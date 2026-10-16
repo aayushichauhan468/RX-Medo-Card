@@ -1,0 +1,272 @@
+/**
+ * React Bits GooeyNav Styles for RX MEDO CARD
+ * Adapted from React Bits (https://reactbits.dev)
+ */
+
+:root {
+  --gn-pad: 6px;
+  --gn-gap: 4px;
+  --gn-font: 14px;
+  --gn-x: 16px;
+  --gn-y: 9px;
+  --gn-pill: #ef476f;
+  --gn-active-ink: #ffffff;
+  --gn-ink: #001d4f;
+  --gn-muted: #3b4d66;
+  --gn-frame: rgba(255, 255, 255, 0.96);
+  --gn-frame-edge: rgba(0, 29, 79, 0.08);
+  --gn-frame-highlight: rgba(255, 255, 255, 1);
+  --gn-frame-shadow: 0 14px 35px -10px rgba(0, 29, 79, 0.12), 0 4px 14px -2px rgba(0, 29, 79, 0.05);
+}
+
+.gooey-nav {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  font-size: var(--gn-font);
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.gooey-nav--sm {
+  --gn-pad: 5px;
+  --gn-gap: 2px;
+  --gn-font: 13px;
+  --gn-x: 13px;
+  --gn-y: 7px;
+}
+
+.gooey-nav--md {
+  --gn-pad: 6px;
+  --gn-gap: 4px;
+  --gn-font: 14px;
+  --gn-x: 15px;
+  --gn-y: 8px;
+}
+
+.gooey-nav--lg {
+  --gn-pad: 7px;
+  --gn-gap: 6px;
+  --gn-font: 16px;
+  --gn-x: 20px;
+  --gn-y: 11px;
+}
+
+.gooey-nav--framed {
+  padding: var(--gn-pad);
+  border-radius: 999px;
+  background: var(--gn-frame);
+  box-shadow: var(--gn-frame-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+}
+
+.gooey-nav__stage {
+  position: relative;
+  max-width: 100%;
+}
+
+.gooey-nav__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gooey-nav__fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  border-radius: 999px;
+  background: var(--gn-pill);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gooey-nav__list {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--gn-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 2;
+}
+
+.gooey-nav__list--active {
+  position: absolute;
+  inset: 0;
+  color: var(--gn-active-ink);
+  visibility: hidden;
+  clip-path: inset(100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Force ALL content inside the active overlay to be white — prevents black text bleed */
+.gooey-nav__list--active * {
+  color: var(--gn-active-ink) !important;
+}
+
+/* Hide dropdown menus & carets cloned into the active overlay */
+.gooey-nav__list--active .dropdown-menu,
+.gooey-nav__list--active .dropdown-toggle::after {
+  display: none !important;
+}
+
+.gooey-nav__item {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.gooey-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: var(--gn-y) var(--gn-x);
+  border: none;
+  border-radius: 999px;
+  background: none;
+  color: var(--gn-muted);
+  font: inherit;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 500;
+  font-size: var(--gn-font);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.gooey-nav__list--active .gooey-nav__link {
+  color: var(--gn-active-ink) !important;
+}
+
+.gooey-nav__item[data-active] .gooey-nav__link {
+  color: var(--gn-ink);
+  font-weight: 600;
+}
+
+.gooey-nav__link:focus-visible {
+  outline: 2px solid var(--gn-pill);
+  outline-offset: 2px;
+}
+
+.gooey-nav__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.gooey-nav__icon i {
+  font-size: 0.95em;
+  transition: transform 0.2s ease;
+}
+
+.gooey-nav__link:hover .gooey-nav__icon i {
+  transform: scale(1.1);
+}
+
+.gooey-nav__rim {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px var(--gn-frame-edge),
+    inset 0 1px 0 var(--gn-frame-highlight);
+  pointer-events: none;
+  z-index: 4;
+}
+
+@media (hover: hover) {
+  .gooey-nav__link:hover {
+    color: var(--gn-ink);
+  }
+}
+
+/* Dropdown Menu Support inside GooeyNav */
+.gooey-nav__item.dropdown {
+  position: relative;
+}
+
+.gooey-nav__item .dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  margin: 0;
+  padding: 8px;
+  min-width: 260px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 29, 79, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 20px 45px -10px rgba(0, 29, 79, 0.2), 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+  z-index: 1060;
+  list-style: none;
+}
+
+/* Mouse bridge */
+.gooey-nav__item .dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.gooey-nav__item.dropdown:hover .dropdown-menu,
+.gooey-nav__item.dropdown .dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.gooey-nav__item .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #001d4f;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.gooey-nav__item .dropdown-item i {
+  color: #ef476f;
+  font-size: 0.95rem;
+  width: 18px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.gooey-nav__item .dropdown-item:hover {
+  background: rgba(239, 71, 111, 0.08);
+  color: #ef476f;
+  transform: translateX(4px);
+}
+
+.gooey-nav__item .dropdown-item:hover i {
+  transform: scale(1.15);
+}
