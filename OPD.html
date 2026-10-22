@@ -351,7 +351,7 @@
     <link rel="stylesheet" href="css/opd7839.css?v=1.2" />
 
     <section class="xh" id="xh"><div class="xh-s"><div class="xh-bg" aria-hidden="true"><i class="xh-o a"></i><i class="xh-o b"></i><i class="xh-o c"></i></div>
-<div class="xh-card"><div class="xh-vw"><video id="xhv" src="images/opd_hero.mp4" muted loop playsinline autoplay preload="auto"></video></div><div class="xh-veil"></div>
+<div class="xh-card"><div class="xh-vw"><video id="xhv" src="images/video_opd.mp4" muted loop playsinline autoplay preload="auto"></video></div><div class="xh-veil"></div>
 <div class="xh-c"><h1>OPD Services <span>For Your Health</span></h1><p>Experience quality healthcare with our comprehensive outpatient department services designed to meet all your medical needs.</p>
 <div class="xh-b"><a class="b1" href="#services">OUR SERVICES</a><a class="b2" href="Offers.html">VIEW OFFERS</a><a class="b3" href="#departments">DEPARTMENTS</a></div></div></div>
 </div></section>
@@ -375,13 +375,10 @@
           </div>
 
           <div class="col-lg-6 col-md-6 text-center animate__animated animate__fadeInRight">
-          <div class="hero-image-container">
-    <video class="img-fluid hero-image"
-           autoplay muted loop playsinline preload="metadata">
-        <source src="images/opd_hero.mp4" type="video/mp4">
-        Your browser does not support HTML video.
-    </video>
-</div>
+            <div class="hero-image-container">
+              <img src="images/opd-bg.webp" alt="OPD Services" class="img-fluid hero-image" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1176,19 +1173,19 @@ main .animate__animated{animation:none!important}
 .hospital-card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(255,255,255,.55),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none}
 .hospital-card:hover::after{opacity:1}
 .hospital-card:hover{box-shadow:0 30px 60px rgba(40,90,120,.26)!important}
-.hospital-card-img-container{position:relative;height:210px!important;overflow:hidden}
+.hospital-card-img-container{position:relative;height:170px!important;overflow:hidden}
 .hospital-card-img{width:100%;height:100%!important;object-fit:cover;transition:transform .9s}
 .hospital-card:hover .hospital-card-img{transform:scale(1.1)}
 .hospital-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,48,74,0) 55%,rgba(22,48,74,.35))}
 .hospital-card-rating{position:absolute;top:14px;right:14px;background:var(--yel)!important;color:var(--ink)!important;border-radius:999px;padding:5px 12px;font-weight:700;font-size:13px;transform:scale(0);transition:transform .6s .5s cubic-bezier(.3,1.6,.5,1)}
 .rv.in .hospital-card-rating{transform:scale(1)}
-.hospital-card-content{padding:22px 24px 24px!important;display:flex;flex-direction:column;flex:1}
-.hospital-card-title{font-family:Sora,sans-serif!important;font-weight:700;color:var(--ink)!important}
-.hospital-card-location{color:var(--soft)!important;display:flex;gap:6px;align-items:flex-start}
+.hospital-card-content{padding:16px 20px 18px!important;display:flex;flex-direction:column;flex:1}
+.hospital-card-title{font-family:Sora,sans-serif!important;font-weight:700;color:var(--ink)!important;margin:0 0 8px!important}
+.hospital-card-location{color:var(--soft)!important;display:flex;gap:6px;align-items:flex-start;margin:0 0 8px!important}
 .hospital-card-location i{color:var(--teal)!important}
-.hospital-card-description{color:var(--soft)!important}
-.hospital-card-features{list-style:none!important;padding:0!important;margin:0 0 20px!important;display:flex;flex-wrap:wrap;gap:8px}
-.hospital-card-features li{background:var(--mint);color:#0f6b5c;border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
+.hospital-card-description{color:var(--soft)!important;margin:0 0 10px!important;line-height:1.5!important;flex:0 0 auto!important}
+.hospital-card-features{list-style:none!important;padding:0!important;margin:0 0 14px!important;display:flex;flex-wrap:wrap;gap:6px}
+.hospital-card-features li{background:var(--mint);color:#0f6b5c;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600;line-height:1.3;white-space:nowrap;margin:0!important;opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
 .rv.in .hospital-card-features li{opacity:1;transform:none}
 .rv.in .hospital-card-features li:nth-child(1){transition-delay:.45s}.rv.in .hospital-card-features li:nth-child(2){transition-delay:.6s}.rv.in .hospital-card-features li:nth-child(3){transition-delay:.75s}
 .hospital-card-btn{margin-top:auto;align-self:flex-start;background:var(--yel)!important;color:var(--ink)!important;border-radius:999px!important;padding:12px 22px!important;font-weight:700;text-decoration:none;box-shadow:0 8px 18px rgba(244,197,66,.35);transition:transform .25s,box-shadow .25s}
@@ -1313,7 +1310,7 @@ main .animate__animated{animation:none!important}
 .x-sec .about-content{position:relative;background:rgba(255,255,255,.84)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   border:0!important;border-radius:32px!important;padding:clamp(26px,3.6vw,52px)!important;box-shadow:0 24px 60px rgba(40,90,120,.16)!important;
   transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s var(--x-ease)}
-.x-sec .about-content::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:3px;pointer-events:none;
+.x-sec .about-content::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:14px;pointer-events:none;
   background:conic-gradient(from var(--x-a),var(--x-yel),var(--x-sky),var(--x-check),var(--x-yel));
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
   animation:x-spin 6s linear infinite}
@@ -1324,10 +1321,10 @@ main .animate__animated{animation:none!important}
 .x-sec .about-image{position:relative;isolation:isolate;border-radius:32px!important;overflow:visible!important;box-shadow:none!important;
   filter:drop-shadow(0 26px 34px rgba(40,90,120,.22));
   transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s var(--x-ease)}
-.x-sec .about-image::before{content:"";position:absolute;inset:0;border-radius:32px;background:var(--x-yel);z-index:-1;
-  transform:translate(22px,22px);animation:x-nudge 5s ease-in-out 1.8s infinite alternate}
+.x-sec .about-image::before{content:"";position:absolute;inset:-14px;border-radius:46px;background:var(--x-yel);z-index:-1;
+  transform:none}
 .x-js .about-image::before{opacity:0;transform:translate(0,0) scale(.88);transition:opacity .8s ease .5s,transform 1.2s var(--x-spring) .5s}
-.x-js .x-in .about-image::before{opacity:1;transform:translate(22px,22px)}
+.x-js .x-in .about-image::before{opacity:1;transform:none}
 .x-frame{position:relative;width:100%;height:100%;flex:1;border-radius:32px;overflow:hidden;background:var(--x-card)}
 .x-frame img{display:block;width:100%;height:100%;object-fit:cover;border-radius:0!important;box-shadow:none!important;
   scale:1.14;translate:0 var(--ty,0px);transition:scale 1.8s var(--x-ease)}
@@ -1357,7 +1354,7 @@ main .animate__animated{animation:none!important}
 .x-sec .service-card.x-hov{--lift:-10px}
 .x-sec .service-card::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(circle 200px at var(--mx,50%) var(--my,-40%),rgba(255,255,255,.85),transparent 70%),var(--cbg);
-  border-radius:56px 96px 64px 100px;box-shadow:0 20px 44px rgba(40,90,120,.14);animation:x-morph 9s ease-in-out var(--md,0s) infinite alternate}
+  border-radius:28px;box-shadow:none}
 .services-section .row>[class*=col]:nth-child(3n+2) .service-card{--cbg:var(--x-card)}
 .services-section .row>[class*=col]:nth-child(3n) .service-card{--cbg:#fbe9a6}
 .x-sec .service-icon{position:relative;width:78px;height:78px;border-radius:50%;background:var(--x-navy)!important;color:var(--x-yel)!important;
@@ -1368,11 +1365,11 @@ main .animate__animated{animation:none!important}
 .x-js .x-in .service-icon{animation:x-iconpop 1s var(--x-spring) .55s both}
 .x-sec .service-card:hover .service-icon{transform:rotate(360deg);background:var(--x-yel)!important;color:var(--x-navy)!important}
 /* services: rotating light sweep around each card, orbiting satellites on the icon, beating glyph */
-.x-sec .service-card::after{content:"";position:absolute;inset:-3px;z-index:-1;padding:3px;border-radius:56px 96px 64px 100px;pointer-events:none;
+.x-sec .service-card::after{content:"";position:absolute;inset:-3px;z-index:-1;padding:3px;border-radius:31px;pointer-events:none;
   background:conic-gradient(from var(--x-a),rgba(245,194,66,0) 0 55%,var(--x-yel) 72%,var(--x-sky) 86%,#3ecb9a 94%,rgba(245,194,66,0) 100%);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
-  opacity:.9;animation:x-spin 5.5s linear var(--md,0s) infinite,x-morph 9s ease-in-out var(--md,0s) infinite alternate}
-.x-sec .service-card:hover::after{opacity:1;animation-duration:2.2s,9s}
+  opacity:.9;animation:x-spin 5.5s linear var(--md,0s) infinite}
+.x-sec .service-card:hover::after{opacity:1;animation-duration:2.2s}
 .x-orbit{position:absolute;inset:-13px;border-radius:50%;pointer-events:none;border:1.5px solid rgba(42,136,208,.22);animation:x-rot 7s linear infinite}
 .x-orbit.o2{inset:-25px;border-color:rgba(245,194,66,.30);animation-duration:12s;animation-direction:reverse}
 .x-orbit i{position:absolute;left:50%;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--x-yel);box-shadow:0 0 12px 3px rgba(245,194,66,.85)}
@@ -1462,7 +1459,8 @@ main .animate__animated{animation:none!important}
   .x-js .x-r.fx-left,.x-js .x-r.fx-right{transform:translateY(60px) scale(.96)}
 }
 @media (max-width:575px){
-  .x-sec .about-image::before,.x-js .x-in .about-image::before{transform:translate(12px,12px)}
+  .x-sec .about-image::before,.x-js .x-in .about-image::before{inset:-10px;border-radius:42px;transform:none}
+  .x-sec .about-content::before{padding:10px}
   .x-glow{display:none}
 }
 @media (prefers-reduced-motion:reduce){
