@@ -536,85 +536,8 @@
 
 
 
-<footer b-kr65r3xkkp class="footer-modern py-5">
-        <div b-kr65r3xkkp class="container">
-            <div b-kr65r3xkkp class="row">
-                <div b-kr65r3xkkp class="col-lg-4 mb-4 mb-lg-0">
-                    <div b-kr65r3xkkp class="footer-logo">
-                        <div b-kr65r3xkkp class="footer-logo-with-icon">
-                            <div b-kr65r3xkkp class="footer-logo-icon">
-                                <img src="images/logo.ico" alt="RX MEDO CARD Logo" class="footer-logo-image">
-                            </div>
-                            <div b-kr65r3xkkp class="footer-logo-text-wrapper">
-                                <div b-kr65r3xkkp class="footer-logo-text">RX MEDO CARD</div>
-                                <div b-kr65r3xkkp class="footer-logo-subtitle">AN INITIATIVE OF RX MEDICAL TRUST</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p b-kr65r3xkkp class="mt-3 footer-description">
-                        RX MEDO CARD is a healthcare discount program designed to make quality healthcare accessible and
-                        affordable for everyone.
-                    </p>
-                    <div b-kr65r3xkkp class="tagline-footer">
-                        Your Health, Our Priority
-                    </div>
-                    <div b-kr65r3xkkp class="mt-4">
-                        <a class="footer-cta-button" href="Membership.html">
-                            Get Your Card
-                        </a>
-                    </div>
-                </div>
-                <div b-kr65r3xkkp class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h5 b-kr65r3xkkp class="footer-heading">Quick Links</h5>
-                    <ul b-kr65r3xkkp class="footer-links">
-                        <li b-kr65r3xkkp><a href="index.html">Home</a></li>
-                        <li b-kr65r3xkkp><a href="Offers.html">Card Details</a></li>
-                        <li b-kr65r3xkkp><a href="Hospitals.html">Hospitals</a></li>
-                        <li b-kr65r3xkkp><a href="OPD.html">OPD</a></li>
-                        <li b-kr65r3xkkp><a href="Pharmacy.html">Pharmacy</a></li>
-                        <li b-kr65r3xkkp><a href="Diagnostics.html">Diagnostics</a></li>
-                    </ul>
-                </div>
-                <div b-kr65r3xkkp class="col-lg-3 col-md-4 mb-4 mb-md-0">
-                    <h5 b-kr65r3xkkp class="footer-heading">Our Services</h5>
-                    <ul b-kr65r3xkkp class="footer-links">
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="#">Family Physician</a></li>
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="#">Specialist Consultations</a></li>
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="Diagnostics.html">Diagnostic Tests</a></li>
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="#">Hospital Packages</a></li>
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="#">Senior Care</a></li>
-                    </ul>
-                </div>
-                <div b-kr65r3xkkp class="col-lg-3 col-md-4">
-                    <h5 b-kr65r3xkkp class="footer-heading">Contact Us</h5>
-                    <ul b-kr65r3xkkp class="footer-contact">
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="tel:+919999307517"><i b-kr65r3xkkp class="bi bi-telephone me-2"></i> +91 9999307517</a></li>
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="mailto:info@rxmedocard.com"><i b-kr65r3xkkp class="bi bi-envelope me-2"></i>
-                                info@rxmedocard.com</a></li>
-                        <li b-kr65r3xkkp><a b-kr65r3xkkp href="#"><i b-kr65r3xkkp class="bi bi-geo-alt me-2"></i> 123 Healthcare Avenue, Delhi, India</a></li>
-                    </ul>
-                    <div b-kr65r3xkkp class="footer-social">
-                        <a b-kr65r3xkkp href="#"><i b-kr65r3xkkp class="bi bi-facebook"></i></a>
-                        <a b-kr65r3xkkp href="#"><i b-kr65r3xkkp class="bi bi-twitter"></i></a>
-                        <a b-kr65r3xkkp href="#"><i b-kr65r3xkkp class="bi bi-instagram"></i></a>
-                        <a b-kr65r3xkkp href="#"><i b-kr65r3xkkp class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr b-kr65r3xkkp class="footer-divider">
-            <div b-kr65r3xkkp class="row footer-bottom">
-                <div b-kr65r3xkkp class="col-md-6 text-center text-md-start">
-                    <p b-kr65r3xkkp>&copy; 2025 - <b>RX MEDO CARD</b>. All rights reserved.</p>
-                </div>
-                <div b-kr65r3xkkp class="col-md-6 text-center text-md-end">
-                    <a b-kr65r3xkkp href="/policies.html" class="me-3">Privacy Policy</a>
-                    <a b-kr65r3xkkp href="/terms.html" class="me-3">Terms of Service</a>
-                    
-
-                </div>
-            </div>
-        </div>
-    </footer>
+<!-- Centralized Shared Footer Mount -->
+  <div id="siteFooterMount"></div>
     <style>
         /* Footer Social Icons */
 .footer-social {
@@ -774,5 +697,6 @@ window.addEventListener('resize', equalizeCardHeaders);
 </script>
 
 
+  <script src="js/site-footer.js"></script>
 </body>
 </html>

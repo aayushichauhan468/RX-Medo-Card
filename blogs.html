@@ -1,882 +1,980 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Read the latest healthcare guides, healthcare savings tips, membership information and practical health insights from Rx Medo Card.">
-<meta name="keywords" content="Rx Medo Card, healthcare membership, healthcare savings, OPD care, healthcare discount card, family healthcare, senior citizen healthcare">
-<title>Health & Wellness Blog | Rx Medo Card</title>
-
-<style>
-    :root{
-        --navy:#08285f;
-        --navy-dark:#06245a;
-        --navy-soft:#123d7c;
-        --pink:#f43f6c;
-        --pink-dark:#e83361;
-        --pink-light:#fff0f4;
-        --orange:#ff8a00;
-        --text:#303030;
-        --muted:#667085;
-        --bg:#f7f8fa;
-        --white:#ffffff;
-        --border:#e8ebf0;
-        --shadow:0 10px 28px rgba(8,40,95,.09);
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-
-    html{scroll-behavior:smooth}
-
-    body{
-        font-family:Arial,Helvetica,sans-serif;
-        background:var(--bg);
-        color:var(--text);
-        line-height:1.6;
-    }
-
-    a{text-decoration:none;color:inherit}
-
-    /* ================= NAVBAR ================= */
-
-    .site-header{
-        position:sticky;
-        top:0;
-        z-index:9999;
-        background:rgba(255,255,255,.98);
-        border-bottom:1px solid #edf0f4;
-        box-shadow:0 3px 14px rgba(8,40,95,.05);
-    }
-
-    .nav-container{
-        width:min(1450px,94%);
-        min-height:94px;
-        margin:auto;
-        display:flex;
-        align-items:center;
-        gap:24px;
-    }
-
-    .brand{
-        display:flex;
-        align-items:center;
-        gap:12px;
-        min-width:255px;
-        flex-shrink:0;
-    }
-
-    .brand img{
-        width:64px;
-        height:64px;
-        object-fit:contain;
-    }
-
-    .brand-text{
-        line-height:1.05;
-    }
-
-    .brand-name{
-        color:var(--navy);
-        font-size:24px;
-        font-weight:800;
-        letter-spacing:-.4px;
-    }
-
-    .brand-subtitle{
-        display:block;
-        margin-top:5px;
-        color:#777;
-        font-size:11px;
-        font-weight:700;
-        letter-spacing:.5px;
-        white-space:nowrap;
-    }
-
-    .main-nav{
-        flex:1;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:7px;
-        min-width:0;
-    }
-
-    .nav-item{
-        position:relative;
-        display:flex;
-        align-items:center;
-    }
-
-    .nav-link,
-    .dropdown-toggle{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:8px;
-        padding:12px 12px;
-        border-radius:10px;
-        color:var(--navy);
-        font-size:15px;
-        font-weight:700;
-        white-space:nowrap;
-        transition:.2s ease;
-        cursor:pointer;
-    }
-
-    .nav-link:hover,
-    .dropdown-toggle:hover{
-        color:var(--pink);
-        background:#fff7f9;
-    }
-
-    .nav-link.active{
-        color:var(--pink);
-        background:var(--pink-light);
-    }
-
-    .nav-icon{
-        font-size:17px;
-        line-height:1;
-    }
-
-    .chevron{
-        font-size:12px;
-        margin-left:1px;
-    }
-
-    /* Card Details dropdown */
-    .dropdown-menu{
-        position:absolute;
-        top:calc(100% + 7px);
-        left:50%;
-        transform:translateX(-50%) translateY(5px);
-        width:265px;
-        padding:9px;
-        background:#fff;
-        border:1px solid #e8edf3;
-        border-radius:12px;
-        box-shadow:0 16px 35px rgba(8,40,95,.14);
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-        transition:.18s ease;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu,
-    .nav-item.dropdown:focus-within .dropdown-menu{
-        opacity:1;
-        visibility:visible;
-        pointer-events:auto;
-        transform:translateX(-50%) translateY(0);
-    }
-
-    .dropdown-menu a{
-        display:block;
-        padding:9px 11px;
-        border-radius:8px;
-        color:#23395f;
-        font-size:13px;
-        font-weight:600;
-    }
-
-    .dropdown-menu a:hover{
-        background:var(--pink-light);
-        color:var(--pink);
-    }
-
-    .nav-actions{
-        display:flex;
-        align-items:center;
-        gap:12px;
-        flex-shrink:0;
-    }
-
-    .action-btn{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        min-height:46px;
-        padding:0 23px;
-        border-radius:25px;
-        background:var(--pink);
-        color:#fff;
-        font-size:15px;
-        font-weight:800;
-        box-shadow:0 7px 16px rgba(244,63,108,.20);
-        transition:.2s ease;
-        white-space:nowrap;
-    }
-
-    .action-btn:hover{
-        background:var(--pink-dark);
-        transform:translateY(-1px);
-    }
-
-    .login-btn{
-        padding:0 25px;
-    }
-
-    .mobile-toggle{
-        display:none;
-        width:43px;
-        height:43px;
-        border:0;
-        border-radius:10px;
-        background:var(--pink-light);
-        color:var(--pink);
-        font-size:21px;
-        cursor:pointer;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero{
-        width:100%;
-        background:var(--navy);
-        color:#fff;
-        border-radius:0 0 82px 82px;
-        padding:75px 7.5% 78px;
-    }
-
-    .hero-inner{
-        width:min(1250px,100%);
-        margin:auto;
-    }
-
-    .hero-kicker{
-        display:inline-block;
-        margin-bottom:15px;
-        color:#ffd1dc;
-        font-size:14px;
-        font-weight:800;
-        letter-spacing:.8px;
-        text-transform:uppercase;
-    }
-
-    .hero h1{
-        max-width:800px;
-        font-size:clamp(40px,5vw,64px);
-        line-height:1.08;
-        letter-spacing:-1.5px;
-        margin-bottom:18px;
-    }
-
-    .hero p{
-        max-width:700px;
-        color:#eef4ff;
-        font-size:18px;
-        line-height:1.7;
-    }
-
-    /* ================= BLOG SECTION ================= */
-
-    .blog-section{
-        width:min(1250px,92%);
-        margin:0 auto;
-        padding:65px 0 85px;
-    }
-
-    .section-heading{
-        text-align:center;
-        margin-bottom:42px;
-    }
-
-    .section-heading h2{
-        color:var(--navy);
-        font-size:34px;
-        line-height:1.2;
-        margin-bottom:9px;
-    }
-
-    .section-heading p{
-        color:var(--muted);
-        font-size:15px;
-    }
-
-    .blog-grid{
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-        gap:25px;
-    }
-
-    .blog-card{
-        position:relative;
-        display:flex;
-        flex-direction:column;
-        min-height:345px;
-        overflow:hidden;
-        background:#fff;
-        border:1px solid var(--border);
-        border-radius:15px;
-        box-shadow:0 5px 17px rgba(8,40,95,.055);
-        transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-    }
-
-    .blog-card:hover{
-        transform:translateY(-6px);
-        box-shadow:var(--shadow);
-        border-color:#d9dfea;
-    }
-
-    .card-top{
-        height:7px;
-        background:linear-gradient(90deg,var(--pink),#ff6c8f);
-    }
-
-    .card-body{
-        display:flex;
-        flex-direction:column;
-        flex:1;
-        padding:27px 27px 25px;
-    }
-
-    .card-meta{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:10px;
-        margin-bottom:17px;
-    }
-
-    .category{
-        display:inline-flex;
-        align-items:center;
-        padding:5px 11px;
-        border-radius:20px;
-        background:var(--pink-light);
-        color:var(--pink);
-        font-size:11px;
-        font-weight:800;
-        letter-spacing:.25px;
-        text-transform:uppercase;
-    }
-
-    .card-number{
-        color:#a7b0bf;
-        font-size:13px;
-        font-weight:800;
-    }
-
-    .blog-card h3{
-        color:var(--navy);
-        font-size:20px;
-        line-height:1.4;
-        margin-bottom:13px;
-    }
-
-    .blog-card p{
-        color:#687384;
-        font-size:14px;
-        line-height:1.72;
-        margin-bottom:24px;
-    }
-
-    .read-more{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        align-self:flex-start;
-        margin-top:auto;
-        min-height:42px;
-        padding:0 18px;
-        border-radius:8px;
-        background:var(--pink);
-        color:#fff;
-        font-size:13px;
-        font-weight:800;
-        box-shadow:0 5px 13px rgba(244,63,108,.15);
-        transition:.2s ease;
-    }
-
-    .read-more:hover{
-        background:var(--pink-dark);
-        transform:translateX(2px);
-    }
-
-    /* ================= CTA ================= */
-
-    .cta-wrap{
-        width:min(1250px,92%);
-        margin:0 auto 75px;
-    }
-
-    .cta{
-        background:var(--navy);
-        color:#fff;
-        border-radius:25px;
-        text-align:center;
-        padding:52px 25px;
-    }
-
-    .cta h2{
-        font-size:31px;
-        margin-bottom:9px;
-    }
-
-    .cta p{
-        max-width:680px;
-        margin:0 auto 23px;
-        color:#dce8fa;
-        font-size:15px;
-    }
-
-    .cta-btn{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        min-height:45px;
-        padding:0 23px;
-        border-radius:24px;
-        background:var(--pink);
-        color:#fff;
-        font-size:14px;
-        font-weight:800;
-    }
-
-    .cta-btn:hover{background:var(--pink-dark)}
-
-    /* ================= FOOTER ================= */
-
-    .site-footer{
-        background:var(--navy);
-        color:#d9e5f5;
-        padding:58px 0 22px;
-    }
-
-    .footer-container{
-        width:min(1250px,92%);
-        margin:auto;
-    }
-
-    .footer-main{
-        display:grid;
-        grid-template-columns:1.45fr 1fr 1fr 1.1fr;
-        gap:45px;
-        padding-bottom:38px;
-    }
-
-    .footer-brand{
-        display:flex;
-        gap:13px;
-        align-items:flex-start;
-    }
-
-    .footer-brand img{
-        width:62px;
-        height:62px;
-        object-fit:contain;
-        background:#fff;
-        border-radius:50%;
-    }
-
-    .footer-brand h3{
-        color:#fff;
-        font-size:22px;
-        margin-bottom:2px;
-    }
-
-    .footer-brand .trust{
-        color:#c2cfdf;
-        font-size:10px;
-        font-weight:700;
-        letter-spacing:.4px;
-        margin-bottom:13px;
-    }
-
-    .footer-brand p{
-        color:#b8c8dc;
-        font-size:13px;
-        line-height:1.75;
-        max-width:330px;
-    }
-
-    .footer-column h4{
-        color:#fff;
-        font-size:15px;
-        margin-bottom:16px;
-    }
-
-    .footer-column ul{
-        list-style:none;
-    }
-
-    .footer-column li{
-        margin-bottom:9px;
-    }
-
-    .footer-column a{
-        color:#b8c8dc;
-        font-size:13px;
-        transition:.2s ease;
-    }
-
-    .footer-column a:hover{color:#fff}
-
-    .contact-item{
-        color:#b8c8dc;
-        font-size:13px;
-        line-height:1.6;
-        margin-bottom:10px;
-    }
-
-    .footer-bottom{
-        border-top:1px solid rgba(255,255,255,.14);
-        padding-top:20px;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:20px;
-        flex-wrap:wrap;
-        color:#9fb1c8;
-        font-size:12px;
-    }
-
-    .footer-bottom a:hover{color:#fff}
-
-    /* ================= RESPONSIVE ================= */
-
-    @media(max-width:1250px){
-        .nav-container{gap:12px}
-        .brand{min-width:220px}
-        .brand img{width:56px;height:56px}
-        .brand-name{font-size:21px}
-        .brand-subtitle{font-size:9px}
-        .main-nav{gap:1px}
-        .nav-link,.dropdown-toggle{padding:10px 8px;font-size:13px}
-        .action-btn{padding:0 17px;font-size:13px}
-    }
-
-    @media(max-width:1050px){
-        .main-nav{display:none}
-        .mobile-toggle{display:block;margin-left:auto}
-        .nav-actions{display:none}
-        .nav-container{min-height:78px}
-        .mobile-panel{
-            display:none;
-            padding:8px 4% 18px;
-            border-top:1px solid #edf0f4;
-            background:#fff;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Read the latest healthcare guides, healthcare savings tips, membership information and practical health insights from Rx Medo Card.">
+    <meta name="keywords"
+        content="Rx Medo Card, healthcare membership, healthcare savings, OPD care, healthcare discount card, family healthcare, senior citizen healthcare">
+    <title>Health & Wellness Blog | Rx Medo Card</title>
+
+    <style>
+        :root {
+            --navy: #08285f;
+            --navy-dark: #06245a;
+            --navy-soft: #123d7c;
+            --pink: #f43f6c;
+            --pink-dark: #e83361;
+            --pink-light: #fff0f4;
+            --orange: #ff8a00;
+            --text: #303030;
+            --muted: #667085;
+            --bg: #f7f8fa;
+            --white: #ffffff;
+            --border: #e8ebf0;
+            --shadow: 0 10px 28px rgba(8, 40, 95, .09);
         }
-        .mobile-panel.open{display:block}
-        .mobile-panel a,
-        .mobile-panel summary{
-            display:block;
-            padding:12px 8px;
-            color:var(--navy);
-            font-weight:700;
-            font-size:14px;
-            cursor:pointer;
-        }
-        .mobile-panel details a{
-            padding-left:22px;
-            font-weight:600;
-        }
-        .mobile-panel .mobile-cta{
-            display:block;
-            margin-top:8px;
-            padding:12px 18px;
-            text-align:center;
-            border-radius:24px;
-            background:var(--pink);
-            color:#fff;
-        }
-    }
 
-    @media(min-width:1051px){
-        .mobile-panel{display:none!important}
-    }
-
-    @media(max-width:900px){
-        .blog-grid{grid-template-columns:repeat(2,1fr)}
-        .footer-main{grid-template-columns:repeat(2,1fr)}
-    }
-
-    @media(max-width:620px){
-        .brand{min-width:0}
-        .brand img{width:48px;height:48px}
-        .brand-name{font-size:19px}
-        .brand-subtitle{font-size:8px}
-        .hero{
-            padding:55px 6% 62px;
-            border-radius:0 0 45px 45px;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
         }
-        .hero h1{font-size:39px}
-        .hero p{font-size:15px}
-        .blog-section{padding:50px 0 65px}
-        .blog-grid{grid-template-columns:1fr}
-        .blog-card{min-height:315px}
-        .section-heading h2{font-size:28px}
-        .cta{padding:42px 20px;border-radius:18px}
-        .cta h2{font-size:27px}
-        .footer-main{grid-template-columns:1fr;gap:30px}
-        .footer-bottom{flex-direction:column;align-items:flex-start}
-    }
-</style>
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background: rgba(255, 255, 255, .98);
+            border-bottom: 1px solid #edf0f4;
+            box-shadow: 0 3px 14px rgba(8, 40, 95, .05);
+        }
+
+        .nav-container {
+            width: min(1450px, 94%);
+            min-height: 94px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 255px;
+            flex-shrink: 0;
+        }
+
+        .brand img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            line-height: 1.05;
+        }
+
+        .brand-name {
+            color: var(--navy);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -.4px;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 5px;
+            color: #777;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            white-space: nowrap;
+        }
+
+        .main-nav {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-width: 0;
+        }
+
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link,
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 12px;
+            border-radius: 10px;
+            color: var(--navy);
+            font-size: 15px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: .2s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover,
+        .dropdown-toggle:hover {
+            color: var(--pink);
+            background: #fff7f9;
+        }
+
+        .nav-link.active {
+            color: var(--pink);
+            background: var(--pink-light);
+        }
+
+        .nav-icon {
+            font-size: 17px;
+            line-height: 1;
+        }
+
+        .chevron {
+            font-size: 12px;
+            margin-left: 1px;
+        }
+
+        /* Card Details dropdown */
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 7px);
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            width: 265px;
+            padding: 9px;
+            background: #fff;
+            border: 1px solid #e8edf3;
+            border-radius: 12px;
+            box-shadow: 0 16px 35px rgba(8, 40, 95, .14);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: .18s ease;
+        }
+
+        .nav-item.dropdown:hover .dropdown-menu,
+        .nav-item.dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 9px 11px;
+            border-radius: 8px;
+            color: #23395f;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--pink-light);
+            color: var(--pink);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 23px;
+            border-radius: 25px;
+            background: var(--pink);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 7px 16px rgba(244, 63, 108, .20);
+            transition: .2s ease;
+            white-space: nowrap;
+        }
+
+        .action-btn:hover {
+            background: var(--pink-dark);
+            transform: translateY(-1px);
+        }
+
+        .login-btn {
+            padding: 0 25px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            width: 43px;
+            height: 43px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--pink-light);
+            color: var(--pink);
+            font-size: 21px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            width: 100%;
+            background: var(--navy);
+            color: #fff;
+            border-radius: 0 0 82px 82px;
+            padding: 75px 7.5% 78px;
+        }
+
+        .hero-inner {
+            width: min(1250px, 100%);
+            margin: auto;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #ffd1dc;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: #eef4ff;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* ================= BLOG SECTION ================= */
+
+        .blog-section {
+            width: min(1250px, 92%);
+            margin: 0 auto;
+            padding: 65px 0 85px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+            font-size: 34px;
+            line-height: 1.2;
+            margin-bottom: 9px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .blog-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 345px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            box-shadow: 0 5px 17px rgba(8, 40, 95, .055);
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: #d9dfea;
+        }
+
+        .card-top {
+            height: 7px;
+            background: linear-gradient(90deg, var(--pink), #ff6c8f);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 27px 27px 25px;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 17px;
+        }
+
+        .category {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 11px;
+            border-radius: 20px;
+            background: var(--pink-light);
+            color: var(--pink);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .25px;
+            text-transform: uppercase;
+        }
+
+        .card-number {
+            color: #a7b0bf;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .blog-card h3 {
+            color: var(--navy);
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 13px;
+        }
+
+        .blog-card p {
+            color: #687384;
+            font-size: 14px;
+            line-height: 1.72;
+            margin-bottom: 24px;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+            margin-top: auto;
+            min-height: 42px;
+            padding: 0 18px;
+            border-radius: 8px;
+            background: var(--pink);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 5px 13px rgba(244, 63, 108, .15);
+            transition: .2s ease;
+        }
+
+        .read-more:hover {
+            background: var(--pink-dark);
+            transform: translateX(2px);
+        }
+
+        /* ================= CTA ================= */
+
+        .cta-wrap {
+            width: min(1250px, 92%);
+            margin: 0 auto 75px;
+        }
+
+        .cta {
+            background: var(--navy);
+            color: #fff;
+            border-radius: 25px;
+            text-align: center;
+            padding: 52px 25px;
+        }
+
+        .cta h2 {
+            font-size: 31px;
+            margin-bottom: 9px;
+        }
+
+        .cta p {
+            max-width: 680px;
+            margin: 0 auto 23px;
+            color: #dce8fa;
+            font-size: 15px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 45px;
+            padding: 0 23px;
+            border-radius: 24px;
+            background: var(--pink);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .cta-btn:hover {
+            background: var(--pink-dark)
+        }
+
+        /* ================= FOOTER ================= */
+
+        .site-footer {
+            background: var(--navy);
+            color: #d9e5f5;
+            padding: 58px 0 22px;
+        }
+
+        .footer-container {
+            width: min(1250px, 92%);
+            margin: auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.45fr 1fr 1fr 1.1fr;
+            gap: 45px;
+            padding-bottom: 38px;
+        }
+
+        .footer-brand {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+        }
+
+        .footer-brand img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 2px;
+        }
+
+        .footer-brand .trust {
+            color: #c2cfdf;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            margin-bottom: 13px;
+        }
+
+        .footer-brand p {
+            color: #b8c8dc;
+            font-size: 13px;
+            line-height: 1.75;
+            max-width: 330px;
+        }
+
+        .footer-column h4 {
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 9px;
+        }
+
+        .footer-column a {
+            color: #b8c8dc;
+            font-size: 13px;
+            transition: .2s ease;
+        }
+
+        .footer-column a:hover {
+            color: #fff
+        }
+
+        .contact-item {
+            color: #b8c8dc;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .14);
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #9fb1c8;
+            font-size: 12px;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:1250px) {
+            .nav-container {
+                gap: 12px
+            }
+
+            .brand {
+                min-width: 220px
+            }
+
+            .brand img {
+                width: 56px;
+                height: 56px
+            }
+
+            .brand-name {
+                font-size: 21px
+            }
+
+            .brand-subtitle {
+                font-size: 9px
+            }
+
+            .main-nav {
+                gap: 1px
+            }
+
+            .nav-link,
+            .dropdown-toggle {
+                padding: 10px 8px;
+                font-size: 13px
+            }
+
+            .action-btn {
+                padding: 0 17px;
+                font-size: 13px
+            }
+        }
+
+        @media(max-width:1050px) {
+            .main-nav {
+                display: none
+            }
+
+            .mobile-toggle {
+                display: block;
+                margin-left: auto
+            }
+
+            .nav-actions {
+                display: none
+            }
+
+            .nav-container {
+                min-height: 78px
+            }
+
+            .mobile-panel {
+                display: none;
+                padding: 8px 4% 18px;
+                border-top: 1px solid #edf0f4;
+                background: #fff;
+            }
+
+            .mobile-panel.open {
+                display: block
+            }
+
+            .mobile-panel a,
+            .mobile-panel summary {
+                display: block;
+                padding: 12px 8px;
+                color: var(--navy);
+                font-weight: 700;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            .mobile-panel details a {
+                padding-left: 22px;
+                font-weight: 600;
+            }
+
+            .mobile-panel .mobile-cta {
+                display: block;
+                margin-top: 8px;
+                padding: 12px 18px;
+                text-align: center;
+                border-radius: 24px;
+                background: var(--pink);
+                color: #fff;
+            }
+        }
+
+        @media(min-width:1051px) {
+            .mobile-panel {
+                display: none !important
+            }
+        }
+
+        @media(max-width:900px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:620px) {
+            .brand {
+                min-width: 0
+            }
+
+            .brand img {
+                width: 48px;
+                height: 48px
+            }
+
+            .brand-name {
+                font-size: 19px
+            }
+
+            .brand-subtitle {
+                font-size: 8px
+            }
+
+            .hero {
+                padding: 55px 6% 62px;
+                border-radius: 0 0 45px 45px;
+            }
+
+            .hero h1 {
+                font-size: 39px
+            }
+
+            .hero p {
+                font-size: 15px
+            }
+
+            .blog-section {
+                padding: 50px 0 65px
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr
+            }
+
+            .blog-card {
+                min-height: 315px
+            }
+
+            .section-heading h2 {
+                font-size: 28px
+            }
+
+            .cta {
+                padding: 42px 20px;
+                border-radius: 18px
+            }
+
+            .cta h2 {
+                font-size: 27px
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 30px
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="site-header">
-    <div class="nav-container">
+    <header class="site-header">
+        <div class="nav-container">
 
-        <a class="brand" href="https://rxmedocard.com/index.html">
-            <img src="https://rxmedocard.com/images/logo.ico" alt="Rx Medo Card logo">
-            <span class="brand-text">
-                <span class="brand-name">Rx Medo Card</span>
-                <span class="brand-subtitle">AN INITIATIVE OF RX MEDICAL TRUST</span>
-            </span>
-        </a>
-
-        <nav class="main-nav" aria-label="Main navigation">
-            <a class="nav-link" href="https://rxmedocard.com/index.html">
-                <span class="nav-icon">⌂</span> Home
+            <a class="brand" href="https://rxmedocard.com/index.html">
+                <img src="https://rxmedocard.com/images/logo.ico" alt="Rx Medo Card logo">
+                <span class="brand-text">
+                    <span class="brand-name">Rx Medo Card</span>
+                    <span class="brand-subtitle">AN INITIATIVE OF RX MEDICAL TRUST</span>
+                </span>
             </a>
 
-            <div class="nav-item dropdown">
-                <a class="dropdown-toggle" href="https://rxmedocard.com/Offers.html">
-                    <span class="nav-icon">◆</span> Card Details <span class="chevron">▾</span>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a class="nav-link" href="https://rxmedocard.com/index.html">
+                    <span class="nav-icon">⌂</span> Home
                 </a>
 
-                <div class="dropdown-menu">
-                    <a href="https://rxmedocard.com/medocard.html">Rx Medo Card</a>
-                    <a href="https://rxmedocard.com/medoTopUpCard.html">RX Medo Top-Up Card</a>
-                    <a href="https://rxmedocard.com/medofamily.html">Rx Medo Family Card</a>
-                    <a href="https://rxmedocard.com/medoTopUpfamily.html">Rx Medo Family Top-Up Card</a>
-                    <a href="https://rxmedocard.com/youngshield.html">Rx Medo YoungShield Card</a>
-                    <a href="https://rxmedocard.com/citizecare.html">Rx Medo CitizenCare Card</a>
-                    <a href="https://rxmedocard.com/guardiancare.html">Rx Medo GuardianCare Card</a>
-                    <a href="https://rxmedocard.com/medoFamilysecure.html">Rx Medo FamilySecure Card</a>
-                    <a href="https://rxmedocard.com/seniorshield.html">Rx Medo SeniorShield Card</a>
+                <div class="nav-item dropdown">
+                    <a class="dropdown-toggle" href="https://rxmedocard.com/Offers.html">
+                        <span class="nav-icon">◆</span> Card Details <span class="chevron">▾</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="https://rxmedocard.com/medocard.html">Rx Medo Card</a>
+                        <a href="https://rxmedocard.com/medoTopUpCard.html">RX Medo Top-Up Card</a>
+                        <a href="https://rxmedocard.com/medofamily.html">Rx Medo Family Card</a>
+                        <a href="https://rxmedocard.com/medoTopUpfamily.html">Rx Medo Family Top-Up Card</a>
+                        <a href="https://rxmedocard.com/youngshield.html">Rx Medo YoungShield Card</a>
+                        <a href="https://rxmedocard.com/citizecare.html">Rx Medo CitizenCare Card</a>
+                        <a href="https://rxmedocard.com/guardiancare.html">Rx Medo GuardianCare Card</a>
+                        <a href="https://rxmedocard.com/medoFamilysecure.html">Rx Medo FamilySecure Card</a>
+                        <a href="https://rxmedocard.com/seniorshield.html">Rx Medo SeniorShield Card</a>
+                    </div>
                 </div>
+
+                <a class="nav-link" href="https://rxmedocard.com/Hospitals.html">
+                    <span class="nav-icon">▣</span> Hospitals
+                </a>
+
+                <a class="nav-link" href="https://rxmedocard.com/OPD.html">
+                    <span class="nav-icon">♧</span> OPD
+                </a>
+
+                <a class="nav-link" href="https://rxmedocard.com/Pharmacy.html">
+                    <span class="nav-icon">◖</span> Pharmacy
+                </a>
+
+                <a class="nav-link" href="https://rxmedocard.com/Diagnostics.html">
+                    <span class="nav-icon">⌕</span> Diagnostics
+                </a>
+
+                <a class="nav-link" href="https://rxmedocard.com/career.html">
+                    <span class="nav-icon">▣</span> Career
+                </a>
+
+                <a class="nav-link active" href="blog.html">
+                    <span class="nav-icon">▤</span> Blog
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <a class="action-btn" href="https://rxmedocard.com/medocard.html">Get Your Card</a>
+                <a class="action-btn login-btn" href="https://rxmedocard.com/LoginNode.html">Login</a>
             </div>
 
-            <a class="nav-link" href="https://rxmedocard.com/Hospitals.html">
-                <span class="nav-icon">▣</span> Hospitals
-            </a>
-
-            <a class="nav-link" href="https://rxmedocard.com/OPD.html">
-                <span class="nav-icon">♧</span> OPD
-            </a>
-
-            <a class="nav-link" href="https://rxmedocard.com/Pharmacy.html">
-                <span class="nav-icon">◖</span> Pharmacy
-            </a>
-
-            <a class="nav-link" href="https://rxmedocard.com/Diagnostics.html">
-                <span class="nav-icon">⌕</span> Diagnostics
-            </a>
-
-            <a class="nav-link" href="https://rxmedocard.com/career.html">
-                <span class="nav-icon">▣</span> Career
-            </a>
-
-            <a class="nav-link active" href="blog.html">
-                <span class="nav-icon">▤</span> Blog
-            </a>
-        </nav>
-
-        <div class="nav-actions">
-            <a class="action-btn" href="https://rxmedocard.com/medocard.html">Get Your Card</a>
-            <a class="action-btn login-btn" href="https://rxmedocard.com/LoginNode.html">Login</a>
+            <button class="mobile-toggle" type="button" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
         </div>
 
-        <button class="mobile-toggle" type="button" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
-    </div>
+        <div class="mobile-panel" id="mobilePanel">
+            <a href="https://rxmedocard.com/index.html">⌂ &nbsp; Home</a>
+            <details>
+                <summary>◆ &nbsp; Card Details</summary>
+                <a href="https://rxmedocard.com/medocard.html">Rx Medo Card</a>
+                <a href="https://rxmedocard.com/medoTopUpCard.html">RX Medo Top-Up Card</a>
+                <a href="https://rxmedocard.com/medofamily.html">Rx Medo Family Card</a>
+                <a href="https://rxmedocard.com/medoTopUpfamily.html">Rx Medo Family Top-Up Card</a>
+                <a href="https://rxmedocard.com/youngshield.html">Rx Medo YoungShield Card</a>
+                <a href="https://rxmedocard.com/citizecare.html">Rx Medo CitizenCare Card</a>
+                <a href="https://rxmedocard.com/guardiancare.html">Rx Medo GuardianCare Card</a>
+                <a href="https://rxmedocard.com/medoFamilysecure.html">Rx Medo FamilySecure Card</a>
+                <a href="https://rxmedocard.com/seniorshield.html">Rx Medo SeniorShield Card</a>
+            </details>
+            <a href="https://rxmedocard.com/Hospitals.html">▣ &nbsp; Hospitals</a>
+            <a href="https://rxmedocard.com/OPD.html">♧ &nbsp; OPD</a>
+            <a href="https://rxmedocard.com/Pharmacy.html">◖ &nbsp; Pharmacy</a>
+            <a href="https://rxmedocard.com/Diagnostics.html">⌕ &nbsp; Diagnostics</a>
+            <a href="https://rxmedocard.com/career.html">▣ &nbsp; Career</a>
+            <a href="blog.html" style="color:var(--pink);">▤ &nbsp; Blog</a>
+            <a class="mobile-cta" href="https://rxmedocard.com/medocard.html">Get Your Card</a>
+            <a class="mobile-cta" href="https://rxmedocard.com/LoginNode.html">Login</a>
+        </div>
+    </header>
 
-    <div class="mobile-panel" id="mobilePanel">
-        <a href="https://rxmedocard.com/index.html">⌂ &nbsp; Home</a>
-        <details>
-            <summary>◆ &nbsp; Card Details</summary>
-            <a href="https://rxmedocard.com/medocard.html">Rx Medo Card</a>
-            <a href="https://rxmedocard.com/medoTopUpCard.html">RX Medo Top-Up Card</a>
-            <a href="https://rxmedocard.com/medofamily.html">Rx Medo Family Card</a>
-            <a href="https://rxmedocard.com/medoTopUpfamily.html">Rx Medo Family Top-Up Card</a>
-            <a href="https://rxmedocard.com/youngshield.html">Rx Medo YoungShield Card</a>
-            <a href="https://rxmedocard.com/citizecare.html">Rx Medo CitizenCare Card</a>
-            <a href="https://rxmedocard.com/guardiancare.html">Rx Medo GuardianCare Card</a>
-            <a href="https://rxmedocard.com/medoFamilysecure.html">Rx Medo FamilySecure Card</a>
-            <a href="https://rxmedocard.com/seniorshield.html">Rx Medo SeniorShield Card</a>
-        </details>
-        <a href="https://rxmedocard.com/Hospitals.html">▣ &nbsp; Hospitals</a>
-        <a href="https://rxmedocard.com/OPD.html">♧ &nbsp; OPD</a>
-        <a href="https://rxmedocard.com/Pharmacy.html">◖ &nbsp; Pharmacy</a>
-        <a href="https://rxmedocard.com/Diagnostics.html">⌕ &nbsp; Diagnostics</a>
-        <a href="https://rxmedocard.com/career.html">▣ &nbsp; Career</a>
-        <a href="blog.html" style="color:var(--pink);">▤ &nbsp; Blog</a>
-        <a class="mobile-cta" href="https://rxmedocard.com/medocard.html">Get Your Card</a>
-        <a class="mobile-cta" href="https://rxmedocard.com/LoginNode.html">Login</a>
-    </div>
-</header>
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-kicker">Rx Medo Card Blog</span>
+            <h1>Health &amp; Wellness Insights</h1>
+            <p>Helpful guides on healthcare memberships, medical savings, OPD care, family healthcare and senior care —
+                all in one place.</p>
+        </div>
+    </section>
 
-<section class="hero">
-    <div class="hero-inner">
-        <span class="hero-kicker">Rx Medo Card Blog</span>
-        <h1>Health &amp; Wellness Insights</h1>
-        <p>Helpful guides on healthcare memberships, medical savings, OPD care, family healthcare and senior care — all in one place.</p>
-    </div>
-</section>
+    <main class="blog-section">
+        <div class="section-heading">
+            <h2>Latest Healthcare Articles</h2>
+            <p>Explore practical healthcare information and tips from Rx Medo Card.</p>
+        </div>
 
-<main class="blog-section">
-    <div class="section-heading">
-        <h2>Latest Healthcare Articles</h2>
-        <p>Explore practical healthcare information and tips from Rx Medo Card.</p>
-    </div>
+        <div class="blog-grid">
 
-    <div class="blog-grid">
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">Healthcare</span><span class="card-number">01</span></div>
-                <h3>What Is a Healthcare Membership Card and How Can It Reduce Medical Expenses?</h3>
-                <p>Understand how healthcare membership cards can provide access to eligible services and help manage routine medical expenses.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://rxmedocard.substack.com/p/what-is-a-healthcare-membership-card?r=96qaa6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">Medical Savings</span><span class="card-number">02</span></div>
-                <h3>How to Save Money on Doctor Consultations, Medicines, and Diagnostic Tests</h3>
-                <p>Discover practical ways to plan healthcare spending and make routine consultations, medicines and tests more affordable.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://rxmedocard.substack.com/p/how-to-save-money-on-doctor-consultations?r=96qaa6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">Family Health</span><span class="card-number">03</span></div>
-                <h3>Healthcare Membership Plans for Families: Benefits, Coverage, and Cost Savings</h3>
-                <p>Learn how family healthcare memberships can organize benefits and help families manage consultations, diagnostics and pharmacy expenses.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://dev.to/rxmedocard/healthcare-membership-plans-for-families-benefits-coverage-and-cost-savings-78h">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">OPD Care</span><span class="card-number">04</span></div>
-                <h3>What Is OPD Care? A Complete Guide to Affordable Outpatient Healthcare Services</h3>
-                <p>Learn what OPD care includes, how outpatient services work and what to consider when planning routine healthcare.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://dev.to/rxmedocard/what-is-opd-care-a-complete-guide-to-affordable-outpatient-healthcare-services-44j4">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">Healthcare Savings</span><span class="card-number">05</span></div>
-                <h3>How Healthcare Discount Cards Help You Save on Hospital and Pharmacy Expenses</h3>
-                <p>Explore how healthcare discount programs can help reduce eligible hospital, pharmacy and everyday healthcare expenses.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://medium.com/@blogs_77788/how-healthcare-discount-cards-help-you-save-on-hospital-and-pharmacy-expenses-b108a9bbf09b">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">Senior Care</span><span class="card-number">06</span></div>
-                <h3>Healthcare Benefits for Senior Citizens: From Doctor Consultations to Home Care</h3>
-                <p>Explore healthcare support and potential savings for senior citizens, including consultations, medicines and home care.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://medium.com/@blogs_77788/healthcare-benefits-for-senior-citizens-from-doctor-consultations-to-home-care-b5e67e5d57a6?postPublishedType=initial">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">Membership</span><span class="card-number">07</span></div>
-                <h3>How to Choose the Right Healthcare Membership Plan for Your Family</h3>
-                <p>Compare important factors such as family size, services, provider network, costs and membership terms before choosing a plan.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://www.tumblr.com/rxmedocard1/829268479023710208/how-to-choose-the-right-healthcare-membership-plan?source=share">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="card-top"></div>
-            <div class="card-body">
-                <div class="card-meta"><span class="category">Healthcare Costs</span><span class="card-number">08</span></div>
-                <h3>Healthcare Costs in India: Practical Ways to Reduce Your Medical Expenses</h3>
-                <p>Learn simple ways to plan healthcare spending and understand available options for managing everyday medical costs.</p>
-                <a class="read-more" target="_blank" rel="noopener noreferrer" href="https://in.pinterest.com/pin/1132444268835510097/">Read More&nbsp; →</a>
-            </div>
-        </article>
-
-    </div>
-</main>
-
-<section class="cta-wrap">
-    <div class="cta">
-        <h2>Your Health, Our Priority</h2>
-        <p>Explore Rx Medo Card membership options and discover healthcare benefits designed to make quality care more accessible and affordable.</p>
-        <a class="cta-btn" href="https://rxmedocard.com/medocard.html">Get Your Card</a>
-    </div>
-</section>
-
-<footer class="site-footer">
-    <div class="footer-container">
-
-        <div class="footer-main">
-            <div class="footer-brand">
-                <img src="https://rxmedocard.com/images/logo.ico" alt="Rx Medo Card logo">
-                <div>
-                    <h3>Rx Medo Card</h3>
-                    <div class="trust">AN INITIATIVE OF RX MEDICAL TRUST</div>
-                    <p>Rx Medo Card is a healthcare discount program designed to make quality healthcare accessible and affordable for everyone.</p>
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">Healthcare</span><span class="card-number">01</span>
+                    </div>
+                    <h3>What Is a Healthcare Membership Card and How Can It Reduce Medical Expenses?</h3>
+                    <p>Understand how healthcare membership cards can provide access to eligible services and help
+                        manage routine medical expenses.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://rxmedocard.substack.com/p/what-is-a-healthcare-membership-card?r=96qaa6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true">Read
+                        More&nbsp; →</a>
                 </div>
-            </div>
+            </article>
 
-            <div class="footer-column">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="https://rxmedocard.com/index.html">Home</a></li>
-                    <li><a href="https://rxmedocard.com/Offers.html">Card Details</a></li>
-                    <li><a href="https://rxmedocard.com/Hospitals.html">Hospitals</a></li>
-                    <li><a href="https://rxmedocard.com/OPD.html">OPD</a></li>
-                    <li><a href="https://rxmedocard.com/Pharmacy.html">Pharmacy</a></li>
-                    <li><a href="https://rxmedocard.com/Diagnostics.html">Diagnostics</a></li>
-                </ul>
-            </div>
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">Medical Savings</span><span
+                            class="card-number">02</span></div>
+                    <h3>How to Save Money on Doctor Consultations, Medicines, and Diagnostic Tests</h3>
+                    <p>Discover practical ways to plan healthcare spending and make routine consultations, medicines and
+                        tests more affordable.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://rxmedocard.substack.com/p/how-to-save-money-on-doctor-consultations?r=96qaa6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true">Read
+                        More&nbsp; →</a>
+                </div>
+            </article>
 
-            <div class="footer-column">
-                <h4>Our Services</h4>
-                <ul>
-                    <li><a href="https://rxmedocard.com/Diagnostics.html">Diagnostic Tests</a></li>
-                    <li><a href="https://rxmedocard.com/Hospitals.html">Hospital Packages</a></li>
-                    <li><a href="https://rxmedocard.com/seniorshield.html">Senior Care</a></li>
-                    <li><a href="https://rxmedocard.com/Cancellation.html">Cancellation &amp; Refund Policy</a></li>
-                    <li><a href="https://rxmedocard.com/Shipping.html">Shipping &amp; Delivery Policy</a></li>
-                </ul>
-            </div>
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">Family Health</span><span
+                            class="card-number">03</span></div>
+                    <h3>Healthcare Membership Plans for Families: Benefits, Coverage, and Cost Savings</h3>
+                    <p>Learn how family healthcare memberships can organize benefits and help families manage
+                        consultations, diagnostics and pharmacy expenses.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://dev.to/rxmedocard/healthcare-membership-plans-for-families-benefits-coverage-and-cost-savings-78h">Read
+                        More&nbsp; →</a>
+                </div>
+            </article>
 
-            <div class="footer-column">
-                <h4>Contact Us</h4>
-                <div class="contact-item">+91 9999307517</div>
-                <div class="contact-item">info@rxmedocard.com</div>
-                <div class="contact-item">C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309.</div>
-            </div>
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">OPD Care</span><span class="card-number">04</span>
+                    </div>
+                    <h3>What Is OPD Care? A Complete Guide to Affordable Outpatient Healthcare Services</h3>
+                    <p>Learn what OPD care includes, how outpatient services work and what to consider when planning
+                        routine healthcare.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://dev.to/rxmedocard/what-is-opd-care-a-complete-guide-to-affordable-outpatient-healthcare-services-44j4">Read
+                        More&nbsp; →</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">Healthcare Savings</span><span
+                            class="card-number">05</span></div>
+                    <h3>How Healthcare Discount Cards Help You Save on Hospital and Pharmacy Expenses</h3>
+                    <p>Explore how healthcare discount programs can help reduce eligible hospital, pharmacy and everyday
+                        healthcare expenses.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://medium.com/@blogs_77788/how-healthcare-discount-cards-help-you-save-on-hospital-and-pharmacy-expenses-b108a9bbf09b">Read
+                        More&nbsp; →</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">Senior Care</span><span class="card-number">06</span>
+                    </div>
+                    <h3>Healthcare Benefits for Senior Citizens: From Doctor Consultations to Home Care</h3>
+                    <p>Explore healthcare support and potential savings for senior citizens, including consultations,
+                        medicines and home care.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://medium.com/@blogs_77788/healthcare-benefits-for-senior-citizens-from-doctor-consultations-to-home-care-b5e67e5d57a6?postPublishedType=initial">Read
+                        More&nbsp; →</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">Membership</span><span class="card-number">07</span>
+                    </div>
+                    <h3>How to Choose the Right Healthcare Membership Plan for Your Family</h3>
+                    <p>Compare important factors such as family size, services, provider network, costs and membership
+                        terms before choosing a plan.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://www.tumblr.com/rxmedocard1/829268479023710208/how-to-choose-the-right-healthcare-membership-plan?source=share">Read
+                        More&nbsp; →</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-top"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span class="category">Healthcare Costs</span><span
+                            class="card-number">08</span></div>
+                    <h3>Healthcare Costs in India: Practical Ways to Reduce Your Medical Expenses</h3>
+                    <p>Learn simple ways to plan healthcare spending and understand available options for managing
+                        everyday medical costs.</p>
+                    <a class="read-more" target="_blank" rel="noopener noreferrer"
+                        href="https://in.pinterest.com/pin/1132444268835510097/">Read More&nbsp; →</a>
+                </div>
+            </article>
+
         </div>
+    </main>
 
-        <div class="footer-bottom">
-            <span>© 2025 - Rx Medo Card. All rights reserved.</span>
-            <span>
-                <a href="https://rxmedocard.com/Privacy.html">Privacy Policy</a>
-                &nbsp; | &nbsp;
-                <a href="https://rxmedocard.com/Terms.html">Terms of Service</a>
-                &nbsp; | &nbsp;
-                <a href="https://rxmedocard.com/Refund.html">Refund Policy</a>
-            </span>
+    <section class="cta-wrap">
+        <div class="cta">
+            <h2>Your Health, Our Priority</h2>
+            <p>Explore Rx Medo Card membership options and discover healthcare benefits designed to make quality care
+                more accessible and affordable.</p>
+            <a class="cta-btn" href="https://rxmedocard.com/medocard.html">Get Your Card</a>
         </div>
-    </div>
-</footer>
+    </section>
 
-<script>
-function toggleMobileMenu(){
-    document.getElementById('mobilePanel').classList.toggle('open');
-}
-</script>
+    <!-- Centralized Shared Footer Mount -->
+    <div id="siteFooterMount"></div>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobilePanel').classList.toggle('open');
+        }
+    </script>
     <script src="js/site-navbar.js"></script>
+    <script src="js/site-footer.js"></script>
 </body>
+
 </html>

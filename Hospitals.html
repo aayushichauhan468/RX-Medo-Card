@@ -30,7 +30,8 @@
   <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com/" />
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
   <!-- CSS Dependencies with correct relative paths -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -79,6 +80,7 @@
 
     /* Navbar dropdown display fixes & desktop drawer overflow prevention */
     @media (min-width: 992px) {
+
       #navbarSupportedContent,
       .navbar-toggler,
       .mobile-menu-header {
@@ -92,7 +94,8 @@
     .desktop-dropdown {
       position: relative;
     }
-    .desktop-dropdown > .dropdown-menu {
+
+    .desktop-dropdown>.dropdown-menu {
       display: none !important;
       position: absolute;
       top: calc(100% + 4px);
@@ -105,11 +108,13 @@
       padding: 8px;
       z-index: 1050;
     }
-    .desktop-dropdown:hover > .dropdown-menu,
-    .desktop-dropdown.show > .dropdown-menu,
-    .desktop-dropdown:focus-within > .dropdown-menu {
+
+    .desktop-dropdown:hover>.dropdown-menu,
+    .desktop-dropdown.show>.dropdown-menu,
+    .desktop-dropdown:focus-within>.dropdown-menu {
       display: block !important;
     }
+
     .desktop-dropdown .dropdown-item {
       padding: 9px 14px;
       border-radius: 8px;
@@ -120,6 +125,7 @@
       display: block;
       transition: background 0.16s ease, color 0.16s ease;
     }
+
     .desktop-dropdown .dropdown-item:hover {
       background: #f0f6fa;
       color: var(--color-navy-dark);
@@ -135,6 +141,7 @@
       z-index: 2;
       overflow: hidden;
     }
+
     .hosp-dna-canvas {
       width: 100%;
       height: 100%;
@@ -273,6 +280,7 @@
       box-shadow: 0 4px 16px rgba(27, 43, 80, 0.06);
       margin-bottom: 24px;
     }
+
     .hosp-pill-badge i {
       color: var(--color-med-green);
       font-size: 0.95rem;
@@ -288,11 +296,13 @@
       cursor: crosshair;
       user-select: none;
     }
+
     @media (max-width: 768px) {
       .techtext-wrapper {
         height: 90px;
       }
     }
+
     @media (max-width: 480px) {
       .techtext-wrapper {
         height: 70px;
@@ -357,23 +367,37 @@
       animation: mouseBounce 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
     } */
     @keyframes mouseBounce {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
         opacity: 1;
       }
+
       50% {
         transform: translateY(12px);
         opacity: 0.2;
       }
     }
+
     .hosp-chevron-down {
       font-size: 1rem;
       color: var(--color-navy);
       animation: chevronPulse 1.8s ease infinite;
     }
+
     @keyframes chevronPulse {
-      0%, 100% { transform: translateY(0); opacity: 0.6; }
-      50% { transform: translateY(4px); opacity: 1; }
+
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+
+      50% {
+        transform: translateY(4px);
+        opacity: 1;
+      }
     }
 
     /* =========================================================
@@ -407,6 +431,7 @@
       overflow: hidden;
       transition: visibility 0s 0.3s;
     }
+
     .hosp-scene.is-active {
       opacity: 1;
       visibility: visible;
@@ -452,7 +477,7 @@
       width: 100%;
       height: 100%;
       z-index: 2;
-      background: 
+      background:
         linear-gradient(90deg, rgba(209, 239, 230, 0.46) 0%, rgba(255, 255, 255, 0.22) 32%, rgba(124, 196, 232, 0.08) 55%, transparent 75%),
         linear-gradient(0deg, rgba(27, 47, 89, 0.28) 0%, rgba(209, 239, 230, 0.1) 30%, transparent 55%);
       pointer-events: none;
@@ -460,7 +485,7 @@
 
     @media (max-width: 768px) {
       .hosp-bg-overlay {
-        background: 
+        background:
           linear-gradient(0deg, rgba(27, 47, 89, 0.46) 0%, rgba(209, 239, 230, 0.35) 45%, rgba(255, 255, 255, 0.16) 70%, transparent 100%);
       }
     }
@@ -495,12 +520,13 @@
       border: 1px solid rgba(255, 255, 255, 0.9);
       border-radius: 26px;
       padding: clamp(24px, 3.5vw, 36px);
-      box-shadow: 
+      box-shadow:
         0 18px 45px rgba(27, 43, 80, 0.15),
         0 2px 10px rgba(209, 239, 230, 0.45);
       color: var(--color-navy);
       will-change: opacity, transform;
     }
+
     .hosp-glass-card::-webkit-scrollbar {
       display: none;
     }
@@ -541,6 +567,7 @@
       border-radius: 999px;
       box-shadow: 0 2px 8px rgba(247, 196, 60, 0.2);
     }
+
     .hosp-rating-badge i {
       color: #F7C43C;
       font-size: 0.88rem;
@@ -559,6 +586,7 @@
       padding: 4px 14px;
       border-radius: 999px;
     }
+
     .hosp-branch-badge i {
       color: var(--color-sky);
     }
@@ -586,6 +614,7 @@
       line-height: 1.45;
       will-change: opacity, transform;
     }
+
     .hosp-address i {
       color: var(--color-med-green);
       font-size: 1.15rem;
@@ -614,21 +643,36 @@
     .hosp-service-tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(209, 239, 230, 0.65);
-      border: 1px solid rgba(53, 201, 154, 0.35);
-      color: var(--color-navy);
+      gap: 7px;
+      background: #DFF3EC;
+      border: 1px solid #A7E6D3;
+      color: #1B2B50;
       font-size: 0.82rem;
-      font-weight: 600;
-      padding: 5px 13px;
+      font-weight: 650;
+      padding: 6px 14px;
       border-radius: 999px;
+      transition: all 0.22s ease-in-out;
+      line-height: 1.3;
+      white-space: nowrap;
+      cursor: default;
     }
+
     .hosp-service-tag::before {
       content: '';
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--color-med-green);
+      background: #35C99A;
+      display: inline-block;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(53, 201, 154, 0.25);
+    }
+
+    .hosp-service-tag:hover {
+      background: #CEEFE4;
+      border-color: #35C99A;
+      transform: translateY(-1.5px);
+      box-shadow: 0 4px 10px rgba(53, 201, 154, 0.2);
     }
 
     /* Action Row */
@@ -656,16 +700,19 @@
       transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
       border: 2px solid transparent;
     }
+
     .hosp-location-btn:hover {
       background: var(--color-med-green);
       color: #FFFFFF;
       transform: translateY(-2px);
       box-shadow: 0 10px 28px rgba(53, 201, 154, 0.42);
     }
+
     .hosp-location-btn i {
       font-size: 1.05rem;
       transition: transform 0.25s ease;
     }
+
     .hosp-location-btn:hover i {
       transform: translate(2px, -2px);
     }
@@ -679,10 +726,12 @@
       .hosp-content-layer {
         padding: clamp(86px, 11vh, 106px) clamp(36px, 5vw, 64px) clamp(28px, 4.5vh, 48px);
       }
+
       .hosp-glass-card {
         max-width: 620px;
         padding: 32px 36px;
       }
+
       .hosp-heading {
         font-size: clamp(2rem, 2.5vw, 2.45rem);
       }
@@ -693,32 +742,39 @@
       .hosp-content-layer {
         padding: 86px 36px 32px;
       }
+
       .hosp-glass-card {
         max-width: 540px;
         padding: 26px 28px;
         border-radius: 22px;
       }
+
       .hosp-heading {
         font-size: 1.85rem;
         margin-bottom: 8px;
       }
+
       .hosp-address {
         font-size: 0.92rem;
         margin-bottom: 10px;
       }
+
       .hosp-description {
         font-size: 0.88rem;
         line-height: 1.55;
         margin-bottom: 14px;
       }
+
       .hosp-tags-row {
         gap: 6px;
         margin-bottom: 18px;
       }
+
       .hosp-service-tag {
         font-size: 0.78rem;
         padding: 4px 11px;
       }
+
       .hosp-location-btn {
         padding: 11px 26px;
         font-size: 0.95rem;
@@ -730,19 +786,23 @@
       .hosp-content-layer {
         padding: 82px 28px 28px;
       }
+
       .hosp-glass-card {
         max-width: 480px;
         padding: 22px 22px;
         border-radius: 20px;
       }
+
       .hosp-heading {
         font-size: 1.6rem;
         margin-bottom: 6px;
       }
+
       .hosp-address {
         font-size: 0.86rem;
         margin-bottom: 8px;
       }
+
       .hosp-description {
         font-size: 0.84rem;
         line-height: 1.5;
@@ -752,14 +812,17 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
+
       .hosp-tags-row {
         gap: 6px;
         margin-bottom: 16px;
       }
+
       .hosp-service-tag {
         font-size: 0.75rem;
         padding: 3px 9px;
       }
+
       .hosp-location-btn {
         padding: 10px 22px;
         font-size: 0.9rem;
@@ -771,35 +834,43 @@
       .hosp-intro-slide {
         padding: 78px 16px 20px;
       }
+
       .hosp-pill-badge {
         padding: 4px 14px;
         font-size: 0.76rem;
         margin-bottom: 14px;
       }
+
       .hosp-intro-subtitle {
         font-size: 0.95rem;
         line-height: 1.5;
         margin-bottom: 20px;
         padding: 0 10px;
       }
+
       .hosp-scroll-prompt {
         gap: 6px;
       }
+
       .hosp-mouse-indicator {
         width: 20px;
         height: 32px;
       }
+
       .hosp-mouse-dot {
         width: 3px;
         height: 6px;
       }
+
       .hosp-content-layer {
         padding-top: 74px;
-        padding-bottom: clamp(68px, 9.5vh, 88px); /* Clears fixed Join Marketing Challenge button */
+        padding-bottom: clamp(68px, 9.5vh, 88px);
+        /* Clears fixed Join Marketing Challenge button */
         padding-left: 14px;
         padding-right: 14px;
         justify-content: center;
       }
+
       .hosp-glass-card {
         max-width: 100%;
         width: 100%;
@@ -808,29 +879,35 @@
         max-height: calc(100dvh - 150px);
         box-shadow: 0 12px 32px rgba(27, 43, 80, 0.2);
       }
+
       .hosp-meta-row {
         gap: 6px;
         margin-bottom: 8px;
       }
+
       .hosp-rating-badge,
       .hosp-branch-badge {
         font-size: 0.76rem;
         padding: 3px 10px;
       }
+
       .hosp-heading {
         font-size: clamp(1.22rem, 5.2vw, 1.45rem);
         line-height: 1.22;
         margin-bottom: 6px;
       }
+
       .hosp-address {
         font-size: 0.82rem;
         line-height: 1.35;
         margin-bottom: 8px;
         gap: 6px;
       }
+
       .hosp-address i {
         font-size: 1rem;
       }
+
       .hosp-description {
         font-size: 0.8rem;
         line-height: 1.45;
@@ -840,14 +917,17 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
+
       .hosp-tags-row {
         gap: 5px;
         margin-bottom: 14px;
       }
+
       .hosp-service-tag {
         font-size: 0.72rem;
         padding: 3px 8px;
       }
+
       .hosp-location-btn {
         width: 100%;
         padding: 11px 18px;
@@ -856,14 +936,17 @@
         min-height: 44px;
         border-radius: 12px;
       }
+
       /* Soft vertical gradient for mobile readability */
       .hosp-bg-overlay {
-        background: 
+        background:
           linear-gradient(180deg, rgba(27, 43, 80, 0.15) 0%, rgba(209, 239, 230, 0.22) 40%, rgba(209, 239, 230, 0.5) 100%);
       }
+
       .hosp-img-felix-gn {
         object-position: 75% 20% !important;
       }
+
       .hosp-img-srs {
         object-position: 75% 20% !important;
       }
@@ -877,32 +960,39 @@
         padding-left: 10px;
         padding-right: 10px;
       }
+
       .hosp-glass-card {
         padding: 12px 13px;
         border-radius: 15px;
         max-height: calc(100dvh - 140px);
       }
+
       .hosp-heading {
         font-size: 1.15rem;
         margin-bottom: 4px;
       }
+
       .hosp-address {
         font-size: 0.76rem;
         margin-bottom: 6px;
       }
+
       .hosp-description {
         font-size: 0.75rem;
         line-height: 1.35;
         margin-bottom: 8px;
       }
+
       .hosp-tags-row {
         gap: 4px;
         margin-bottom: 10px;
       }
+
       .hosp-service-tag {
         font-size: 0.68rem;
         padding: 2px 7px;
       }
+
       .hosp-location-btn {
         padding: 9px 14px;
         font-size: 0.85rem;
@@ -917,14 +1007,17 @@
         padding-bottom: 16px;
         align-items: flex-end;
       }
+
       .hosp-glass-card {
         max-width: 480px;
         padding: 10px 14px;
         max-height: calc(100dvh - 72px);
       }
+
       .hosp-description {
         display: none;
       }
+
       .hosp-tags-row {
         margin-bottom: 8px;
       }
@@ -981,7 +1074,8 @@
             Discover premium healthcare facilities offering exclusive benefits for Rx Medo Card members.
           </p>
 
-          <a href="#explore" class="hosp-scroll-prompt" id="scrollPromptBtn" aria-label="Scroll to explore hospital network">
+          <a href="#explore" class="hosp-scroll-prompt" id="scrollPromptBtn"
+            aria-label="Scroll to explore hospital network">
             <span class="hosp-scroll-label">Scroll to Explore</span>
             <div class="hosp-mouse-indicator">
               <div class="hosp-mouse-dot"></div>
@@ -999,7 +1093,8 @@
         <!-- 01: MD City Hospital -->
         <article class="hosp-scene is-active" data-index="0">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/01_md_city_hospital.webp" alt="MD City Hospital" class="hosp-bg-image" style="object-position: center 30%;" onerror="this.src='MD Hospital.png';" />
+            <img src="images/hospitals/01_md_city_hospital.webp" alt="MD City Hospital" class="hosp-bg-image"
+              style="object-position: center 30%;" onerror="this.src='MD Hospital.png';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1014,15 +1109,19 @@
                 <span>Parthala Chowk, PKC-12, Sector- 122, Noida, India</span>
               </div>
               <p class="hosp-description">
-                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first approach.
+                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first
+                approach.
               </p>
               <div class="hosp-tags-row">
                 <span class="hosp-service-tag">Multi-Specialty Care</span>
+                <span class="hosp-service-tag">Orthopedics &amp; Joint Care</span>
+                <span class="hosp-service-tag">Pediatrics</span>
                 <span class="hosp-service-tag">Advanced Diagnostics</span>
-                <span class="hosp-service-tag">International Patients</span>
+                <span class="hosp-service-tag">24/7 Emergency Care</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=MD+City+Hospital" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=MD+City+Hospital" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1034,7 +1133,9 @@
         <!-- 02: Yashoda Hospital - Sanjay Nagar -->
         <article class="hosp-scene" data-index="1">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/02_yashoda_sanjay_nagar.webp" alt="Yashoda Hospital Sanjay Nagar" class="hosp-bg-image" style="object-position: center 35%;" onerror="this.src='images/yashodhasanjaynagar.jpeg';" />
+            <img src="images/hospitals/02_yashoda_sanjay_nagar.webp" alt="Yashoda Hospital Sanjay Nagar"
+              class="hosp-bg-image" style="object-position: center 35%;"
+              onerror="this.src='images/yashodhasanjaynagar.jpeg';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1049,15 +1150,19 @@
                 <span>Sanjay Nagar, Ghaziabad, Uttar Pradesh</span>
               </div>
               <p class="hosp-description">
-                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first approach.
+                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first
+                approach.
               </p>
               <div class="hosp-tags-row">
-                <span class="hosp-service-tag">Multi-Specialty Care</span>
                 <span class="hosp-service-tag">Superspecialities of Cancer</span>
+                <span class="hosp-service-tag">Comprehensive Oncology</span>
+                <span class="hosp-service-tag">Cardiology &amp; Cath Lab</span>
+                <span class="hosp-service-tag">Critical Care &amp; ICU</span>
                 <span class="hosp-service-tag">Affordable Prices</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=Yashoda+Hospital" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=Yashoda+Hospital" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1069,7 +1174,9 @@
         <!-- 03: Yashoda Hospital - Nehru Nagar -->
         <article class="hosp-scene" data-index="2">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/03_yashoda_nehru_nagar.webp" alt="Yashoda Hospital Nehru Nagar" class="hosp-bg-image" style="object-position: center 40%;" onerror="this.src='images/yashodhanehrunagar.webp';" />
+            <img src="images/hospitals/03_yashoda_nehru_nagar.webp" alt="Yashoda Hospital Nehru Nagar"
+              class="hosp-bg-image" style="object-position: center 40%;"
+              onerror="this.src='images/yashodhanehrunagar.webp';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1084,16 +1191,19 @@
                 <span>Nehru Nagar, Ghaziabad, Uttar Pradesh</span>
               </div>
               <p class="hosp-description">
-                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first approach.
+                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first
+                approach.
               </p>
               <div class="hosp-tags-row">
-                <span class="hosp-service-tag">Adult & Pediatric Cardiology</span>
-                <span class="hosp-service-tag">Obstetrics, Gynecology</span>
-                <span class="hosp-service-tag">Complicated Pregnancies</span>
+                <span class="hosp-service-tag">Adult &amp; Pediatric Cardiology</span>
+                <span class="hosp-service-tag">Obstetrics &amp; Gynecology</span>
+                <span class="hosp-service-tag">Neurology &amp; Neurosurgery</span>
                 <span class="hosp-service-tag">Developmental Pediatrics</span>
+                <span class="hosp-service-tag">Emergency Care</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=Yashoda+Hospital+NehruNagar" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=Yashoda+Hospital+NehruNagar" target="_blank"
+                  rel="noopener noreferrer" class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1105,7 +1215,8 @@
         <!-- 04: Yashoda Hospital - Vasundhra -->
         <article class="hosp-scene" data-index="3">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/04_yashoda_vasundhra.webp" alt="Yashoda Hospital Vasundhra" class="hosp-bg-image" style="object-position: center 25%;" onerror="this.src='images/yashodavasundra.png';" />
+            <img src="images/hospitals/04_yashoda_vasundhra.webp" alt="Yashoda Hospital Vasundhra" class="hosp-bg-image"
+              style="object-position: center 25%;" onerror="this.src='images/yashodavasundra.png';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1120,15 +1231,19 @@
                 <span>Vasundhra, Ghaziabad, Uttar Pradesh</span>
               </div>
               <p class="hosp-description">
-                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first approach.
+                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first
+                approach.
               </p>
               <div class="hosp-tags-row">
                 <span class="hosp-service-tag">Multi-Specialty Care</span>
-                <span class="hosp-service-tag">Internal Medicines</span>
-                <span class="hosp-service-tag">International Patients</span>
+                <span class="hosp-service-tag">Internal Medicine</span>
+                <span class="hosp-service-tag">Gastroenterology</span>
+                <span class="hosp-service-tag">Nephrology &amp; Dialysis</span>
+                <span class="hosp-service-tag">Orthopedics</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=Yashoda+Hospital+NehruNagar" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=Yashoda+Hospital+NehruNagar" target="_blank"
+                  rel="noopener noreferrer" class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1140,7 +1255,8 @@
         <!-- 05: Medanta Hospital -->
         <article class="hosp-scene" data-index="4">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/05_medanta_hospital.webp" alt="Medanta Hospital" class="hosp-bg-image" style="object-position: center 35%;" onerror="this.src='images/MedantaHospital.png';" />
+            <img src="images/hospitals/05_medanta_hospital.webp" alt="Medanta Hospital" class="hosp-bg-image"
+              style="object-position: center 35%;" onerror="this.src='images/MedantaHospital.png';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1155,16 +1271,19 @@
                 <span>Sector 51, Noida, Uttar Pradesh</span>
               </div>
               <p class="hosp-description">
-                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first approach.
+                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first
+                approach.
               </p>
               <div class="hosp-tags-row">
-                <span class="hosp-service-tag">Multi-Specialty Care</span>
+                <span class="hosp-service-tag">Cardiology &amp; Heart Institute</span>
+                <span class="hosp-service-tag">Neurology &amp; Brain Sciences</span>
+                <span class="hosp-service-tag">Oncology &amp; Cancer Care</span>
                 <span class="hosp-service-tag">Advanced Diagnostics</span>
-                <span class="hosp-service-tag">Cardiac Care</span>
                 <span class="hosp-service-tag">Telemedicine</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=Yashodha+Hospital" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=Yashodha+Hospital" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1176,7 +1295,9 @@
         <!-- 06: Sarvodaya Hospital - Greater Noida -->
         <article class="hosp-scene" data-index="5">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/06_sarvodaya_greater_noida.webp" alt="Sarvodaya Hospital Greater Noida" class="hosp-bg-image" style="object-position: center 35%;" onerror="this.src='sarvodaya hospitalgreaternoida.jpg';" />
+            <img src="images/hospitals/06_sarvodaya_greater_noida.webp" alt="Sarvodaya Hospital Greater Noida"
+              class="hosp-bg-image" style="object-position: center 35%;"
+              onerror="this.src='sarvodaya hospitalgreaternoida.jpg';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1191,15 +1312,19 @@
                 <span>Greater Noida, Uttar Pradesh, India</span>
               </div>
               <p class="hosp-description">
-                A leading healthcare center in Greater Noida, known for quality patient care and advanced medical facilities.
+                A leading healthcare center in Greater Noida, known for quality patient care and advanced medical
+                facilities.
               </p>
               <div class="hosp-tags-row">
                 <span class="hosp-service-tag">Multi-Specialty Care</span>
+                <span class="hosp-service-tag">Orthopedics &amp; Trauma</span>
+                <span class="hosp-service-tag">Pediatrics &amp; Child Care</span>
+                <span class="hosp-service-tag">General Surgery</span>
                 <span class="hosp-service-tag">Emergency Services</span>
-                <span class="hosp-service-tag">International Patients</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=sarvodaya+hospital" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=sarvodaya+hospital" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1211,7 +1336,8 @@
         <!-- 07: Sarvodaya Hospital - Sector 8 Faridabad -->
         <article class="hosp-scene" data-index="6">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/07_sarvodaya_sector8.webp" alt="Sarvodaya Hospital Sector 8 Faridabad" class="hosp-bg-image" style="object-position: center 25%;" onerror="this.src='sarvodya sector8.jpg';" />
+            <img src="images/hospitals/07_sarvodaya_sector8.webp" alt="Sarvodaya Hospital Sector 8 Faridabad"
+              class="hosp-bg-image" style="object-position: center 25%;" onerror="this.src='sarvodya sector8.jpg';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1226,15 +1352,19 @@
                 <span>Sarvodaya Hospital, Sector 8, Faridabad, Haryana</span>
               </div>
               <p class="hosp-description">
-                A leading healthcare center in Faridabad, known for quality patient care and advanced medical facilities.
+                A leading healthcare center in Faridabad, known for quality patient care and advanced medical
+                facilities.
               </p>
               <div class="hosp-tags-row">
-                <span class="hosp-service-tag">Multi-Specialty Care</span>
-                <span class="hosp-service-tag">Emergency Services</span>
-                <span class="hosp-service-tag">International Patients</span>
+                <span class="hosp-service-tag">Advanced Cancer Care</span>
+                <span class="hosp-service-tag">Cardiology &amp; Cardiac Surgery</span>
+                <span class="hosp-service-tag">Neurology &amp; Spine</span>
+                <span class="hosp-service-tag">Robotic Surgery</span>
+                <span class="hosp-service-tag">Emergency &amp; Trauma</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=sarvodaya+hospital" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=sarvodaya+hospital" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1246,7 +1376,9 @@
         <!-- 08: Sarvodaya Hospital - Sector 19 Faridabad -->
         <article class="hosp-scene" data-index="7">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/08_sarvodaya_sector19.webp" alt="Sarvodaya Hospital Sector 19 Faridabad" class="hosp-bg-image" style="object-position: center 25%;" onerror="this.src='sarvodaya hospital sector19.jpg';" />
+            <img src="images/hospitals/08_sarvodaya_sector19.webp" alt="Sarvodaya Hospital Sector 19 Faridabad"
+              class="hosp-bg-image" style="object-position: center 25%;"
+              onerror="this.src='sarvodaya hospital sector19.jpg';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1261,15 +1393,19 @@
                 <span>Sarvodaya Hospital, Sector 19, Faridabad, Haryana</span>
               </div>
               <p class="hosp-description">
-                A leading healthcare center in Faridabad, known for quality patient care and advanced medical facilities.
+                A leading healthcare center in Faridabad, known for quality patient care and advanced medical
+                facilities.
               </p>
               <div class="hosp-tags-row">
                 <span class="hosp-service-tag">Multi-Specialty Care</span>
-                <span class="hosp-service-tag">Emergency Services</span>
-                <span class="hosp-service-tag">International Patients</span>
+                <span class="hosp-service-tag">Obstetrics &amp; Gynecology</span>
+                <span class="hosp-service-tag">Pediatrics</span>
+                <span class="hosp-service-tag">Internal Medicine &amp; Dialysis</span>
+                <span class="hosp-service-tag">Laparoscopic Surgery</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=sarvodaya+hospital" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=sarvodaya+hospital" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1281,7 +1417,8 @@
         <!-- 09: Felix Hospital - Sector 137 Noida -->
         <article class="hosp-scene" data-index="8">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/09_felix_sector137.webp" alt="Felix Hospital Sector 137" class="hosp-bg-image" style="object-position: center 25%;" onerror="this.src='images/felix.jpg';" />
+            <img src="images/hospitals/09_felix_sector137.webp" alt="Felix Hospital Sector 137" class="hosp-bg-image"
+              style="object-position: center 25%;" onerror="this.src='images/felix.jpg';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1296,15 +1433,19 @@
                 <span>Sector-137, Noida, Uttar Pradesh 201305</span>
               </div>
               <p class="hosp-description">
-                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first approach.
+                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first
+                approach.
               </p>
               <div class="hosp-tags-row">
                 <span class="hosp-service-tag">Multi-Specialty Care</span>
+                <span class="hosp-service-tag">Cardiology</span>
+                <span class="hosp-service-tag">Orthopedics &amp; Joint Replacement</span>
+                <span class="hosp-service-tag">Mother &amp; Child Care</span>
                 <span class="hosp-service-tag">Advanced Diagnostics</span>
-                <span class="hosp-service-tag">International Patients</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=Felix+Hospital+Noida" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=Felix+Hospital+Noida" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1316,7 +1457,9 @@
         <!-- 10: Felix Hospital - Greater Noida West -->
         <article class="hosp-scene" data-index="9">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/10_felix_greater_noida.webp" alt="Felix Hospital Greater Noida West" class="hosp-bg-image hosp-img-felix-gn" style="object-position: 70% 30%;" onerror="this.src='images/felix_jd_1.jpg';" />
+            <img src="images/hospitals/10_felix_greater_noida.webp" alt="Felix Hospital Greater Noida West"
+              class="hosp-bg-image hosp-img-felix-gn" style="object-position: 70% 30%;"
+              onerror="this.src='images/felix_jd_1.jpg';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1331,15 +1474,19 @@
                 <span>Felix Hospital, Greater Noida West, Uttar Pradesh 201306</span>
               </div>
               <p class="hosp-description">
-                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first approach.
+                A state-of-the-art multi-specialty hospital offering advanced healthcare services with a patient-first
+                approach.
               </p>
               <div class="hosp-tags-row">
                 <span class="hosp-service-tag">Multi-Specialty Care</span>
+                <span class="hosp-service-tag">Pediatrics &amp; Adolescent Care</span>
+                <span class="hosp-service-tag">Emergency &amp; Trauma Care</span>
+                <span class="hosp-service-tag">General &amp; Laparoscopic Surgery</span>
                 <span class="hosp-service-tag">Advanced Diagnostics</span>
-                <span class="hosp-service-tag">International Patients</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=Felix+Hospital+Noida" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=Felix+Hospital+Noida" target="_blank" rel="noopener noreferrer"
+                  class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1351,7 +1498,8 @@
         <!-- 11: Max Hospital - Vaishali -->
         <article class="hosp-scene" data-index="10">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/11_max_vaishali.webp" alt="Max Hospital Vaishali" class="hosp-bg-image" style="object-position: center 30%;" onerror="this.src='images/max.webp';" />
+            <img src="images/hospitals/11_max_vaishali.webp" alt="Max Hospital Vaishali" class="hosp-bg-image"
+              style="object-position: center 30%;" onerror="this.src='images/max.webp';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1366,15 +1514,19 @@
                 <span>Vaishali, Ghaziabad, Uttar Pradesh</span>
               </div>
               <p class="hosp-description">
-                A leading multi-specialty healthcare provider in India offering comprehensive clinical care and high-end tertiary treatments.
+                A leading multi-specialty healthcare provider in India offering comprehensive clinical care and high-end
+                tertiary treatments.
               </p>
               <div class="hosp-tags-row">
-                <span class="hosp-service-tag">Multi-Specialty Care</span>
+                <span class="hosp-service-tag">Comprehensive Oncology</span>
+                <span class="hosp-service-tag">Cardiology &amp; Cardiac Surgery</span>
+                <span class="hosp-service-tag">Neurology &amp; Neurosurgery</span>
+                <span class="hosp-service-tag">Orthopedics &amp; Joint Replacement</span>
                 <span class="hosp-service-tag">Advanced Diagnostics</span>
-                <span class="hosp-service-tag">International Patients</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=max+hospital+location&oq=max+hospital+location&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORjJAxiABDINCAEQABiSAxiABBiKBTINCAIQABiSAxiABBiKBTIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIICAcQABgWGB4yCAgIEAAYFhgeMggICRAAGBYYHtIBCDUzNzNqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8&zx=1766750880481&no_sw_cr=1" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=max+hospital+location&oq=max+hospital+location&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORjJAxiABDINCAEQABiSAxiABBiKBTINCAIQABiSAxiABBiKBTIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIICAcQABgWGB4yCAgIEAAYFhgeMggICRAAGBYYHtIBCDUzNzNqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8&zx=1766750880481&no_sw_cr=1"
+                  target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1386,7 +1538,8 @@
         <!-- 12: SRS Hospital - Sector 70 Noida -->
         <article class="hosp-scene" data-index="11">
           <div class="hosp-bg-visual">
-            <img src="images/hospitals/12_srs_hospital.webp" alt="SRS Hospital" class="hosp-bg-image hosp-img-srs" style="object-position: 70% 30%;" onerror="this.src='images/srs-hospital-main.jpeg';" />
+            <img src="images/hospitals/12_srs_hospital.webp" alt="SRS Hospital" class="hosp-bg-image hosp-img-srs"
+              style="object-position: 70% 30%;" onerror="this.src='images/srs-hospital-main.jpeg';" />
             <div class="hosp-bg-overlay"></div>
           </div>
           <div class="hosp-content-layer">
@@ -1401,15 +1554,19 @@
                 <span>Shri Ram Singh MultiSpeciality Hospital, Opp. OIDB, Sector 70, Noida</span>
               </div>
               <p class="hosp-description">
-                A leading multi-specialty healthcare provider in India dedicated to accessible healthcare and diagnostic excellence.
+                A leading multi-specialty healthcare provider in India dedicated to accessible healthcare and diagnostic
+                excellence.
               </p>
               <div class="hosp-tags-row">
                 <span class="hosp-service-tag">Multi-Specialty Care</span>
-                <span class="hosp-service-tag">Advanced Diagnostics</span>
-                <span class="hosp-service-tag">International Patients</span>
+                <span class="hosp-service-tag">General &amp; Laparoscopic Surgery</span>
+                <span class="hosp-service-tag">Orthopedics &amp; Spine Care</span>
+                <span class="hosp-service-tag">Gynecology &amp; Obstetrics</span>
+                <span class="hosp-service-tag">Affordable Prices</span>
               </div>
               <div class="hosp-action-row">
-                <a href="https://www.google.com/search?q=srs+hospital+location&oq=srs+hospital+location&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTINCAEQABiSAxiABBiKBTINCAIQABiSAxiABBiKBTIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyDQgFEAAYhgMYgAQYigUyDQgGEAAYhgMYgAQYigUyBwgHEAAY7wUyCggIEAAYgAQYogQyCggJEAAYgAQYogTSAQg0NzEzajBqOagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
+                <a href="https://www.google.com/search?q=srs+hospital+location&oq=srs+hospital+location&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTINCAEQABiSAxiABBiKBTINCAIQABiSAxiABBiKBTIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyDQgFEAAYhgMYgAQYigUyDQgGEAAYhgMYgAQYigUyBwgHEAAY7wUyCggIEAAYgAQYogQyCggJEAAYgAQYogTSAQg0NzEzajBqOagCALACAA&sourceid=chrome&ie=UTF-8"
+                  target="_blank" rel="noopener noreferrer" class="hosp-location-btn">
                   <span>View Location</span>
                   <i class="bi bi-arrow-up-right"></i>
                 </a>
@@ -1423,63 +1580,13 @@
   </main>
 
   <!-- =========================================================
-       FOOTER
+       FOOTER (Centralized Shared Component)
        ========================================================= -->
-  <footer class="footer-modern py-5" style="background-color: #001d4f; color: #FFFFFF; position: relative; z-index: 30;">
-    <div class="container px-4">
-      <div class="row g-4 mb-4">
-        <div class="col-lg-4 col-md-6">
-          <h4 style="color: #FFFFFF; font-weight: 700; margin-bottom: 1rem;">Rx Medo Card</h4>
-          <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-            Empowering families with quality, accessible, and affordable healthcare benefits across 500+ premier partner hospitals and diagnostic centers nationwide.
-          </p>
-        </div>
-        <div class="col-lg-2 col-md-6">
-          <h5 style="color: #FFFFFF; font-weight: 600; margin-bottom: 1rem;">Quick Links</h5>
-          <ul class="list-unstyled" style="line-height: 2;">
-            <li><a href="index.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Home</a></li>
-            <li><a href="Hospitals.html" style="color: #7CC4E8; text-decoration: none; font-weight: 600;">Hospitals</a></li>
-            <li><a href="OPD.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">OPD Care</a></li>
-            <li><a href="Pharmacy.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Pharmacy</a></li>
-            <li><a href="Diagnostics.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Diagnostics</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 style="color: #FFFFFF; font-weight: 600; margin-bottom: 1rem;">Card Products</h5>
-          <ul class="list-unstyled" style="line-height: 2;">
-            <li><a href="medocard.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Rx Medo Card</a></li>
-            <li><a href="medofamily.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Rx Medo Family Card</a></li>
-            <li><a href="youngshield.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">YoungShield Card</a></li>
-            <li><a href="seniorshield.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">SeniorShield Card</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 style="color: #FFFFFF; font-weight: 600; margin-bottom: 1rem;">Support</h5>
-          <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 0.5rem;">
-            <i class="bi bi-headset me-2 text-warning"></i> 24/7 Member Helpline
-          </p>
-          <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-            <i class="bi bi-envelope-fill me-2 text-warning"></i> support@rxmedocard.com
-          </p>
-        </div>
-      </div>
-      <hr style="border-color: rgba(255, 255, 255, 0.15); margin: 2rem 0 1.5rem;" />
-      <div class="row footer-bottom">
-        <div class="col-md-6 text-center text-md-start">
-          <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
-            &copy; 2025 - <b>Rx Medo Card</b>. An Initiative of Rx Medical Trust. All rights reserved.
-          </p>
-        </div>
-        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-          <a href="policies.html" class="me-3" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Privacy Policy</a>
-          <a href="terms.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div id="siteFooterMount"></div>
 
   <!-- Floating Sticky Button -->
-  <a href="challenge.html#dates" class="floating-btn" title="Go to Register Section" aria-label="Join Marketing Challenge">
+  <a href="challenge.html#dates" class="floating-btn" title="Go to Register Section"
+    aria-label="Join Marketing Challenge">
     <span>Join Marketing Challenge</span>
   </a>
   <style>
@@ -1498,10 +1605,12 @@
       transition: all 0.28s ease;
       z-index: 1030;
     }
+
     .floating-btn:hover {
       transform: scale(1.06);
       box-shadow: 0 8px 22px rgba(255, 46, 99, 0.4);
     }
+
     @media (max-width: 600px) {
       .floating-btn {
         right: 14px;
@@ -1516,6 +1625,7 @@
   <script src="lib/jquery/dist/jquery.min.js"></script>
   <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/site-navbar.js"></script>
+  <script src="js/site-footer.js"></script>
 
   <!-- Three.js for 3D Animated Healthcare DNA Background -->
   <script src="lib/three/three.min.js"></script>
@@ -1642,7 +1752,7 @@
         for (let i = 0; i < letters.length; i++) {
           const b = letters[i].bbox;
           if (mousePos.x >= b.left && mousePos.x <= b.right &&
-              mousePos.y >= b.top && mousePos.y <= b.bottom) {
+            mousePos.y >= b.top && mousePos.y <= b.bottom) {
             if (letters[i].char.trim() !== '') {
               found = i;
             }
@@ -2252,7 +2362,7 @@
       let targetMouseX = 0, targetMouseY = 0;
       let prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      window.addEventListener('pointermove', function(e) {
+      window.addEventListener('pointermove', function (e) {
         if (prefersReducedMotion) return;
         targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
         targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -2625,4 +2735,5 @@
   </script>
 
 </body>
+
 </html>
