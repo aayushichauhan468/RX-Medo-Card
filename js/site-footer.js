@@ -24,7 +24,7 @@
     if (onCardsPage) {
       processedHtml = processedHtml
         .replace(/(src|href)=["'](images\/[^"']+)["']/g, '$1="../$2"')
-        .replace(/(href)=["']((?:index|Offers|Hospitals|OPD|Pharmacy|Diagnostics|signup|Membership|seniorshield|cancle|shipping|policies|terms|refund)\.html[^"']*)["']/g, '$1="../$2"');
+        .replace(/(href)=["']((?:index|Offers|Hospitals|OPD|Pharmacy|Diagnostics|signup|Membership|seniorshield|specialist-consultations|hospital-packages|cancle|shipping|policies|terms|refund)\.html[^"']*)["']/g, '$1="../$2"');
     }
 
     const mount = document.getElementById('siteFooterMount');
@@ -99,9 +99,9 @@
         <div class="footer-heading-bar" aria-hidden="true"></div>
         <ul class="footer-links-list">
           <li><a href="#">Family Physician</a></li>
-          <li><a href="#">Specialist Consultations</a></li>
+          <li><a href="__ROOT__specialist-consultations.html">Specialist Consultations</a></li>
           <li><a href="__ROOT__Diagnostics.html">Diagnostic Tests</a></li>
-          <li><a href="#">Hospital Packages</a></li>
+          <li><a href="__ROOT__hospital-packages.html">Hospital Packages</a></li>
           <li><a href="__ROOT__seniorshield.html">Senior Care</a></li>
           <li><a href="__ROOT__cancle.html">Cancellation &amp; Refund Policy</a></li>
           <li><a href="__ROOT__shipping.html">Shipping &amp; Delivery Policy</a></li>
