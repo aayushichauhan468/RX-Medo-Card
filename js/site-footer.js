@@ -10,29 +10,34 @@
 
   // Determine root directory and relative prefix
   const script = document.currentScript;
-  const scriptSrc = script ? script.src : '';
-  const root = scriptSrc ? new URL('../', scriptSrc) : new URL('./', window.location.href);
-  const rootPath = window.location.pathname.replace(/\\/g, '/');
+  const scriptSrc = script ? script.src : "";
+  const root = scriptSrc
+    ? new URL("../", scriptSrc)
+    : new URL("./", window.location.href);
+  const rootPath = window.location.pathname.replace(/\\/g, "/");
   const onCardsPage = /\/cards\/[^/]*$/i.test(rootPath);
-  const prefix = onCardsPage ? '../' : './';
+  const prefix = onCardsPage ? "../" : "./";
 
   const mountFooter = (html) => {
     // Replace __ROOT__ placeholder with appropriate prefix
-    let processedHtml = html.replaceAll('__ROOT__', prefix);
+    let processedHtml = html.replaceAll("__ROOT__", prefix);
 
     // If on a subfolder page (e.g. cards/), ensure relative image/link paths without __ROOT__ are also safely adjusted
     if (onCardsPage) {
       processedHtml = processedHtml
         .replace(/(src|href)=["'](images\/[^"']+)["']/g, '$1="../$2"')
-        .replace(/(href)=["']((?:index|Offers|Hospitals|OPD|Pharmacy|Diagnostics|signup|Membership|seniorshield|specialist-consultations|hospital-packages|cancle|shipping|policies|terms|refund)\.html[^"']*)["']/g, '$1="../$2"');
+        .replace(
+          /(href)=["']((?:index|Offers|Hospitals|OPD|Pharmacy|Diagnostics|signup|Membership|seniorshield|specialist-consultations|hospital-packages|cancle|shipping|policies|terms|refund)\.html[^"']*)["']/g,
+          '$1="../$2"',
+        );
     }
 
-    const mount = document.getElementById('siteFooterMount');
+    const mount = document.getElementById("siteFooterMount");
     if (mount) {
       mount.innerHTML = processedHtml;
 
       // Update current copyright year if element exists
-      const yearSpan = mount.querySelector('#rxFooterCurrentYear');
+      const yearSpan = mount.querySelector("#rxFooterCurrentYear");
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
       }
@@ -40,10 +45,13 @@
   };
 
   // Fetch footer.html via HTTP
-  const footerUrl = new URL('footer.html', root).href;
+  const footerUrl = new URL("footer.html", root).href;
   fetch(footerUrl)
     .then((response) => {
-      if (!response.ok) throw new Error(`Footer request failed with status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(
+          `Footer request failed with status: ${response.status}`,
+        );
       return response.text();
     })
     .then((html) => {

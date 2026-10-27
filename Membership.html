@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <head>
@@ -21,7 +21,10 @@
     <meta name="robots" content="Membership, follow" />
     <link rel="canonical" href="https://rxmedocard.com/Membership.html" />
     <link rel="icon" type="image/x-icon" href="images/logo.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -128,10 +131,13 @@
       crossorigin="anonymous"
     ></script>
     <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
 
     <!-- EmailJS library -->
     <script
@@ -155,58 +161,55 @@
         "url": "https://rxmedocard.com/Membership.html"
       }
     </script>
-  <style>
-    /* Hide original dropdown on mobile */
-    @media (max-width: 768px) {
-      .desktop-dropdown {
-        display: none !important;
+    <style>
+      /* Hide original dropdown on mobile */
+      @media (max-width: 768px) {
+        .desktop-dropdown {
+          display: none !important;
+        }
+
+        .mobile-dropdown {
+          display: block !important;
+        }
       }
-  
-      .mobile-dropdown {
-        display: block !important;
+
+      /* Hide new dropdown on desktop */
+      @media (min-width: 769px) {
+        .mobile-dropdown {
+          display: none !important;
+        }
       }
-    }
-  
-    /* Hide new dropdown on desktop */
-    @media (min-width: 769px) {
-      .mobile-dropdown {
-        display: none !important;
+
+      /* Mobile dropdown styling */
+
+      .mobile-dropdown .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        font-size: 15px;
+        font-weight: 500;
+        color: #002b5c;
+        width: 100%;
       }
-    }
-  
-    /* Mobile dropdown styling */
-  
-  
-    .mobile-dropdown .dropdown-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      font-size: 15px;
-      font-weight: 500;
-      color: #002b5c;
-      width: 100%;
-    }
-  
-    .mobile-dropdown .dropdown-item i {
-      font-size: 18px;
-      color: #002b5c;
-    }
-    .membership-page{
-      padding: 0;
-    }
-  </style>
-  
+
+      .mobile-dropdown .dropdown-item i {
+        font-size: 18px;
+        color: #002b5c;
+      }
+      .membership-page {
+        padding: 0;
+      }
+    </style>
   </head>
-  
+
   <body>
-    
     <style>
       /* basic dropdown position fix */
       .nav-item.dropdown {
         position: relative;
       }
-  
+
       .nav-item .dropdown-menu {
         position: absolute;
         top: 100%;
@@ -217,7 +220,7 @@
         visibility: hidden;
         transition: opacity 0.2s ease;
       }
-  
+
       /* Desktop → Hover to open */
       @media (min-width: 992px) {
         .nav-item.dropdown:hover .dropdown-menu {
@@ -226,7 +229,7 @@
           visibility: visible !important;
         }
       }
-  
+
       /* Mobile → open when `.show` class is added */
       @media (max-width: 991px) {
         .nav-item.dropdown.show .dropdown-menu {
@@ -236,7 +239,7 @@
         }
       }
     </style>
-  
+
     <main b-kr65r3xkkp role="main">
       <section class="membership-page">
         <!-- Hero Section -->
@@ -399,12 +402,8 @@
           </div>
         </section>
 
-    
-
-
-
-<!-- ✅ Full-width Professional Heading -->
-<!--<div class="application-header text-center mb-4 p-4 rounded shadow-sm bg-light">
+        <!-- ✅ Full-width Professional Heading -->
+        <!--<div class="application-header text-center mb-4 p-4 rounded shadow-sm bg-light">
   <h2 class="application-title mb-2">Sign Up</h2>
   <p class="application-subtitle mb-0">
     Please sign up first to apply for any RX Medo card.
@@ -412,11 +411,11 @@
 </div>
 
 <!-- ✅ Responsive Signup Form -->
-<!--<section class="form-section" id="signupSection">
+        <!--<section class="form-section" id="signupSection">
   <h2 class="mb-4 text-center">Signup Form</h2>
   <form method="POST" action="">
     <!-- Name & Phone -->
-   <!--<div class="row mb-3">
+        <!--<div class="row mb-3">
       <div class="col-md-6">
         <label for="name" class="form-label">Full Name</label>
         <input type="text" id="name" name="name" class="form-control" required>
@@ -428,7 +427,7 @@
     </div>
 
     <!-- Email & Password -->
-    <!--<div class="row mb-3">
+        <!--<div class="row mb-3">
       <div class="col-md-6">
         <label for="mail" class="form-label">Email</label>
         <input type="email" id="mail" name="mail" class="form-control" placeholder="example@gmail.com" required>
@@ -440,7 +439,7 @@
     </div>
 
     <!-- Aadhaar & PAN -->
-    <!--<div class="row mb-3">
+        <!--<div class="row mb-3">
       <div class="col-md-6">
         <label for="aadhaar_card_no" class="form-label">Aadhaar Card Number</label>
         <input type="text" id="aadhaar_card_no" name="aadhaar_card_no" class="form-control" placeholder="12-digit Aadhaar" required>
@@ -452,7 +451,7 @@
     </div>
 
     <!-- Submit Button -->
-    <!--<button type="submit" name="sb" class="btn btn-primary w-100">Sign Up</button>
+        <!--<button type="submit" name="sb" class="btn btn-primary w-100">Sign Up</button>
   </form>
 
   <p class="text-center mt-3">
@@ -490,17 +489,17 @@
 
 
 <!-- ✅ Login Button -->
-<!--<div class="text-center mt-4">
+        <!--<div class="text-center mt-4">
   <p>If you already have an account, please login below.</p>
   <button type="button" class="btn btn-outline-primary" id="showLoginBtn">Login</button>
 </div>
 
 <!-- ✅ Hidden Login Section (Cleaned) -->
-<!--<div id="loginSection" class="mt-5" style="display: none;">
+        <!--<div id="loginSection" class="mt-5" style="display: none;">
   <h4 class="text-center mb-4">Login to Your Account</h4>
   <form action="dashboard.html" method="POST">
     <!-- Email & Password -->
-    <!--<div class="row mb-3">
+        <!--<div class="row mb-3">
       <div class="col-md-6 offset-md-3">
         <label for="login_email" class="form-label">Email</label>
         <input type="email" id="login_email" name="email" class="form-control" placeholder="example@gmail.com" required>
@@ -514,7 +513,7 @@
     </div>
 
     <!-- Aadhaar Card No -->
-    <!--<div class="row mb-3">
+        <!--<div class="row mb-3">
       <div class="col-md-6 offset-md-3">
         <label for="aadhaar_card_no_login" class="form-label">Aadhaar Card Number</label>
         <input type="text" id="aadhaar_card_no_login" name="aadhaar_card_no" class="form-control" placeholder="1234 5678 9876">
@@ -522,7 +521,7 @@
     </div>
 
     <!-- PAN Card No -->
-    <!--<div class="row mb-3">
+        <!--<div class="row mb-3">
       <div class="col-md-6 offset-md-3">
         <label for="pan_card_no_login" class="form-label">PAN Card Number</label>
         <input type="text" id="pan_card_no_login" name="pan_card_no" class="form-control" placeholder="ABCDE1234F">
@@ -530,7 +529,7 @@
     </div>
 
     <!-- Submit Button -->
-    <!--<div class="text-center">
+        <!--<div class="text-center">
       <button type="submit" class="btn btn-primary">Login here please</button>
     </div>
   </form>
@@ -538,7 +537,7 @@
 
 
 <!-- ✅ Toggle Script -->
-<!--<script>
+        <!--<script>
   document.addEventListener("DOMContentLoaded", function () {
     // Toggle Login Section
     document.getElementById("showLoginBtn").addEventListener("click", function () {
@@ -563,380 +562,837 @@
 
         
         <!-- RXMEDOCARD FAQ Section -->
-<section class="relative gradient-bg min-h-screen flex flex-col items-center px-4 py-8" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #5668c4 100%);">
+        <section
+          class="relative gradient-bg min-h-screen flex flex-col items-center px-4 py-8"
+          style="
+            background: linear-gradient(
+              135deg,
+              #1e3a8a 0%,
+              #3b82f6 50%,
+              #5668c4 100%
+            );
+          "
+        >
+          <style>
+            .rx-faq-glass {
+              background: rgba(255, 255, 255, 0.1);
+              backdrop-filter: blur(10px);
+              border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .rx-faq-item {
+              transition: all 0.3s ease;
+            }
+            .rx-faq-item:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
+            }
+            .rx-answer {
+              max-height: 0;
+              overflow: hidden;
+              transition: max-height 0.3s ease;
+            }
+            .rx-answer.active {
+              max-height: 500px;
+            }
+            .rx-chevron {
+              transition: transform 0.3s ease;
+            }
+            .rx-chevron.rotate {
+              transform: rotate(180deg);
+            }
+          </style>
 
-    <style>
-    .rx-faq-glass {
-        background: rgba(255,255,255,0.10);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.20);
-    }
-    .rx-faq-item {
-        transition: all 0.3s ease;
-    }
-    .rx-faq-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
-    }
-    .rx-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-    }
-    .rx-answer.active { max-height: 500px; }
-    .rx-chevron {
-        transition: transform 0.3s ease;
-    }
-    .rx-chevron.rotate {
-        transform: rotate(180deg);
-    }
-    </style>
+          <!-- Header -->
+          <div class="w-full max-w-4xl text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+              RXMEDOCARD FAQ
+            </h1>
+            <p class="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto">
+              Find answers to frequently asked questions about your secure
+              digital health records
+            </p>
+          </div>
 
-    <!-- Header -->
-    <div class="w-full max-w-4xl text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-            RXMEDOCARD FAQ
-        </h1>
-        <p class="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto">
-            Find answers to frequently asked questions about your secure digital health records
-        </p>
-    </div>
-
-    <!-- Search Bar -->
-    <div class="mb-8 w-full max-w-2xl">
-        <div class="relative">
-            <input 
-                type="text" 
-                id="rx-searchInput" 
-                placeholder="Search FAQ..." 
+          <!-- Search Bar -->
+          <div class="mb-8 w-full max-w-2xl">
+            <div class="relative">
+              <input
+                type="text"
+                id="rx-searchInput"
+                placeholder="Search FAQ..."
                 class="w-full px-6 py-4 rounded-full text-gray-800 bg-white/90 backdrop-blur-md border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg"
+              />
+              <svg
+                class="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 pointer-events-none"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="mb-8 w-full flex flex-wrap gap-3 justify-center">
+            <button
+              onclick="rxFilterCategory('all', this)"
+              class="rx-filter-btn bg-white/20 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300 active"
             >
-            <svg class="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-        </div>
-    </div>
+              All
+            </button>
+            <button
+              onclick="rxFilterCategory('usage', this)"
+              class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
+            >
+              How to Use
+            </button>
+            <button
+              onclick="rxFilterCategory('privacy', this)"
+              class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
+            >
+              Privacy
+            </button>
+            <button
+              onclick="rxFilterCategory('benefits', this)"
+              class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
+            >
+              Benefits
+            </button>
+            <button
+              onclick="rxFilterCategory('definitions', this)"
+              class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
+            >
+              Definitions
+            </button>
+            <button
+              onclick="rxFilterCategory('community', this)"
+              class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
+            >
+              Community
+            </button>
+          </div>
 
-    <!-- Category Filter -->
-    <div class="mb-8 w-full flex flex-wrap gap-3 justify-center">
-        <button onclick="rxFilterCategory('all', this)" class="rx-filter-btn bg-white/20 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300 active">
-            All
-        </button>
-        <button onclick="rxFilterCategory('usage', this)" class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
-            How to Use
-        </button>
-        <button onclick="rxFilterCategory('privacy', this)" class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
-            Privacy
-        </button>
-        <button onclick="rxFilterCategory('benefits', this)" class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
-            Benefits
-        </button>
-        <button onclick="rxFilterCategory('definitions', this)" class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
-            Definitions
-        </button>
-        <button onclick="rxFilterCategory('community', this)" class="rx-filter-btn bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
-            Community
-        </button>
-    </div>
+          <!-- FAQ Items -->
+          <div class="space-y-4 w-full max-w-4xl" id="rx-faqContainer">
+            <!-- How to Use -->
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="usage"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  How do I add my booster dose(s)?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  RXMEDOCARDs are static and do not update automatically. To
+                  include a booster dose, request an updated card from the
+                  issuer who provided your original RXMEDOCARD. Note that it may
+                  take a few weeks for booster information to appear in your
+                  state's immunization registry.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="usage"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  What do I do if my QR code is not generating or is unable to
+                  be verified?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Verify your RXMEDOCARD's QR code using the free RXMEDOCARD
+                  Verifier App. Open the app, select "Scan Record," and scan the
+                  QR code. The app will confirm if the code is "Verified" or
+                  "Not Verified." If it's not verified, contact the issuer who
+                  provided your card for assistance.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="usage"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  Will my COVID-19 RXMEDOCARD be accepted everywhere?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Acceptance varies by organization or region, as rules differ
+                  across states and countries. RXMEDOCARDs are designed for
+                  universal use, but entities must offer alternatives for those
+                  not using RXMEDOCARDs. Always check with the organization for
+                  their verification policies.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="usage"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  What if the information on my RXMEDOCARD is wrong?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Contact the organization that administered your vaccination or
+                  test, as they maintain the source records. RXMEDOCARD cannot
+                  update records directly. You can also reach out to your
+                  state's immunization registry to correct inaccuracies.
+                </p>
+              </div>
+            </div>
 
-    <!-- FAQ Items -->
-    <div class="space-y-4 w-full max-w-4xl" id="rx-faqContainer">
+            <!-- Privacy -->
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="privacy"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  How do RXMEDOCARDs protect my privacy?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Your RXMEDOCARD stores your health information directly within
+                  the QR code or digital file, which you control. Sharing is
+                  entirely your decision, ensuring your privacy is in your
+                  hands.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="privacy"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  Can someone steal my RXMEDOCARD?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Anyone with your RXMEDOCARD can present it, but verification
+                  typically requires additional ID, like a driver's license or
+                  student ID, to prevent misuse.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="privacy"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  Does sharing my RXMEDOCARD disclose sensitive government
+                  identifiers?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  No, in the U.S., RXMEDOCARDs only include your legal name,
+                  date of birth, and clinical information. Cards issued
+                  elsewhere may include local identifiers, depending on regional
+                  regulations.
+                </p>
+              </div>
+            </div>
 
-        <!-- How to Use -->
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="usage" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">How do I add my booster dose(s)?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            <!-- Benefits -->
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="benefits"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  Why would I want an RXMEDOCARD?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  RXMEDOCARDs provide a secure, convenient way to store and
+                  share your health records, such as vaccination or test
+                  results, with trusted organizations when needed. They empower
+                  you with control over your health information.
+                </p>
+              </div>
             </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>RXMEDOCARDs are static and do not update automatically. To include a booster dose, request an updated card from the issuer who provided your original RXMEDOCARD. Note that it may take a few weeks for booster information to appear in your state's immunization registry.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="usage" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">What do I do if my QR code is not generating or is unable to be verified?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="benefits"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  How are RXMEDOCARDs different from other digital health cards?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  RXMEDOCARDs are built on an open-source framework, not tied to
+                  any single entity, ensuring secure, equitable access to your
+                  health records. This open standard promotes widespread
+                  adoption and interoperability.
+                </p>
+              </div>
             </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Verify your RXMEDOCARD's QR code using the free RXMEDOCARD Verifier App. Open the app, select "Scan Record," and scan the QR code. The app will confirm if the code is "Verified" or "Not Verified." If it's not verified, contact the issuer who provided your card for assistance.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="usage" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">Will my COVID-19 RXMEDOCARD be accepted everywhere?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Acceptance varies by organization or region, as rules differ across states and countries. RXMEDOCARDs are designed for universal use, but entities must offer alternatives for those not using RXMEDOCARDs. Always check with the organization for their verification policies.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="usage" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">What if the information on my RXMEDOCARD is wrong?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Contact the organization that administered your vaccination or test, as they maintain the source records. RXMEDOCARD cannot update records directly. You can also reach out to your state's immunization registry to correct inaccuracies.</p>
-            </div>
-        </div>
 
-        <!-- Privacy -->
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="privacy" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">How do RXMEDOCARDs protect my privacy?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            <!-- Definitions (NEW) -->
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="definitions"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  What does RXMEDOCARD stand for?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Reliable, exchangeable Medical Documentation and Card. Learn
+                  more at
+                  <a
+                    href="https://RXMEDOCARD.org"
+                    class="underline text-blue-200"
+                    target="_blank"
+                    rel="noopener"
+                    >RXMEDOCARD.org</a
+                  >.
+                </p>
+              </div>
             </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Your RXMEDOCARD stores your health information directly within the QR code or digital file, which you control. Sharing is entirely your decision, ensuring your privacy is in your hands.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="privacy" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">Can someone steal my RXMEDOCARD?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="definitions"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  What is an issuer?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  An issuer is an authorized organization, such as a pharmacy,
+                  hospital, or public health agency, that generates RXMEDOCARDs.
+                  Our coalition ensures issuers are trustworthy and capable of
+                  securely issuing cards.
+                </p>
+              </div>
             </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Anyone with your RXMEDOCARD can present it, but verification typically requires additional ID, like a driver's license or student ID, to prevent misuse.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="privacy" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">Does sharing my RXMEDOCARD disclose sensitive government identifiers?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="definitions"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  What is the RXMEDOCARD Directory?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  The RXMEDOCARD Directory is a vetted list of authorized
+                  issuers, ensuring that only reliable sources issue
+                  RXMEDOCARDs. This promotes trust when verifying health
+                  records.
+                </p>
+              </div>
             </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>No, in the U.S., RXMEDOCARDs only include your legal name, date of birth, and clinical information. Cards issued elsewhere may include local identifiers, depending on regional regulations.</p>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="definitions"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  What are data aggregators and health IT vendors, and what role
+                  do they play in vaccination verification with RXMEDOCARDs?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Data aggregators and health IT vendors support the flow of
+                  clinical information, enabling interoperability and access to
+                  health records. They help providers and public health agencies
+                  deliver RXMEDOCARDs to individuals.
+                </p>
+              </div>
             </div>
-        </div>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="definitions"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  What is the RXMEDOCARD Coalition?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  The RXMEDOCARD Coalition is a voluntary group of public and
+                  private organizations dedicated to providing secure,
+                  verifiable access to health records using open standards.
+                  Learn more at
+                  <a
+                    href="https://RXMEDOCARD.org"
+                    class="underline text-blue-200"
+                    target="_blank"
+                    rel="noopener"
+                    >RXMEDOCARD.org</a
+                  >.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="definitions"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  How do immunization registries work in the United States?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Immunization registries (IIS) are state-managed systems that
+                  consolidate vaccination records for residents. Many states and
+                  providers use these registries to issue RXMEDOCARDs, giving
+                  over 200 million Americans access to their records through our
+                  network.
+                </p>
+              </div>
+            </div>
 
-        <!-- Benefits -->
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="benefits" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">Why would I want an RXMEDOCARD?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            <!-- Community (NEW) -->
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="community"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  How can my organization become an RXMEDOCARD issuer?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  RXMEDOCARDs are open-source and accessible to organizations
+                  wishing to adopt the standard. Free resources and tutorials
+                  are available at our developer portal. Visit
+                  <a
+                    href="https://RXMEDOCARD.org"
+                    class="underline text-blue-200"
+                    target="_blank"
+                    rel="noopener"
+                    >RXMEDOCARD.org</a
+                  >
+                  to learn about joining our coalition for secure, verifiable
+                  health records.
+                </p>
+              </div>
             </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>RXMEDOCARDs provide a secure, convenient way to store and share your health records, such as vaccination or test results, with trusted organizations when needed. They empower you with control over your health information.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="benefits" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">How are RXMEDOCARDs different from other digital health cards?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="community"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  My organization would like to use RXMEDOCARDs to verify
+                  clinical results. How do we get started?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Organizations can use RXMEDOCARD’s open-source framework to
+                  build verification solutions. Access free guides and tutorials
+                  on our developer portal and consider joining our coalition at
+                  <a
+                    href="https://RXMEDOCARD.org"
+                    class="underline text-blue-200"
+                    target="_blank"
+                    rel="noopener"
+                    >RXMEDOCARD.org</a
+                  >
+                  for additional support.
+                </p>
+              </div>
             </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>RXMEDOCARDs are built on an open-source framework, not tied to any single entity, ensuring secure, equitable access to your health records. This open standard promotes widespread adoption and interoperability.</p>
+            <div
+              class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer"
+              data-category="community"
+              onclick="rxToggleFAQ(this)"
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white pr-4">
+                  Can any organization use RXMEDOCARDs to verify clinical
+                  results?
+                </h3>
+                <svg
+                  class="rx-chevron w-6 h-6 text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="rx-answer mt-4 text-blue-100">
+                <p>
+                  Yes, RXMEDOCARDs are open-source, allowing any organization to
+                  adopt the framework for verifying clinical results. Many
+                  organizations, including pharmacies and health systems,
+                  already use RXMEDOCARDs for this purpose.
+                </p>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <!-- Definitions (NEW) -->
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="definitions" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">What does RXMEDOCARD stand for?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Reliable, exchangeable Medical Documentation and Card. Learn more at <a href="https://RXMEDOCARD.org" class="underline text-blue-200" target="_blank" rel="noopener">RXMEDOCARD.org</a>.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="definitions" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">What is an issuer?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>An issuer is an authorized organization, such as a pharmacy, hospital, or public health agency, that generates RXMEDOCARDs. Our coalition ensures issuers are trustworthy and capable of securely issuing cards.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="definitions" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">What is the RXMEDOCARD Directory?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>The RXMEDOCARD Directory is a vetted list of authorized issuers, ensuring that only reliable sources issue RXMEDOCARDs. This promotes trust when verifying health records.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="definitions" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">What are data aggregators and health IT vendors, and what role do they play in vaccination verification with RXMEDOCARDs?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Data aggregators and health IT vendors support the flow of clinical information, enabling interoperability and access to health records. They help providers and public health agencies deliver RXMEDOCARDs to individuals.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="definitions" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">What is the RXMEDOCARD Coalition?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>The RXMEDOCARD Coalition is a voluntary group of public and private organizations dedicated to providing secure, verifiable access to health records using open standards. Learn more at <a href="https://RXMEDOCARD.org" class="underline text-blue-200" target="_blank" rel="noopener">RXMEDOCARD.org</a>.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="definitions" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">How do immunization registries work in the United States?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Immunization registries (IIS) are state-managed systems that consolidate vaccination records for residents. Many states and providers use these registries to issue RXMEDOCARDs, giving over 200 million Americans access to their records through our network.</p>
-            </div>
-        </div>
+          <!-- FAQ Section Script -->
+          <script>
+            // Toggle FAQ
+            function rxToggleFAQ(element) {
+              const answer = element.querySelector(".rx-answer");
+              const chevron = element.querySelector(".rx-chevron");
 
-        <!-- Community (NEW) -->
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="community" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">How can my organization become an RXMEDOCARD issuer?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>RXMEDOCARDs are open-source and accessible to organizations wishing to adopt the standard. Free resources and tutorials are available at our developer portal. Visit <a href="https://RXMEDOCARD.org" class="underline text-blue-200" target="_blank" rel="noopener">RXMEDOCARD.org</a> to learn about joining our coalition for secure, verifiable health records.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="community" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">My organization would like to use RXMEDOCARDs to verify clinical results. How do we get started?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Organizations can use RXMEDOCARD’s open-source framework to build verification solutions. Access free guides and tutorials on our developer portal and consider joining our coalition at <a href="https://RXMEDOCARD.org" class="underline text-blue-200" target="_blank" rel="noopener">RXMEDOCARD.org</a> for additional support.</p>
-            </div>
-        </div>
-        <div class="rx-faq-item rx-faq-glass rounded-2xl p-6 cursor-pointer" data-category="community" onclick="rxToggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white pr-4">Can any organization use RXMEDOCARDs to verify clinical results?</h3>
-                <svg class="rx-chevron w-6 h-6 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="rx-answer mt-4 text-blue-100">
-                <p>Yes, RXMEDOCARDs are open-source, allowing any organization to adopt the framework for verifying clinical results. Many organizations, including pharmacies and health systems, already use RXMEDOCARDs for this purpose.</p>
-            </div>
-        </div>
-
-    </div>
-
-
-    <!-- FAQ Section Script -->
-    <script>
-    // Toggle FAQ
-    function rxToggleFAQ(element) {
-        const answer = element.querySelector('.rx-answer');
-        const chevron = element.querySelector('.rx-chevron');
-
-        // Close all others
-        document.querySelectorAll('.rx-faq-item').forEach(item => {
-            if (item !== element) {
-                item.querySelector('.rx-answer').classList.remove('active');
-                item.querySelector('.rx-chevron').classList.remove('rotate');
-            }
-        });
-        // Toggle this
-        answer.classList.toggle('active');
-        chevron.classList.toggle('rotate');
-    }
-
-    // Filter by category
-    function rxFilterCategory(category, btn) {
-        const faqItems = document.querySelectorAll('.rx-faq-item');
-        const filterBtns = document.querySelectorAll('.rx-filter-btn');
-        // Update btn styles
-        filterBtns.forEach(b => {
-            b.classList.remove('active', 'bg-white/20');
-            b.classList.add('bg-white/10');
-        });
-        btn.classList.add('active', 'bg-white/20');
-        btn.classList.remove('bg-white/10');
-        // Show/hide
-        faqItems.forEach(item => {
-            if (category === 'all' || item.dataset.category === category) {
-                item.style.display = '';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-
-    // Search functionality
-    document.getElementById('rx-searchInput').addEventListener('input', function(e) {
-        const searchTerm = e.target.value.toLowerCase();
-        const faqItems = document.querySelectorAll('.rx-faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('h3').textContent.toLowerCase();
-            const answer = item.querySelector('.rx-answer').textContent.toLowerCase();
-            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-                item.style.display = '';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
-
-    // Animation on appearance
-    document.addEventListener('DOMContentLoaded', function() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+              // Close all others
+              document.querySelectorAll(".rx-faq-item").forEach((item) => {
+                if (item !== element) {
+                  item.querySelector(".rx-answer").classList.remove("active");
+                  item.querySelector(".rx-chevron").classList.remove("rotate");
                 }
+              });
+              // Toggle this
+              answer.classList.toggle("active");
+              chevron.classList.toggle("rotate");
+            }
+
+            // Filter by category
+            function rxFilterCategory(category, btn) {
+              const faqItems = document.querySelectorAll(".rx-faq-item");
+              const filterBtns = document.querySelectorAll(".rx-filter-btn");
+              // Update btn styles
+              filterBtns.forEach((b) => {
+                b.classList.remove("active", "bg-white/20");
+                b.classList.add("bg-white/10");
+              });
+              btn.classList.add("active", "bg-white/20");
+              btn.classList.remove("bg-white/10");
+              // Show/hide
+              faqItems.forEach((item) => {
+                if (category === "all" || item.dataset.category === category) {
+                  item.style.display = "";
+                } else {
+                  item.style.display = "none";
+                }
+              });
+            }
+
+            // Search functionality
+            document
+              .getElementById("rx-searchInput")
+              .addEventListener("input", function (e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const faqItems = document.querySelectorAll(".rx-faq-item");
+                faqItems.forEach((item) => {
+                  const question = item
+                    .querySelector("h3")
+                    .textContent.toLowerCase();
+                  const answer = item
+                    .querySelector(".rx-answer")
+                    .textContent.toLowerCase();
+                  if (
+                    question.includes(searchTerm) ||
+                    answer.includes(searchTerm)
+                  ) {
+                    item.style.display = "";
+                  } else {
+                    item.style.display = "none";
+                  }
+                });
+              });
+
+            // Animation on appearance
+            document.addEventListener("DOMContentLoaded", function () {
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                  }
+                });
+              });
+              document.querySelectorAll(".rx-faq-item").forEach((item) => {
+                item.style.opacity = "0";
+                item.style.transform = "translateY(20px)";
+                item.style.transition =
+                  "opacity 0.6s ease, transform 0.6s ease";
+                observer.observe(item);
+              });
             });
-        });
-        document.querySelectorAll('.rx-faq-item').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(item);
-        });
-    });
-
-    </script>
-    <!-- Tailwind CDN if missing on your page. Remove this line if Tailwind already exists globally. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</section>
-
-        
+          </script>
+          <!-- Tailwind CDN if missing on your page. Remove this line if Tailwind already exists globally. -->
+          <script src="https://cdn.tailwindcss.com"></script>
+        </section>
       </section>
     </main>
 
     <!-- Centralized Shared Footer Mount -->
-  <div id="siteFooterMount"></div>
+    <div id="siteFooterMount"></div>
 
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -1056,49 +1512,52 @@
       });
     </script>
     <!-- Floating Sticky Button -->
-<a href="challenge.html#dates" class="floating-btn" title="Go to Register Section">
-  <span>Join Marketing Challenge</span>
-</a>
-<style>
-    /* 🔹 Floating Sticky Button */
-.floating-btn {
-  position: fixed;
-  right: 25px;           /* change to left: 25px; if you want left side */
-  bottom: 30px;
-  background: linear-gradient(135deg, #ff8c00, #ff2e63);
-  color: white;
-  padding: 14px 22px;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  z-index: 9999;         /* always on top */
-}
+    <a
+      href="challenge.html#dates"
+      class="floating-btn"
+      title="Go to Register Section"
+    >
+      <span>Join Marketing Challenge</span>
+    </a>
+    <style>
+      /* 🔹 Floating Sticky Button */
+      .floating-btn {
+        position: fixed;
+        right: 25px; /* change to left: 25px; if you want left side */
+        bottom: 30px;
+        background: linear-gradient(135deg, #ff8c00, #ff2e63);
+        color: white;
+        padding: 14px 22px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        z-index: 9999; /* always on top */
+      }
 
-.floating-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-  background: linear-gradient(135deg, #ff2e63, #ff8c00);
-}
+      .floating-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(135deg, #ff2e63, #ff8c00);
+      }
 
-/* Mobile tweaks */
-@media (max-width: 600px) {
-  .floating-btn {
-    right: 15px;
-    bottom: 20px;
-    padding: 10px 18px;
-    font-size: 0.9rem;
-  }
-}
-.collapse {
-    visibility: visible !important;
-}
-
-</style>
+      /* Mobile tweaks */
+      @media (max-width: 600px) {
+        .floating-btn {
+          right: 15px;
+          bottom: 20px;
+          padding: 10px 18px;
+          font-size: 0.9rem;
+        }
+      }
+      .collapse {
+        visibility: visible !important;
+      }
+    </style>
     <script src="js/site-navbar.js"></script>
-  <script src="js/site-footer.js"></script>
-</body>
+    <script src="js/site-footer.js"></script>
+  </body>
 
   <!-- Mirrored from localhost:5121/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 May 2025 09:11:29 GMT -->
 </html>

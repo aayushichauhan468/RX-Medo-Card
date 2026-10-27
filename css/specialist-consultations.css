@@ -743,21 +743,143 @@ body.specialist-page {
   }
 }
 
-/* Specialty Card */
-.spec-card {
-  background: var(--rx-white);
-  border: 1.5px solid rgba(191, 227, 246, 0.5); /* Pale blue border */
-  border-radius: var(--rx-radius-lg);
-  padding: 30px 26px;
-  display: flex;
-  flex-direction: column;
-  transition: var(--rx-transition);
-  box-shadow: var(--rx-shadow-sm);
+/* ==========================================================================
+   React Bits TiltedCard & 3D Interactive Flip System for Specialties
+   ========================================================================== */
+.spec-specialties-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
   position: relative;
-  overflow: hidden;
 }
 
-.spec-card::before {
+@media (max-width: 991px) {
+  .spec-specialties-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 650px) {
+  .spec-specialties-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.spec-tilted-card {
+  position: relative;
+  display: block;
+  margin: 0;
+  height: 400px;
+  min-height: 400px;
+  max-height: 400px;
+  width: 100%;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+  outline: none;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media (max-width: 650px) {
+  .spec-tilted-card {
+    height: 410px;
+    min-height: 410px;
+    max-height: 410px;
+  }
+}
+
+/* Stacking elevation for active hover and flipped states */
+.spec-tilted-card[data-active] {
+  z-index: 8;
+}
+
+.spec-tilted-card[data-flipped] {
+  z-index: 15;
+}
+
+.spec-tilted-card[data-flipped][data-active] {
+  z-index: 20;
+}
+
+/* React Bits Ambient Dynamic Shadow */
+.tilted-card__shadow {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  background: var(--tc-shadow-color, rgba(27, 43, 80, 0.16));
+  filter: blur(22px);
+  opacity: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  will-change: transform, opacity;
+  z-index: 0;
+}
+
+/* Stable Inner Flip Wrapper - Rotates strictly in place around center */
+.spec-card-inner,
+.tilted-card__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-origin: center center;
+  will-change: transform;
+  border-radius: 20px;
+}
+
+/* 3D Faces - Strict 3D Backface Invisibility & Absolute Inset 0 */
+.tilted-card__face,
+.spec-card-front,
+.spec-card-back {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #ffffff;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ==========================================================================
+   Card Front Face (Clean, Prominent Icon, Specialty Name & Explore Indicator)
+   ========================================================================== */
+.spec-card-front {
+  transform: rotateY(0deg) translateZ(1px);
+  -webkit-transform: rotateY(0deg) translateZ(1px);
+  background-color: #ffffff;
+  background: #ffffff linear-gradient(168deg, #ffffff 0%, #f7fbfd 50%, #dff3ec 100%);
+  border: 1.5px solid rgba(191, 227, 246, 0.85);
+  box-shadow: var(--rx-shadow-sm);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  transition: border-color 0.3s ease;
+}
+
+.spec-card-front::before {
   content: '';
   position: absolute;
   top: 0;
@@ -765,44 +887,175 @@ body.specialist-page {
   right: 0;
   height: 4px;
   background: linear-gradient(90deg, var(--rx-mint), var(--rx-sky));
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  z-index: 3;
 }
 
-.spec-card:hover {
-  transform: translateY(-6px);
+.spec-tilted-card:hover .spec-card-front {
   border-color: var(--rx-sky);
-  box-shadow: var(--rx-shadow-card-hover);
 }
 
-.spec-card:hover::before {
-  opacity: 1;
+.spec-front-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+}
+
+.spec-front-icon {
+  width: 82px;
+  height: 82px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffff, var(--rx-mint-light));
+  border: 1.5px solid var(--rx-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rx-green-med);
+  font-size: 2.1rem;
+  box-shadow: 0 10px 24px -6px rgba(5, 150, 105, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition: var(--rx-transition-bounce);
+}
+
+.spec-tilted-card:hover .spec-front-icon {
+  transform: scale(1.08) rotate(3deg);
+  background: var(--rx-mint);
+  border-color: var(--rx-green-med);
+}
+
+.spec-front-title {
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--rx-navy);
+  line-height: 1.35;
+  margin: 0;
+  max-width: 260px;
+}
+
+.spec-explore-hint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.spec-explore-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--rx-radius-full);
+  background: var(--rx-pale-blue-subtle);
+  border: 1px solid var(--rx-pale-blue);
+  color: var(--rx-navy);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: var(--rx-transition);
+  box-shadow: 0 2px 8px rgba(27, 43, 80, 0.04);
+}
+
+.spec-explore-pill i {
+  color: var(--rx-sky);
+  font-size: 0.95rem;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.spec-tilted-card:hover .spec-explore-pill {
+  background: var(--rx-gold);
+  border-color: var(--rx-gold);
+  color: var(--rx-navy);
+  box-shadow: 0 4px 14px rgba(247, 196, 61, 0.35);
+}
+
+.spec-tilted-card:hover .spec-explore-pill i {
+  color: var(--rx-navy);
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Card Back Face (Flipped 180deg: Badge, Description, Bullet Details, Flip Back)
+   ========================================================================== */
+.spec-card-back {
+  transform: rotateY(180deg) translateZ(1px);
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+  background-color: #ffffff;
+  background: #ffffff linear-gradient(175deg, #ffffff 0%, #fafdff 55%, #e7f6f0 100%);
+  border: 1.5px solid var(--rx-sky);
+  box-shadow: 0 14px 34px -8px rgba(27, 43, 80, 0.16);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.spec-card-back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rx-sky), var(--rx-gold));
+  z-index: 3;
+}
+
+.spec-tilted-card[data-flipped] .spec-card-front {
+  z-index: 1;
+}
+
+.spec-tilted-card[data-flipped] .spec-card-back {
+  z-index: 2;
+}
+
+.spec-back-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rx-pale-blue) transparent;
+  padding-right: 2px;
+}
+
+.spec-back-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.spec-back-content::-webkit-scrollbar-thumb {
+  background-color: var(--rx-pale-blue);
+  border-radius: 4px;
 }
 
 .spec-card-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.spec-card-icon {
-  width: 56px;
-  height: 56px;
-  background: var(--rx-mint-light);
-  border: 1px solid var(--rx-mint);
-  border-radius: 16px;
-  display: flex;
+.spec-flip-btn {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--rx-navy-slate);
+  background: rgba(27, 43, 80, 0.05);
+  padding: 4px 10px;
+  border-radius: var(--rx-radius-full);
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: var(--rx-green-med);
-  font-size: 1.45rem;
-  transition: var(--rx-transition-bounce);
+  gap: 5px;
+  border: 1px solid rgba(27, 43, 80, 0.08);
+  transition: var(--rx-transition);
 }
 
-.spec-card:hover .spec-card-icon {
-  background: var(--rx-mint);
-  transform: scale(1.08) rotate(3deg);
+.spec-tilted-card:hover .spec-flip-btn {
+  background: var(--rx-pale-blue);
+  color: var(--rx-navy);
 }
 
 .spec-card-badge {
@@ -810,53 +1063,137 @@ body.specialist-page {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: var(--rx-radius-full);
   background: var(--rx-pale-blue-subtle);
   color: var(--rx-navy);
   border: 1px solid var(--rx-pale-blue);
 }
 
-.spec-card-title {
-  font-size: 1.25rem;
+.spec-card-back .spec-card-title {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--rx-navy);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   line-height: 1.3;
 }
 
-.spec-card-desc {
-  font-size: 0.91rem;
+.spec-card-back .spec-card-desc {
+  font-size: 0.84rem;
   color: var(--rx-navy-slate);
-  line-height: 1.6;
-  margin-bottom: 18px;
-  flex-grow: 1;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
-.spec-card-list {
+.spec-card-back .spec-card-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid rgba(27, 43, 80, 0.07);
-  padding-top: 16px;
+  border-top: 1px solid rgba(27, 43, 80, 0.08);
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
 
-.spec-card-list li {
-  font-size: 0.85rem;
-  color: var(--rx-navy-slate);
+.spec-card-back .spec-card-list li {
+  font-size: 0.81rem;
+  color: var(--rx-navy);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   font-weight: 500;
+  line-height: 1.35;
 }
 
-.spec-card-list li i {
+.spec-card-back .spec-card-list li i {
   color: var(--rx-green-med);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+  margin-top: 2px;
   flex-shrink: 0;
+}
+
+/* ==========================================================================
+   React Bits Optical Glare, Rim Lighting, & Specular Edge
+   ========================================================================== */
+.tilted-card__glare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: radial-gradient(
+    farthest-corner circle at var(--tc-gx, 50%) var(--tc-gy, 50%),
+    rgba(255, 255, 255, calc(var(--tc-glare, 0) * 0.45)) 0%,
+    rgba(255, 255, 255, calc(var(--tc-glare, 0) * 0.2)) 28%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.tilted-card__rim {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px var(--tc-rim-color, rgba(255, 255, 255, 0.45)),
+    inset 0 1px 0 var(--tc-rim-light, rgba(255, 255, 255, 0.7));
+  pointer-events: none;
+}
+
+.tilted-card__edge {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  box-sizing: border-box;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    farthest-side circle at var(--tc-gx, 50%) var(--tc-gy, 50%),
+    rgba(255, 255, 255, calc(var(--tc-glare, 0) * 0.85)) 0%,
+    rgba(255, 255, 255, calc(var(--tc-glare, 0) * 0.55)) 25%,
+    rgba(255, 255, 255, calc(var(--tc-glare, 0) * 0.2)) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+/* Accessibility Focus Ring */
+.spec-tilted-card:focus-visible {
+  outline: 3px solid var(--rx-sky);
+  outline-offset: 4px;
+  border-radius: 24px;
+}
+
+.spec-tilted-card:focus-visible .tilted-card__rim {
+  box-shadow:
+    inset 0 0 0 2px rgba(124, 196, 232, 0.9),
+    inset 0 0 0 3px rgba(27, 43, 80, 0.4);
+}
+
+/* Reduced Motion Mode Support */
+@media (prefers-reduced-motion: reduce) {
+  .spec-tilted-card {
+    transition: transform 0.25s ease;
+  }
+  .spec-tilted-card .tilted-card__body {
+    transform: none !important;
+    transition: transform 0.4s ease;
+  }
+  .spec-tilted-card[data-flipped] .tilted-card__body {
+    transform: rotateY(180deg) !important;
+  }
+  .tilted-card__glare,
+  .tilted-card__edge {
+    display: none !important;
+  }
 }
 
 /* ==========================================================================
