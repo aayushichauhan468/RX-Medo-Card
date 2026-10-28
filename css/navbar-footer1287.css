@@ -48,7 +48,7 @@
 
 /* Add padding to body to account for fixed navbar */
 body {
-  padding-top: 80px;
+  padding-top: 0;
 }
 
 /* Navbar container */
