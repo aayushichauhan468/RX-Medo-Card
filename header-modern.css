@@ -1,1 +1,295 @@
-@import url("css/desktop-navbare91c.css");
+/* ==========================================================================
+   Rx Medo Card — Modern Navbar Styles
+   Shared across all website pages
+   ========================================================================== */
+
+:root {
+  --rx-mint: #CBEBDF;
+  --rx-mint-soft: #E3F5EE;
+  --rx-yellow: #F5C03A;
+  --rx-sky: #7CC4EE;
+  --rx-sky-soft: #BFE3F7;
+  --rx-blue-text: #2B8FD6;
+  --rx-green: #1E9E7A;
+  --rx-ink: #14264F;
+  --rx-nav-bg: #A9C8DC;
+}
+
+/* Header container (floating pill navbar) */
+.header-modern {
+  position: fixed !important;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 16px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+body {
+  padding-top: 90px;
+}
+
+.header-modern .navbar-modern {
+  pointer-events: auto;
+  width: 96vw;
+  max-width: 1600px;
+  margin: 0 auto;
+  background: var(--rx-nav-bg) !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(20, 38, 79, 0.12);
+  padding: 4px 14px !important;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.header-modern.is-scrolled .navbar-modern {
+  background: var(--rx-nav-bg) !important;
+  box-shadow: 0 12px 34px rgba(20, 38, 79, 0.18);
+}
+
+/* equal space on the left (logo) and on the right (Login) */
+.header-modern .navbar-modern > .container-fluid {
+  padding-left: 22px !important;
+  padding-right: 22px !important;
+}
+
+.header-modern .navbar-brand,
+.header-modern .logo-with-icon,
+.header-modern .logo-icon {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.header-modern .navbar-collapse {
+  min-width: 0;
+}
+
+.header-modern .navbar-collapse > .ms-auto:last-child {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* remove the pink box behind Home / links */
+.header-modern .navbar-nav .nav-link,
+.header-modern .navbar-nav .nav-link.active,
+.header-modern .navbar-nav .nav-link:focus {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Logo styling */
+.header-modern .logo-image {
+  width: 60px !important;
+  height: 60px !important;
+  object-fit: contain;
+}
+
+.header-modern .logo-text {
+  color: #1B5E9E !important;
+  font-size: 1.40rem !important;
+  line-height: 1.1 !important;
+  font-weight: 700;
+}
+
+.header-modern .logo-subtitle {
+  color: #145C47 !important;
+  font-size: 0.52rem !important;
+  letter-spacing: 0.6px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.header-modern .navbar-brand {
+  flex: none !important;
+  margin-right: 12px !important;
+  padding: 0 !important;
+}
+
+/* Desktop layout: all in one clean line */
+@media (min-width: 992px) {
+  .header-modern .navbar-nav {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin: 0 12px !important;
+    min-width: 0;
+  }
+  .header-modern .navbar-nav > .nav-item {
+    margin: 0 !important;
+  }
+  .header-modern .navbar-nav .nav-link {
+    padding: 4px 4px !important;
+    white-space: nowrap;
+    font-size: 0.86rem !important;
+    line-height: 1.2;
+  }
+  .header-modern .mobile-item {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 5px !important;
+    padding: 6px 9px !important;
+    border-radius: 999px;
+    border: 0 !important;
+    box-shadow: none !important;
+    transition: background 0.2s ease;
+  }
+  .header-modern .mobile-item span {
+    font-size: 0.82rem !important;
+    line-height: 1.2;
+  }
+  .header-modern .mobile-item i {
+    font-size: 0.9rem !important;
+    color: var(--rx-ink) !important;
+  }
+  .header-modern .nav-link:hover .mobile-item {
+    background: var(--rx-mint-soft);
+  }
+  .header-modern .navbar-collapse > .ms-auto {
+    margin-left: 8px !important;
+    flex: none;
+  }
+  .header-modern .get-card-btn {
+    padding: 7px 15px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap;
+  }
+}
+
+/* active page = yellow pill */
+.header-modern .nav-link.active .mobile-item,
+.header-modern .mobile-item.active {
+  background: var(--rx-yellow) !important;
+  color: var(--rx-ink) !important;
+}
+.header-modern .nav-link.active::after,
+.header-modern .nav-link.active::before {
+  display: none !important;
+}
+
+/* Get Your Card = yellow, Login = sky */
+.header-modern a.get-card-btn {
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  color: #14264F !important;
+  box-shadow: none !important;
+  text-decoration: none;
+}
+.header-modern a.get-card-btn[href="signup.html"] {
+  background: var(--rx-yellow) !important;
+}
+.header-modern a.get-card-btn[href="login.html"] {
+  background: var(--rx-sky) !important;
+}
+
+@media (max-width: 991px) {
+  .header-modern .navbar-modern {
+    border-radius: 28px;
+  }
+}
+
+/* Hide original dropdown on mobile */
+@media (max-width: 768px) {
+  .desktop-dropdown {
+    display: none !important;
+  }
+  .mobile-dropdown {
+    display: block !important;
+  }
+}
+
+/* Hide new dropdown on desktop */
+@media (min-width: 769px) {
+  .mobile-dropdown {
+    display: none !important;
+  }
+}
+
+/* Mobile dropdown styling */
+.mobile-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #002b5c;
+  width: 100%;
+}
+
+.mobile-dropdown .dropdown-item i {
+  font-size: 18px;
+  color: #002b5c;
+}
+
+button:focus,
+button:active,
+button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* basic dropdown position fix */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.nav-item .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 1050;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+}
+
+.nav-item .dropdown-menu .dropdown-item {
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  color: #002b5c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item .dropdown-menu .dropdown-item:hover {
+  background-color: var(--rx-mint-soft);
+  color: #002b5c;
+}
+
+/* Desktop → Hover to open */
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* Mobile → open when `.show` class is added */
+@media (max-width: 991px) {
+  .nav-item.dropdown.show .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}

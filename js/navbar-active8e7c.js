@@ -1,117 +1,132 @@
-/**
- * Active Navigation & React Bits GooeyNav Integration
- * Rx MedoCard
- */
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Current URL path
+// Set active class on navbar items based on current URL
+document.addEventListener('DOMContentLoaded', function() {
+    // Adjust navbar based on screen size on page load
+    adjustNavbarForScreenSize();
+    // Get current URL path
     const currentPath = window.location.pathname.toLowerCase();
 
-    // Map of navigation indices to page URL patterns
-    const navPatterns = [
-        ['index.html', 'home', '/'],
-        ['medocard.html', 'card', 'topup', 'citizecare', 'guardiancare', 'youngshield', 'seniorshield', 'membership'],
-        ['hospitals.html', 'hospital'],
-        ['opd.html'],
-        ['pharmacy.html'],
-        ['diagnostics.html', 'diagnostic'],
-        ['career.html']
-    ];
+    // Get all nav links
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
-    let activeIndex = 0;
-    for (let i = 0; i < navPatterns.length; i++) {
-        const patterns = navPatterns[i];
-        if (patterns.some(p => currentPath.endsWith(p) || (p !== '/' && p !== 'index.html' && currentPath.includes(p)))) {
-            activeIndex = i;
-            break;
+    // Loop through nav links and add active class if URL matches
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href').toLowerCase();
+
+        // Skip the Get Started button
+        if (link.classList.contains('get-started-btn')) {
+            return;
         }
-    }
 
-    // Initialize React Bits GooeyNav on Desktop Navigation
-    const gooeyNavEl = document.getElementById('desktopGooeyNav');
-    if (gooeyNavEl && typeof GooeyNav !== 'undefined') {
-        window.rxGooeyNav = new GooeyNav(gooeyNavEl, {
-            initialActiveIndex: activeIndex,
-            color: '#ef476f',
-            colors: ['#ef476f', '#f43f5e', '#fb7185'],
-            hoverColor: 'rgba(239, 71, 111, 0.08)',
-            shadow: 0.22,
-            animationTime: 600,
-            particleCount: 16,
-            spread: 54,
-            gooeyness: 0.5,
-            wobble: 0.5,
-            hoverEffect: true
-        });
+        // Check if current path matches the link's href
+        if (currentPath === href ||
+            (href !== '/' && currentPath.startsWith(href)) ||
+            (currentPath === '/' && href === '/home') ||
+            (currentPath === '/home' && href === '/')) {
 
-        // Setup desktop dropdown for Card Details
-        const desktopDropdown = gooeyNavEl.querySelector('.desktop-dropdown');
-        if (desktopDropdown) {
-            const dropdownMenu = desktopDropdown.querySelector('.dropdown-menu');
-            desktopDropdown.addEventListener('mouseenter', function () {
-                if (window.innerWidth >= 992 && dropdownMenu) {
-                    dropdownMenu.classList.add('show');
-                }
-            });
-            desktopDropdown.addEventListener('mouseleave', function () {
-                if (window.innerWidth >= 992 && dropdownMenu) {
-                    dropdownMenu.classList.remove('show');
-                }
-            });
-        }
-    }
-
-    // Set active item on Mobile Drawer Nav
-    const mobileNavLinks = document.querySelectorAll('#navbarSupportedContent .nav-link');
-    mobileNavLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (!href) return;
-        const lowerHref = href.toLowerCase();
-        if (link.classList.contains('get-card-btn') || link.classList.contains('login-btn')) return;
-
-        if (currentPath.endsWith(lowerHref) ||
-            (lowerHref !== '/' && lowerHref !== 'index.html' && currentPath.includes(lowerHref)) ||
-            ((currentPath === '/' || currentPath.endsWith('/index.html') || currentPath === '') && (lowerHref === 'index.html' || lowerHref === '/'))) {
-            link.classList.add('active');
-            const parent = link.closest('.nav-item');
-            if (parent) parent.classList.add('active');
+            // Add active class to parent li element
+            link.parentElement.classList.add('active');
         }
     });
 
-    // Mobile menu toggle handling
+    // Handle mobile menu collapse when clicking nav items
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
 
-    // Close mobile drawer on anchor link clicks
-    document.querySelectorAll('.navbar-collapse .nav-link').forEach(link => {
-        link.addEventListener('click', function () {
+    // Close mobile menu when clicking on nav items that are not page navigation links
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            // Only close the menu for anchor links (links that start with #)
+            // Don't close for page navigation links
             const href = this.getAttribute('href');
-            if (href && href.startsWith('#') && window.innerWidth < 992 && navbarCollapse && navbarCollapse.classList.contains('show')) {
-                if (navbarToggler) navbarToggler.click();
+            if (href && href.startsWith('#') && window.innerWidth < 1101 && navbarCollapse.classList.contains('show')) {
+                navbarToggler.click();
             }
         });
     });
 
-    // Close mobile drawer on outside click
-    document.addEventListener('click', function (event) {
-        if (window.innerWidth < 992 &&
-            navbarCollapse &&
-            navbarCollapse.classList.contains('show') &&
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (navbarCollapse.classList.contains('show') &&
             !navbarCollapse.contains(event.target) &&
-            navbarToggler &&
             !navbarToggler.contains(event.target)) {
             navbarToggler.click();
         }
     });
 });
 
-// Scroll header elevation effect
-window.addEventListener('scroll', function () {
+// Add scroll effect to navbar
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
     const header = document.querySelector('.header-modern');
-    if (!header) return;
-    if (window.scrollY > 40) {
+
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
         header.classList.add('header-scrolled');
+
+        // Also update logo size when scrolled
+        const logoImage = document.querySelector('.logo-image');
+        const logoText = document.querySelector('.logo-text');
+        const logoTextWrapper = document.querySelector('.logo-text-wrapper');
+
+        if (logoImage) logoImage.classList.add('scrolled');
+        if (logoText) logoText.classList.add('scrolled');
+        if (logoTextWrapper) logoTextWrapper.classList.add('scrolled');
     } else {
+        navbar.classList.remove('navbar-scrolled');
         header.classList.remove('header-scrolled');
+
+        // Reset logo size when at top
+        const logoImage = document.querySelector('.logo-image');
+        const logoText = document.querySelector('.logo-text');
+        const logoTextWrapper = document.querySelector('.logo-text-wrapper');
+
+        if (logoImage) logoImage.classList.remove('scrolled');
+        if (logoText) logoText.classList.remove('scrolled');
+        if (logoTextWrapper) logoTextWrapper.classList.remove('scrolled');
     }
 });
+
+// Handle window resize events
+window.addEventListener('resize', function() {
+    // Reset mobile menu on window resize to desktop
+    if (window.innerWidth >= 992) {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+            document.querySelector('.navbar-toggler').click();
+        }
+    }
+
+    // Adjust navbar on resize
+    adjustNavbarForScreenSize();
+});
+
+// Function to adjust navbar based on screen size
+function adjustNavbarForScreenSize() {
+    const header = document.querySelector('.header-modern');
+    const navbar = document.querySelector('.navbar');
+    const logoImage = document.querySelector('.logo-image');
+    const logoText = document.querySelector('.logo-text');
+    const logoTextWrapper = document.querySelector('.logo-text-wrapper');
+
+    if (window.innerWidth < 576) {
+        // Extra small devices
+        navbar.style.padding = '0.5rem 0';
+    } else if (window.innerWidth < 768) {
+        // Small devices
+        navbar.style.padding = '0.75rem 0';
+    } else {
+        // Medium and larger devices
+        navbar.style.padding = '0.5rem 0';
+    }
+
+    // Call once on load
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+        header.classList.add('header-scrolled');
+
+        // Also update logo size when scrolled
+        if (logoImage) logoImage.classList.add('scrolled');
+        if (logoText) logoText.classList.add('scrolled');
+        if (logoTextWrapper) logoTextWrapper.classList.add('scrolled');
+    }
+}

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Details | Rx Medo Card</title>
+<link rel="icon" href="images/logo.ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mint:#CBEBDF; --mint-soft:#E3F5EE; --yellow:#F5C03A; --sky:#7CC4EE; --sky-soft:#BFE3F7;
+  --green:#1E9E7A; --ink:#14264F; --blue-text:#1B5E9E; --nav-bg:#A9C8DC;
+  --w:min(340px, 22vw, calc((100vh - 290px) / 1.75));
+  --h:calc(var(--w) * 1.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  font-family:'Poppins',sans-serif;color:var(--ink);overflow-x:hidden;
+  background:linear-gradient(160deg,#CBEBDF 0%,#D9F0E8 50%,#C7DDEA 100%) fixed;
+}
+
+/* ---------- soft background ---------- */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;filter:blur(2px);animation:drift 16s ease-in-out infinite alternate}
+.bg .c1{width:46vmax;height:46vmax;right:-14vmax;top:-12vmax;background:rgba(245,192,58,.38)}
+.bg .c2{width:34vmax;height:34vmax;left:-12vmax;bottom:-14vmax;background:rgba(124,196,238,.38);animation-delay:-5s}
+.bg .c3{width:20vmax;height:20vmax;left:38vw;top:-9vmax;background:rgba(227,245,238,.75);animation-delay:-9s}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(2.5vw,3vh)}}
+
+/* ---------- floating buttons (no navbar) ---------- */
+.fbar{position:fixed;top:18px;left:0;right:0;z-index:20;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:0 12px;pointer-events:none}
+.fbtn{
+  pointer-events:auto;display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-weight:700;font-size:1rem;color:var(--ink);padding:12px 26px;border-radius:999px;
+  box-shadow:0 10px 24px rgba(20,38,79,.18);border:1px solid rgba(255,255,255,.7);
+  animation:bob 2.2s ease-in-out infinite;transition:box-shadow .25s,filter .25s;
+}
+.fbtn:hover{box-shadow:0 14px 30px rgba(20,38,79,.28);filter:brightness(1.05)}
+.fbtn i{font-size:1rem}
+.fbtn:nth-child(2){animation-delay:-.55s}.fbtn:nth-child(3){animation-delay:-1.1s}.fbtn:nth-child(4){animation-delay:-1.65s}
+.f-home{background:#E3F5EE}
+.f-card{background:#fff;color:#d6336c;box-shadow:0 10px 24px rgba(20,38,79,.18), inset 0 -3px 0 #e8416f}
+.f-login{background:var(--sky)}
+.f-get{background:var(--yellow)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ---------- heading ---------- */
+.head{position:relative;z-index:2;text-align:center;padding:96px 16px 0}
+.head h1{font-size:clamp(1.5rem,2.6vw,2.4rem);font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.head h1 span{color:var(--blue-text)}
+.head p{margin-top:6px;font-size:.95rem;color:#3d5878;font-weight:500}
+
+/* ---------- 3D prism (desktop) ---------- */
+.scene{
+  position:relative;z-index:2;display:flex;align-items:center;justify-content:center;
+  height:calc(var(--h) * 1.22);margin-top:6px;
+  perspective:calc(var(--w) * 4.2);perspective-origin:50% 45%;
+  cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;
+}
+.scene.drag{cursor:grabbing}
+.prism{
+  position:relative;width:var(--w);height:var(--h);transform-style:preserve-3d;
+  transform:translateZ(calc(var(--w) * -.874)) rotateY(0deg);will-change:transform;
+}
+.face{
+  position:absolute;left:0;top:0;width:var(--w);height:var(--h);
+  transform:rotateY(calc(var(--i) * 40deg)) translateZ(calc(var(--w) * 1.374));
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.floor{
+  position:absolute;left:50%;bottom:4%;width:calc(var(--w) * 3.2);height:calc(var(--w) * .42);
+  transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(20,38,79,.28),rgba(20,38,79,0));filter:blur(6px);pointer-events:none;z-index:1;
+}
+
+/* ---------- card art (used by prism, stack and popup) ---------- */
+.face,.stack .sc{container-type:inline-size}
+.cf{
+  position:relative;width:100%;height:100%;overflow:hidden;
+  border-radius:7cqw;padding:7cqw;display:flex;flex-direction:column;cursor:pointer;
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 2.5cqw 8cqw rgba(20,38,79,.22), inset 0 0 0 1px rgba(255,255,255,.35);
+  color:var(--ink);
+}
+.cf.g0{background:linear-gradient(145deg,#BEE8DE 0%,#d8f3ec 40%,#fbf397 100%)}
+.cf.g1{background:linear-gradient(145deg,#BFE3F7 0%,#E3F5EE 45%,#F8EE9A 100%)}
+.cf.g2{background:linear-gradient(145deg,#CBEBDF 0%,#BFE3F7 50%,#F5E27A 100%)}
+.cf::before{content:"";position:absolute;left:0;right:0;top:0;height:2.2cqw;background:linear-gradient(90deg,var(--green),var(--sky),var(--yellow))}
+.cf::after{content:"";position:absolute;inset:0;background:#14264F;opacity:var(--d,0);pointer-events:none;border-radius:inherit;transition:opacity .2s}
+.cf .shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:shine 5s ease-in-out infinite}
+@keyframes shine{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+.cf .top{display:flex;align-items:center;justify-content:space-between;margin-top:1.5cqw}
+.cf .chip{width:13cqw;height:10cqw;border-radius:2cqw;background:linear-gradient(135deg,#f9d46a,#e8a91c);box-shadow:inset 0 0 0 .5cqw rgba(255,255,255,.55)}
+.cf .no{font-size:4.2cqw;font-weight:700;letter-spacing:.14em;color:var(--blue-text);opacity:.85}
+.cf .mini{margin-top:5cqw;font-size:3.9cqw;font-weight:700;letter-spacing:.16em;color:var(--green)}
+.cf h3{margin-top:1.5cqw;font-size:9cqw;line-height:1.12;font-weight:800;color:var(--ink)}
+.cf .tag{align-self:flex-start;margin-top:4cqw;font-size:4cqw;font-weight:600;padding:1.4cqw 3.6cqw;border-radius:99px;background:rgba(255,255,255,.75);color:var(--blue-text)}
+.cf .price{margin-top:auto;display:flex;align-items:baseline;gap:3cqw;flex-wrap:wrap}
+.cf .price s{font-size:4.6cqw;font-weight:600;color:#6b7f9a}
+.cf .price b{font-size:11cqw;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.cf .hl{margin-top:3cqw;font-size:4.1cqw;font-weight:500;line-height:1.35;color:#2b4467;display:flex;gap:2cqw}
+.cf .hl:before{content:"✔";color:var(--green);font-weight:800}
+.cf .cta{margin-top:4.5cqw;align-self:stretch;text-align:center;font-size:4.6cqw;font-weight:700;padding:2.6cqw;border-radius:99px;background:var(--yellow);color:var(--ink)}
+
+/* ---------- info bar under prism ---------- */
+.ctrl{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px}
+.ctrl button{
+  width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;font-size:1.2rem;font-weight:800;
+  background:#fff;color:var(--blue-text);box-shadow:0 6px 16px rgba(20,38,79,.16);transition:transform .2s,background .2s;
+}
+.ctrl button:hover{transform:scale(1.1);background:var(--yellow);color:var(--ink)}
+.now{min-width:260px;text-align:center}
+.now b{display:block;font-size:1.05rem;font-weight:700}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:6px}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(20,38,79,.22);cursor:pointer;transition:all .25s}
+.dots i.on{width:26px;border-radius:99px;background:var(--green)}
+
+/* ---------- mobile swipe stack ---------- */
+.stack-wrap{display:none}
+@media (max-width:900px){
+  .scene,.ctrl{display:none}
+  .stack-wrap{display:block;position:relative;z-index:2;padding:18px 0 40px}
+  .stack{position:relative;width:min(80vw,320px);height:calc(min(80vw,320px) * 1.4);margin:14px auto 0;touch-action:pan-y}
+  .stack .sc{position:absolute;inset:0;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .3s;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+  .stack .sc.dragging{transition:none}
+  .sbar{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:26px}
+  .sbar button{width:46px;height:46px;border-radius:50%;border:0;font-size:1.2rem;font-weight:800;background:#fff;color:var(--blue-text);box-shadow:0 6px 16px rgba(20,38,79,.16)}
+  .sbar span{font-weight:700;min-width:70px;text-align:center}
+  .fbar{gap:6px;top:12px;flex-wrap:nowrap}
+  .fbtn{padding:8px 11px;font-size:.72rem;white-space:nowrap}
+  .fbtn i{display:none}
+  .head{padding-top:70px}
+  .head p.dh{display:none}
+}
+
+/* ---------- page change fade ---------- */
+.go{position:fixed;inset:0;z-index:50;background:linear-gradient(160deg,#CBEBDF,#F8EE9A);opacity:0;pointer-events:none;transition:opacity .35s ease}
+.go.on{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){ .cf .shine,.bg i{animation:none} }
+</style>
+</head>
+<body>
+<div class="bg"><i class="c1"></i><i class="c2"></i><i class="c3"></i></div>
+
+<!-- FLOATING BUTTONS -->
+<div class="fbar">
+  <a class="fbtn f-home" href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a class="fbtn f-card" href="card-details.html"><i class="fas fa-tags"></i> Card Details</a>
+  <a class="fbtn f-login" href="login.html"><i class="fas fa-user"></i> Login</a>
+  <a class="fbtn f-get" href="index.html#membership-plans"><i class="fas fa-id-card"></i> Get Your Card</a>
+</div>
+
+<header class="head">
+  <h1>Choose Your <span>Rx Medo Card</span></h1>
+  <p class="dh">Drag to spin &nbsp;•&nbsp; Click any card to open its page</p>
+</header>
+
+<!-- DESKTOP: 3D PRISM -->
+<section class="scene" id="scene" aria-label="Rx Medo cards prism">
+  <div class="floor"></div>
+  <div class="prism" id="prism"></div>
+</section>
+<div class="ctrl">
+  <button id="prev" aria-label="Previous card">&#8592;</button>
+  <div class="now"><b id="nowName">&nbsp;</b><div class="dots" id="dots"></div></div>
+  <button id="next" aria-label="Next card">&#8594;</button>
+</div>
+
+<!-- MOBILE: SWIPE STACK -->
+<section class="stack-wrap">
+  <div class="head" style="padding-top:0"><p>Swipe the top card &nbsp;•&nbsp; Tap to explore</p></div>
+  <div class="stack" id="stack"></div>
+  <div class="sbar"><button id="sPrev" aria-label="Previous">&#8592;</button><span id="sCount">1 / 9</span><button id="sNext" aria-label="Next">&#8594;</button></div>
+</section>
+
+<div class="go" id="go"></div>
+
+<script>
+/* ======== 1. YOUR 9 CARDS (edit text / links here) ======== */
+var CARDS = [
+ {n:'Rx Medo Card', t:'Individual • No age limit', mrp:'₹5000', off:'₹3000', href:'medocard.html',
+  f:['No age limit — accessible for everyone','Basic features of Rx MedoCard','Pharmacy discounts up to 80%','Diagnostic lab test savings','OPD doctor consultation discounts']},
+ {n:'Rx Medo Top-Up Card', t:'Top-Up • Any Age', mrp:'₹4500', off:'Starts ₹3500', href:'medoTopUpCard.html',
+  f:['Insurance Top-Up for Individuals','Any age eligible with existing policy','Insurance coverage up to ₹40,00,000','Extends existing health/group coverage','Basic Rx MedoCard benefits included']},
+ {n:'Rx Medo Family Card', t:'Family (Members)', mrp:'₹10000', off:'₹8000', href:'medofamily.html',
+  f:['All features of Rx MedoCard included','Family card covering up to 4 members','Applicable for husband, wife & 2 children','Saves medical expenses for whole family','Full access to hospital network discounts']},
+ {n:'Rx Medo Family Top-Up Card', t:'Family Top-Up', mrp:'₹5000', off:'Starts ₹4000', href:'medoTopUpfamily.html',
+  f:['Family Top-Up insurance plan','Extend coverage to up to 4 family members','Premium starting at ₹4000','Full features of Rx MedoCard','Substantial upgrade to existing family covers']},
+ {n:'Rx Medo YoungShield Card', t:'18–35 Years', mrp:'₹9000', off:'₹7000', href:'youngshield.html',
+  f:['₹5 Lac Insurance from Day 1','Covers pre-existing diseases from Day 1','All basic features of Rx MedoCard','Tailored for young adults (Age 18–35)','Substantial medicine & diagnostic savings']},
+ {n:'Rx Medo CitizenCare Card', t:'36–45 Years', mrp:'₹12000', off:'₹10000', href:'citizecare.html',
+  f:['₹5 Lac Insurance Coverage','Pre-Existing Diseases Covered from Day 1','Basic features of Rx MedoCard','Age: 36–45 Years prime health guard','Pharmacy & OPD discounted services']},
+ {n:'Rx Medo GuardianCare Card', t:'46–55 Years', mrp:'₹18000', off:'₹15000', href:'guardiancare.html',
+  f:['₹5 Lac Insurance from Day 1','Pre-Existing Diseases Covered','Basic features of Rx MedoCard included','Age: 46–55 Years critical period security','Comprehensive hospital care network']},
+ {n:'Rx Medo FamilySecure Card', t:'Family (Up to 4 Kids)', mrp:'₹20000', off:'₹15000', href:'medoFamilysecure.html',
+  f:['₹5 Lac Insurance from Day 1','Pre-Existing Diseases covered','Family Cover: Husband + Wife + up to 4 Kids','Eldest child age ≤ 35','Basic features of Rx MedoCard included']},
+ {n:'Rx Medo SeniorShield Card', t:'56–65 Years', mrp:'₹30000', off:'₹25000', href:'seniorshield.html',
+  f:['₹5 Lac Insurance from Day 1','Covers Pre-Existing Diseases','Age: 56–65 Years senior coverage','Full Rx MedoCard benefits across India','Priority doctor consultations & discounts']}
+];
+var N = CARDS.length, STEP = 360 / N;
+
+/* ======== 2. BUILD CARD ART ======== */
+function art(c, i, small){
+  var d = document.createElement('div');
+  d.className = 'cf g' + (i % 3);
+  d.innerHTML =
+    '<span class="shine"></span>' +
+    '<div class="top"><span class="chip"></span><span class="no">No. ' + String(i+1).padStart(2,'0') + '</span></div>' +
+    '<div class="mini">RX MEDOCARD</div>' +
+    '<h3>' + c.n + '</h3>' +
+    '<span class="tag">' + c.t + '</span>' +
+    '<div class="price"><s>' + c.mrp + '</s><b>' + c.off + '</b></div>' +
+    '<div class="hl">' + c.f[0] + '</div>' +
+    (small ? '' : '<div class="cta">Explore this card &rarr;</div>');
+  return d;
+}
+
+var prism = document.getElementById('prism'), faces = [];
+CARDS.forEach(function(c,i){
+  var f = document.createElement('div');
+  f.className = 'face'; f.style.setProperty('--i', i); f.dataset.i = i;
+  f.appendChild(art(c,i));
+  prism.appendChild(f); faces.push(f);
+});
+
+/* ======== 3. OPEN THE CARD'S REAL PAGE ======== */
+var modalOpen = false;
+function openCard(i){
+  if(modalOpen) return;
+  modalOpen = true;
+  document.getElementById('go').classList.add('on');
+  setTimeout(function(){ window.location.href = CARDS[i].href; }, 320);
+}
+
+/* ======== 4. DESKTOP PRISM: spin + drag + click ======== */
+var scene = document.getElementById('scene'), nowName = document.getElementById('nowName'), dotsBox = document.getElementById('dots');
+var ry = 0, vel = 0, target = null, dragging = false, hover = false, down = null, moved = 0, lastX = 0, SPEED = 0.32;
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var dots = CARDS.map(function(c,i){
+  var d = document.createElement('i'); d.title = c.n;
+  d.onclick = function(){ goTo(i); }; dotsBox.appendChild(d); return d;
+});
+function goTo(i){ target = -i*STEP + 360*Math.round((ry + i*STEP)/360); }
+document.getElementById('next').onclick = function(){ target = (Math.round(ry/STEP) - 1) * STEP; };
+document.getElementById('prev').onclick = function(){ target = (Math.round(ry/STEP) + 1) * STEP; };
+
+scene.addEventListener('pointerdown', function(e){
+  down = e.target.closest('.face'); dragging = true; moved = 0; lastX = e.clientX; vel = 0; target = null;
+  scene.classList.add('drag');
+});
+window.addEventListener('pointermove', function(e){
+  if(!dragging) return;
+  var dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
+  ry += dx * 0.35; vel = dx * 0.35;
+});
+window.addEventListener('pointerup', function(){
+  if(!dragging) return; dragging = false; scene.classList.remove('drag');
+  if(moved < 6 && down){ var i = +down.dataset.i; openCard(i); }
+  down = null;
+});
+scene.addEventListener('mouseenter', function(){ hover = true; });
+scene.addEventListener('mouseleave', function(){ hover = false; });
+
+var frontIdx = -1;
+function tick(){
+  if(window.innerWidth > 900){
+    if(target !== null){ ry += (target - ry) * 0.1; if(Math.abs(target - ry) < 0.05){ ry = target; target = null; } }
+    else if(!dragging){
+      ry += vel; vel *= 0.94;
+      if(Math.abs(vel) < 0.03 && !hover && !modalOpen && !reduce) ry -= SPEED;
+    }
+    prism.style.transform = 'translateZ(calc(var(--w) * -.874)) rotateY(' + ry.toFixed(2) + 'deg)';
+    var best = 999, bi = 0;
+    for(var i=0;i<N;i++){
+      var diff = ((i*STEP + ry) % 360 + 540) % 360 - 180, a = Math.abs(diff);
+      faces[i].firstChild.style.setProperty('--d', (Math.min(a/90,1) * 0.5).toFixed(2));
+      if(a < best){ best = a; bi = i; }
+    }
+    if(bi !== frontIdx){
+      frontIdx = bi; nowName.textContent = CARDS[bi].n;
+      dots.forEach(function(d,k){ d.classList.toggle('on', k === bi); });
+    }
+  }
+  requestAnimationFrame(tick);
+}
+tick();
+
+/* ======== 5. MOBILE: swipeable stack ======== */
+var stack = document.getElementById('stack'), sCount = document.getElementById('sCount');
+var order = CARDS.map(function(c,i){return i;}), sEls = [];
+CARDS.forEach(function(c,i){
+  var w = document.createElement('div'); w.className = 'sc'; w.dataset.i = i; w.appendChild(art(c,i));
+  stack.appendChild(w); sEls[i] = w;
+});
+function layout(){
+  order.forEach(function(ci,k){
+    var el = sEls[ci]; el.classList.remove('dragging');
+    el.style.zIndex = 20 - k;
+    el.style.opacity = k < 4 ? 1 : 0;
+    el.style.pointerEvents = k === 0 ? 'auto' : 'none';
+    el.style.transform = 'translateY(' + (k*14) + 'px) scale(' + (1 - k*0.055) + ')';
+    el.firstChild.style.setProperty('--d', Math.min(k*0.14,0.45));
+  });
+  sCount.textContent = (order[0] + 1) + ' / ' + N;
+}
+function sNext(){ order.push(order.shift()); layout(); }
+function sPrev(){ order.unshift(order.pop()); layout(); }
+document.getElementById('sNext').onclick = sNext;
+document.getElementById('sPrev').onclick = sPrev;
+layout();
+
+var sx = 0, sy = 0, sdx = 0, sActive = null;
+stack.addEventListener('pointerdown', function(e){
+  var el = e.target.closest('.sc'); if(!el || +el.dataset.i !== order[0]) return;
+  sActive = el; sx = e.clientX; sy = e.clientY; sdx = 0; el.classList.add('dragging');
+});
+window.addEventListener('pointermove', function(e){
+  if(!sActive) return;
+  sdx = e.clientX - sx; var dy = (e.clientY - sy) * 0.25;
+  sActive.style.transform = 'translate(' + sdx + 'px,' + dy + 'px) rotate(' + (sdx/18) + 'deg)';
+});
+window.addEventListener('pointerup', function(){
+  if(!sActive) return; var el = sActive; sActive = null; el.classList.remove('dragging');
+  if(Math.abs(sdx) < 6){ layout(); openCard(+el.dataset.i); }
+  else if(Math.abs(sdx) > 80){
+    el.style.transition = 'transform .3s ease, opacity .3s';
+    el.style.transform = 'translate(' + (sdx > 0 ? 130 : -130) + 'vw,0) rotate(' + (sdx > 0 ? 25 : -25) + 'deg)';
+    setTimeout(function(){ el.style.transition = ''; sNext(); }, 260);
+  } else layout();
+});
+</script>
+</body>
+</html>
