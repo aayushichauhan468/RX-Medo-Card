@@ -1,0 +1,1437 @@
+/* ==========================================================================
+   Rx Medo Card Pharmacy — 3D Immersive Scroll Experience
+   Colors:
+     - Mint Green: #D1F0E7 / #A8E5D5 / #35C99A
+     - Deep Navy:  #1B2F59 / #0D1C38
+     - Sky Blue:   #7CC4E8 / #4AA8DA
+     - Warm Gold:  #F7C43D
+     - Pure White: #FFFFFF
+   ========================================================================== */
+
+:root {
+  --rx-mint: #D1F0E7;
+  --rx-mint-light: #EBF8F4;
+  --rx-mint-dark: #35C99A;
+  --rx-navy: #1B2F59;
+  --rx-navy-deep: #0D1C38;
+  --rx-sky: #7CC4E8;
+  --rx-gold: #F7C43D;
+  --rx-gold-dark: #D4A018;
+  --rx-white: #FFFFFF;
+  --rx-glass-bg: rgba(255, 255, 255, 0.92);
+  --rx-glass-border: rgba(209, 240, 231, 0.85);
+  --rx-shadow-lg: 0 25px 60px rgba(27, 47, 89, 0.16);
+  --rx-shadow-md: 0 12px 35px rgba(27, 47, 89, 0.10);
+  --rx-font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: auto !important;
+}
+
+/* ==========================================================================
+   Main Experience Scroller & Pinned Container
+   ========================================================================== */
+#pharmacyExperienceSection {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #F0FAF7 0%, #E6F6F1 50%, #F5FCFA 100%);
+  overflow: clip;
+}
+
+.rx-pinned-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Three.js 3D Canvas Layer */
+#pharmacy3DCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+}
+
+/* Fallback / Ambient Background Layers (Only displayed if WebGL is unavailable) */
+.rx-scenic-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.8s ease;
+  display: none;
+}
+
+.no-webgl .rx-scenic-layer {
+  display: block;
+}
+
+.rx-scenic-reception {
+  background-image: url('../images/pharmacist_reception.jpg');
+  opacity: 1.0;
+}
+
+.rx-scenic-interior {
+  background-image: url('../images/pharmacy_interior_wide.jpg');
+  opacity: 0;
+}
+
+.rx-scenic-desk {
+  background-image: url('../images/pharmacy_counter_desk.jpg');
+  opacity: 0;
+}
+
+/* Ambient Vignette (Clean clinic contrast without milky white haze) */
+.rx-viewport-lighting {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, transparent 68%, rgba(27, 47, 89, 0.08) 100%);
+}
+
+/* ==========================================================================
+   Overlay UI Stages (Synchronized with 3D Camera via GSAP)
+   ========================================================================== */
+.rx-ui-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 4% 40px;
+  box-sizing: border-box;
+}
+
+.rx-stage-overlay {
+  position: absolute;
+  width: 100%;
+  max-width: 1360px;
+  height: 100%;
+  display: none !important;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) scale(0.98);
+  pointer-events: none;
+}
+
+.rx-stage-overlay.active {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: auto;
+}
+
+/* Stage 1: Entrance (Unobtrusive bottom-left corner card) */
+.rx-stage-entrance {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-bottom: 25px;
+  padding-left: 24px;
+}
+
+.rx-corner-card-entrance {
+  max-width: 340px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid var(--rx-glass-border);
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 16px 36px rgba(27, 47, 89, 0.12);
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.rx-corner-card-entrance::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rx-mint-dark), var(--rx-sky), var(--rx-gold));
+}
+
+/* Stage 2: Reception (Anchored lower-left: pharmacist face, shoulders, and pointing arm are 100% visible) */
+.rx-stage-reception {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-bottom: 25px;
+  padding-left: 24px;
+}
+
+.rx-glass-card-reception {
+  max-width: 340px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid var(--rx-glass-border);
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 16px 36px rgba(27, 47, 89, 0.12);
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.rx-glass-card-reception::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rx-navy), var(--rx-mint-dark));
+}
+
+.rx-stage-title {
+  font-family: var(--rx-font);
+  font-size: 20px;
+  font-weight: 750;
+  color: var(--rx-navy);
+  margin-bottom: 6px;
+}
+
+.rx-stage-desc {
+  font-size: 13px;
+  color: #4a6185;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.rx-reception-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: rgba(209, 240, 231, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(53, 201, 154, 0.25);
+}
+
+.rx-mini-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.rx-mini-stat strong {
+  font-size: 19px;
+  color: var(--rx-navy);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.rx-mini-stat span {
+  font-size: 11px;
+  color: #557297;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Stage 3: Category Wall Guide Card */
+.rx-stage-categories {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-bottom: 25px;
+  padding-left: 24px;
+}
+
+.rx-wall-sign-card {
+  max-width: 360px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid var(--rx-glass-border);
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: var(--rx-shadow-lg);
+  pointer-events: auto;
+  position: relative;
+}
+
+.rx-wall-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin-bottom: 8px;
+}
+
+.rx-wall-desc {
+  font-size: 13px;
+  color: #4a6185;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.rx-categories-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.rx-cat-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #FFFFFF;
+  border: 1px solid rgba(27, 47, 89, 0.12);
+  color: var(--rx-navy);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 16px;
+  box-shadow: 0 2px 5px rgba(27, 47, 89, 0.05);
+}
+
+.rx-cat-tag i {
+  color: var(--rx-mint-dark);
+}
+
+/* Stage 4: Partner Network Pedestal Guide Card */
+.rx-stage-partners {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-bottom: 25px;
+  padding-left: 24px;
+}
+
+.rx-aisle-kiosk-card {
+  max-width: 360px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid var(--rx-glass-border);
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: var(--rx-shadow-lg);
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Stage 5: The 3D Guidebook on the Consultation Table
+   ========================================================================== */
+.rx-stage-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tabletop perspective wrapper - occupies 68% of viewport so table edges and room stay visible! */
+.rx-book-tabletop-container {
+  perspective: 1800px;
+  -webkit-perspective: 1800px;
+  width: 100%;
+  max-width: 860px;
+  height: 520px;
+  max-height: 64vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Guidebook Page Turn Controls */
+.rx-book-turn-controls {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  z-index: 30;
+  pointer-events: auto;
+}
+
+.rx-book-turn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(27, 47, 89, 0.15);
+  color: var(--rx-navy);
+  font-family: var(--rx-font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(13, 28, 56, 0.12);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.rx-book-turn-btn:hover {
+  background: var(--rx-navy);
+  color: #FFFFFF;
+  border-color: var(--rx-navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(27, 47, 89, 0.25);
+}
+
+.rx-book-spread-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.rx-spread-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(27, 47, 89, 0.25);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.rx-spread-dot.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--rx-mint-dark);
+}
+
+/* 3D Physical Book Resting in Perspective on the Table */
+.rx-table-guidebook {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform: rotateX(7deg);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 32px 70px rgba(13, 28, 56, 0.38),
+              0 14px 28px rgba(13, 28, 56, 0.18);
+  border-radius: 14px;
+}
+
+/* Hardcover Backing on the Table */
+.rx-book-hardcover {
+  position: absolute;
+  inset: -8px -12px -10px -12px;
+  background: linear-gradient(135deg, #172B52 0%, #0F1D38 100%);
+  border-radius: 16px;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.18),
+              0 25px 60px rgba(0, 0, 0, 0.42);
+  z-index: 1;
+}
+
+/* Gold Edge Foil on Book Thickness */
+.rx-book-hardcover::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 18px;
+  right: 18px;
+  height: 8px;
+  background: linear-gradient(90deg, #bfa044 0%, #f7dc88 25%, #d4aa38 50%, #f7dc88 75%, #bfa044 100%);
+  border-radius: 4px;
+  opacity: 0.9;
+}
+
+/* Page Stack Layer (Leaves Spreads) */
+.rx-book-spread-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  display: flex;
+  background: #FCFDFC;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.04);
+}
+
+/* Center Crease / Spine Shadow */
+.rx-book-spine-crease {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 60px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right,
+    rgba(0, 0, 0, 0.0) 0%,
+    rgba(0, 0, 0, 0.04) 30%,
+    rgba(0, 0, 0, 0.18) 50%,
+    rgba(0, 0, 0, 0.04) 70%,
+    rgba(0, 0, 0, 0.0) 100%
+  );
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Individual Spreads inside the Book */
+.rx-book-spread {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.97) rotateY(4deg);
+  transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.55s;
+  pointer-events: none;
+}
+
+.rx-book-spread.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) rotateY(0deg);
+  pointer-events: auto;
+}
+
+/* Left & Right Pages */
+.rx-book-page {
+  flex: 1;
+  height: 100%;
+  padding: 34px 44px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.rx-book-page::-webkit-scrollbar {
+  width: 5px;
+}
+.rx-book-page::-webkit-scrollbar-thumb {
+  background: rgba(27, 47, 89, 0.15);
+  border-radius: 10px;
+}
+
+.rx-page-left {
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  background: linear-gradient(90deg, #F9FBFA 0%, #FFFFFF 90%, #F5F7F6 100%);
+}
+
+.rx-page-right {
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  background: linear-gradient(90deg, #F5F7F6 0%, #FFFFFF 10%, #F9FBFA 100%);
+}
+
+/* Book Folio / Page Header */
+.rx-page-folio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #798ea6;
+  font-weight: 600;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(27, 47, 89, 0.08);
+  margin-bottom: 16px;
+}
+
+.rx-page-folio .rx-folio-title {
+  color: var(--rx-navy);
+}
+
+.rx-page-folio .rx-folio-page-num {
+  font-weight: 700;
+  color: var(--rx-mint-dark);
+}
+
+/* Page Card Aesthetics inside the Book */
+.rx-book-content-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(209, 240, 231, 0.9);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(27, 47, 89, 0.05);
+  margin-bottom: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rx-book-content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(27, 47, 89, 0.09);
+}
+
+.rx-book-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.rx-book-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.rx-book-content-card:hover .rx-book-card-img-wrap img {
+  transform: scale(1.04);
+}
+
+.rx-book-card-rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--rx-navy);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rx-book-card-rating i {
+  color: #ffaa00;
+}
+
+.rx-book-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin-bottom: 4px;
+}
+
+.rx-book-card-location {
+  font-size: 12.5px;
+  color: #647b97;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rx-book-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+
+.rx-book-features-list li {
+  font-size: 12.5px;
+  color: #3b506d;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rx-book-features-list li i {
+  color: var(--rx-mint-dark);
+}
+
+/* Category grid inside book */
+.rx-book-category-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rx-book-cat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(245, 252, 249, 0.85);
+  border: 1px solid rgba(209, 240, 231, 0.7);
+  border-radius: 14px;
+  padding: 14px;
+  transition: all 0.25s ease;
+}
+
+.rx-book-cat-item:hover {
+  background: #FFFFFF;
+  border-color: var(--rx-mint-dark);
+  box-shadow: 0 6px 16px rgba(53, 201, 154, 0.12);
+  transform: translateX(3px);
+}
+
+.rx-book-cat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--rx-mint);
+  color: var(--rx-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.rx-book-cat-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin-bottom: 2px;
+}
+
+.rx-book-cat-desc {
+  font-size: 12px;
+  color: #557091;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Careplus Page inside book */
+.rx-careplus-hero-book {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.rx-careplus-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(124, 196, 232, 0.2);
+  color: #125482;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.rx-book-section-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--rx-navy);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.rx-book-section-p {
+  font-size: 13px;
+  color: #4b627e;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.rx-careplus-img-frame {
+  width: 100%;
+  height: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(27, 47, 89, 0.12);
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.rx-careplus-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Step cards inside book */
+.rx-book-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rx-book-step-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1px solid rgba(27, 47, 89, 0.08);
+  border-radius: 12px;
+  padding: 11px 14px;
+}
+
+.rx-book-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rx-navy);
+  color: var(--rx-white);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rx-book-step-info h6 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin-bottom: 2px;
+}
+
+.rx-book-step-info p {
+  font-size: 11.5px;
+  color: #557297;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Trust pills inside book */
+.rx-book-trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.rx-book-trust-card {
+  background: rgba(235, 248, 244, 0.7);
+  border: 1px solid rgba(53, 201, 154, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+
+.rx-book-trust-card i {
+  font-size: 24px;
+  color: var(--rx-mint-dark);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.rx-book-trust-card h6 {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin-bottom: 3px;
+}
+
+.rx-book-trust-card p {
+  font-size: 11px;
+  color: #567293;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Book Action Button */
+.rx-book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--rx-navy) 0%, #173868 100%);
+  color: var(--rx-white) !important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(27, 47, 89, 0.2);
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.rx-book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(27, 47, 89, 0.3);
+  color: var(--rx-white) !important;
+}
+
+/* ==========================================================================
+   Subtle Ambient Top Scroll Progress Line
+   ========================================================================== */
+.rx-scroll-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #35C99A 0%, #7CC4E8 50%, #F7C43D 100%);
+  z-index: 50;
+  pointer-events: none;
+  box-shadow: 0 1px 6px rgba(53, 201, 154, 0.45);
+  transition: width 0.08s linear;
+}
+
+/* ==========================================================================
+   Responsive Adaptations (Mobile, Tablet, Desktop)
+   ========================================================================== */
+
+/* Tablet & Smaller Desktops (992px - 1199px) */
+@media (max-width: 1199px) {
+  .rx-ui-layer {
+    padding: 75px 24px 30px;
+  }
+  .rx-book-tabletop-container {
+    max-width: 780px;
+    height: 490px;
+    max-height: 62vh;
+  }
+}
+
+/* Tablet Portrait & Medium Screens (768px - 991px) */
+@media (max-width: 991px) {
+  .rx-ui-layer {
+    padding: 70px 20px 24px;
+  }
+
+  .rx-stage-entrance,
+  .rx-stage-reception,
+  .rx-stage-categories,
+  .rx-stage-partners {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+    padding-left: 12px;
+  }
+
+  .rx-corner-card-entrance,
+  .rx-glass-card-reception,
+  .rx-wall-sign-card,
+  .rx-aisle-kiosk-card {
+    max-width: 330px;
+    padding: 16px 20px;
+  }
+
+  .rx-book-tabletop-container {
+    max-width: 700px;
+    height: 460px;
+    max-height: 60vh;
+  }
+
+  .rx-book-page {
+    padding: 24px 22px;
+  }
+
+  .rx-book-card-img-wrap {
+    height: 110px;
+  }
+
+  .rx-careplus-img-frame {
+    height: 160px;
+  }
+}
+
+/* Ensure mobile menu drawer and toggler are completely hidden on desktop */
+@media (min-width: 992px) {
+  #navbarSupportedContent,
+  .mobile-menu-header,
+  .mobile-nav-actions,
+  .navbar-toggler {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Mobile Screens (max-width: 767px) - 320px, 375px, 390px, 430px */
+@media (max-width: 767px) {
+  .rx-pinned-viewport {
+    height: 100vh;
+    height: 100dvh;
+    height: 100svh;
+  }
+
+  .rx-ui-layer {
+    padding: 68px 12px 14px;
+  }
+
+  /* All Contextual Guide Stages Anchored at the Bottom of the Screen */
+  .rx-stage-overlay {
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .rx-stage-entrance.active,
+  .rx-stage-reception.active,
+  .rx-stage-categories.active,
+  .rx-stage-partners.active {
+    display: flex !important;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Compact Bottom Floating Cards - Unobtrusive to Pharmacist & 3D Scene */
+  .rx-corner-card-entrance,
+  .rx-glass-card-reception,
+  .rx-wall-sign-card,
+  .rx-aisle-kiosk-card {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    padding: 13px 16px;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(27, 47, 89, 0.16);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .rx-badge-pill {
+    font-size: 10.5px;
+    padding: 3px 9px;
+    margin-bottom: 5px;
+  }
+
+  .rx-hero-title {
+    font-size: 19px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .rx-hero-subtitle {
+    font-size: 11.5px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .rx-stage-title,
+  .rx-wall-title {
+    font-size: 16.5px;
+    line-height: 1.25;
+    margin-bottom: 3px;
+  }
+
+  .rx-stage-desc,
+  .rx-wall-desc {
+    font-size: 11.5px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .rx-reception-stats-row {
+    padding: 7px 10px;
+    gap: 8px;
+    justify-content: space-around;
+  }
+
+  .rx-mini-stat strong {
+    font-size: 15px;
+  }
+
+  .rx-mini-stat span {
+    font-size: 9.5px;
+  }
+
+  .rx-categories-pill-row {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .rx-cat-tag {
+    padding: 3px 8px;
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .rx-actions-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px !important;
+    width: 100%;
+  }
+
+  .rx-btn-primary,
+  .rx-btn-secondary {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 11.5px;
+    min-height: 38px;
+    border-radius: 24px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Stage 5: Guidebook on Mobile */
+  .rx-stage-book {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .rx-book-tabletop-container {
+    width: 100%;
+    max-width: 410px;
+    height: 420px;
+    max-height: calc(100svh - 135px);
+    max-height: calc(100vh - 135px);
+    perspective: 1200px;
+    -webkit-perspective: 1200px;
+    margin: 0 auto;
+  }
+
+  .rx-table-guidebook {
+    transform: rotateX(5deg);
+    height: 100%;
+  }
+
+  .rx-book-turn-controls {
+    bottom: -44px;
+    padding: 0 4px;
+  }
+
+  .rx-book-turn-btn {
+    font-size: 11px;
+    padding: 6px 13px;
+    min-height: 36px;
+    border-radius: 20px;
+  }
+
+  .rx-book-spread-dots {
+    padding: 4px 10px;
+    gap: 5px;
+  }
+
+  .rx-spread-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .rx-spread-dot.active {
+    width: 18px;
+  }
+
+  .rx-book-spread {
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+  }
+
+  .rx-book-page {
+    flex: none;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 15px 14px;
+    box-sizing: border-box;
+  }
+
+  .rx-page-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(27, 47, 89, 0.1);
+  }
+
+  .rx-page-right {
+    border-left: none;
+  }
+
+  .rx-book-spine-crease {
+    display: none;
+  }
+
+  .rx-book-section-title {
+    font-size: 15.5px;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .rx-book-section-p {
+    font-size: 11px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .rx-careplus-img-frame {
+    height: 115px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+
+  .rx-book-card-img-wrap {
+    height: 90px;
+    margin-bottom: 8px;
+  }
+
+  .rx-book-card-title {
+    font-size: 14.5px;
+    margin-bottom: 2px;
+  }
+
+  .rx-book-content-card {
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  .rx-book-features-list {
+    margin-bottom: 8px;
+  }
+
+  .rx-book-features-list li {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+
+  .rx-book-step-row {
+    padding: 7px 10px;
+    gap: 8px;
+  }
+
+  .rx-book-step-info h6 {
+    font-size: 12px;
+  }
+
+  .rx-book-step-info p {
+    font-size: 10.5px;
+  }
+
+  .rx-book-trust-grid {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .rx-book-trust-card {
+    padding: 7px 8px;
+  }
+
+  .rx-book-trust-card i {
+    font-size: 17px;
+    margin-bottom: 2px;
+  }
+
+  .rx-book-trust-card h6 {
+    font-size: 11px;
+  }
+
+  .rx-book-trust-card p {
+    font-size: 10px;
+  }
+
+  .rx-book-btn {
+    font-size: 11.5px;
+    padding: 8px 14px;
+    min-height: 38px;
+  }
+}
+
+/* Extra Small Phones (320px - 360px) */
+@media (max-width: 360px) {
+  .rx-ui-layer {
+    padding: 64px 8px 10px;
+  }
+
+  .rx-corner-card-entrance,
+  .rx-glass-card-reception,
+  .rx-wall-sign-card,
+  .rx-aisle-kiosk-card {
+    padding: 11px 13px;
+    max-width: 100%;
+  }
+
+  .rx-hero-title {
+    font-size: 17px;
+  }
+
+  .rx-hero-subtitle,
+  .rx-stage-desc,
+  .rx-wall-desc {
+    font-size: 10.5px;
+    line-height: 1.38;
+    margin-bottom: 6px;
+  }
+
+  .rx-reception-stats-row {
+    gap: 4px;
+    padding: 5px 6px;
+  }
+
+  .rx-mini-stat strong {
+    font-size: 13.5px;
+  }
+
+  .rx-mini-stat span {
+    font-size: 8.5px;
+  }
+
+  .rx-book-tabletop-container {
+    height: 380px;
+    max-height: calc(100svh - 125px);
+  }
+
+  .rx-book-turn-controls {
+    bottom: -40px;
+  }
+
+  .rx-book-turn-btn {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+}
+
+/* Mobile Landscape (height < 500px) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .rx-ui-layer {
+    padding: 55px 14px 10px;
+  }
+
+  .rx-stage-overlay {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    padding-left: 10px;
+  }
+
+  .rx-stage-book.active {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+
+  .rx-corner-card-entrance,
+  .rx-glass-card-reception,
+  .rx-wall-sign-card,
+  .rx-aisle-kiosk-card {
+    max-width: 290px;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  .rx-hero-title,
+  .rx-stage-title,
+  .rx-wall-title {
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .rx-hero-subtitle,
+  .rx-stage-desc,
+  .rx-wall-desc {
+    font-size: 10.5px;
+    margin-bottom: 5px;
+  }
+
+  .rx-reception-stats-row {
+    padding: 5px 8px;
+  }
+
+  .rx-mini-stat strong {
+    font-size: 13px;
+  }
+
+  .rx-book-tabletop-container {
+    max-width: 530px;
+    height: 220px;
+    max-height: calc(100vh - 100px);
+  }
+
+  .rx-book-turn-controls {
+    bottom: -32px;
+    justify-content: center;
+    gap: 14px;
+    padding: 0;
+  }
+
+  .rx-book-turn-btn {
+    font-size: 10px;
+    padding: 4px 10px;
+    min-height: 26px;
+  }
+
+  .rx-book-spread-dots {
+    padding: 2px 7px;
+  }
+
+  .rx-book-page {
+    padding: 8px 12px;
+  }
+
+  .rx-book-card-inner {
+    padding: 6px 8px;
+  }
+
+  .rx-book-card-img-wrap {
+    height: 44px;
+    margin-bottom: 2px;
+  }
+
+  .rx-careplus-img-frame {
+    height: 60px;
+    margin-bottom: 2px;
+  }
+
+  .rx-book-card-title {
+    font-size: 11.5px;
+    margin-bottom: 2px;
+  }
+
+  .rx-book-card-location {
+    font-size: 9px;
+    margin-bottom: 3px;
+  }
+
+  .rx-book-bullet-list {
+    margin-bottom: 4px;
+    gap: 1px;
+  }
+
+  .rx-book-bullet-list li {
+    font-size: 9px;
+    line-height: 1.15;
+  }
+
+  .rx-book-btn {
+    padding: 3px 8px;
+    font-size: 9.5px;
+    min-height: 24px;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .rx-stage-overlay,
+  .rx-book-spread,
+  .rx-3d-book {
+    transition: none !important;
+  }
+  .rx-online-dot {
+    animation: none !important;
+  }
+}

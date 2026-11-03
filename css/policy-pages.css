@@ -1,0 +1,803 @@
+/* ==========================================================================
+   Rx Medo Card — Policy Pages Stylesheet (Cancellation, Shipping, Legal)
+   Exact Visual Theme of RX MEDO CARD Shared Footer:
+   - Background: #D1EFE6 (Light Mint backdrop across the policy page)
+   - Navy: #1B2B50 (Primary Text, Headings, Navigation & Brand)
+   - Slate-Navy: #2C426B (Body Text & Supporting Details)
+   - Pale Blue: #BFE3F6 (Card Borders, Dividers, Accent Outlines)
+   - Golden Yellow: #F7C43D (Primary CTAs, Underline Bars, Badges, Highlights)
+   - Sky Blue: #7CC4E8 (Secondary CTAs, Links, Hover States)
+   - Medical Green: #059669 (Verified Checkmarks & Trust Indicators)
+   - White: #FFFFFF (Clean Card Surfaces)
+   ========================================================================== */
+
+:root {
+  --rx-mint: #D1EFE6;
+  --rx-mint-light: #EBF8F4;
+  --rx-mint-subtle: #F4FAF8;
+  --rx-navy: #1B2B50;
+  --rx-navy-slate: #2C426B;
+  --rx-navy-muted: #536B8F;
+  --rx-pale-blue: #BFE3F6;
+  --rx-gold: #F7C43D;
+  --rx-gold-hover: #E5B32E;
+  --rx-sky: #7CC4E8;
+  --rx-sky-hover: #63B4DC;
+  --rx-green-med: #059669;
+  --rx-white: #FFFFFF;
+  --rx-radius-sm: 8px;
+  --rx-radius-md: 14px;
+  --rx-radius-lg: 16px;
+  --rx-radius-full: 9999px;
+  --rx-shadow-card: 0 4px 20px rgba(27, 43, 80, 0.06);
+  --rx-shadow-hover: 0 10px 28px rgba(27, 43, 80, 0.1);
+  --rx-transition: all 0.22s ease-in-out;
+}
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body.policy-page {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--rx-navy-slate);
+  background-color: var(--rx-mint);
+  line-height: 1.7;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page wrapper to properly clear sticky / fixed site header (76px) */
+.policy-page-wrapper {
+  padding-top: 76px;
+  background-color: var(--rx-mint);
+  min-height: calc(100vh - 76px);
+}
+
+/* ==========================================================================
+   Desktop Navbar Alignment & Mobile Menu Suppression on Desktop
+   ========================================================================== */
+@media (min-width: 992px) {
+  #navbarSupportedContent,
+  .mobile-menu-header,
+  .mobile-nav-actions,
+  .navbar-toggler {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .header-modern .navbar-modern > .container-fluid {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 1rem !important;
+  }
+
+  .site-nav-links {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+  }
+
+  .nav-actions-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+  }
+}
+
+/* ==========================================================================
+   Hero Header Section
+   ========================================================================== */
+.policy-hero {
+  background: transparent;
+  padding: 36px 0 24px;
+}
+
+.policy-hero-content {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Breadcrumb Navigation */
+.policy-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--rx-navy);
+  margin-bottom: 12px;
+}
+
+.policy-breadcrumb a {
+  color: var(--rx-navy);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.policy-breadcrumb a:hover {
+  color: var(--rx-navy-slate);
+  text-decoration: underline;
+}
+
+.policy-breadcrumb .sep {
+  font-size: 0.72rem;
+  color: rgba(27, 43, 80, 0.45);
+  display: inline-flex;
+  align-items: center;
+}
+
+.policy-breadcrumb .current {
+  color: var(--rx-navy-slate);
+  font-weight: 500;
+}
+
+/* Trust Pill Tag */
+.policy-trust-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--rx-pale-blue);
+  color: var(--rx-navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.75px;
+  padding: 5px 14px;
+  border-radius: var(--rx-radius-full);
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(27, 43, 80, 0.04);
+}
+
+.policy-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--rx-green-med);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+  display: inline-block;
+}
+
+/* Hero Title: Solid Dark Navy */
+.policy-hero-title {
+  color: var(--rx-navy);
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+/* Metadata Badges */
+.policy-hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.policy-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--rx-white);
+  border: 1px solid var(--rx-pale-blue);
+  color: var(--rx-navy);
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--rx-radius-full);
+  box-shadow: 0 2px 8px rgba(27, 43, 80, 0.04);
+}
+
+.policy-meta-pill i {
+  color: var(--rx-navy);
+  font-size: 0.9rem;
+}
+
+.policy-meta-pill.pill-verified {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--rx-sky);
+}
+
+.policy-meta-pill.pill-verified i {
+  color: var(--rx-green-med);
+}
+
+/* ==========================================================================
+   Main Content Container & Grid Layout
+   ========================================================================== */
+.policy-main-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 28px 64px;
+}
+
+.policy-layout-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   Left Column: Sticky Sidebar
+   ========================================================================== */
+.policy-sidebar {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Table of Contents Card */
+.policy-nav-card {
+  background: var(--rx-white);
+  border: 1px solid var(--rx-pale-blue);
+  border-radius: var(--rx-radius-lg);
+  padding: 24px 22px;
+  box-shadow: var(--rx-shadow-card);
+}
+
+.policy-nav-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--rx-gold);
+}
+
+.policy-nav-card-title i {
+  color: var(--rx-navy);
+  font-size: 1.2rem;
+}
+
+.policy-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.policy-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  color: var(--rx-navy);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--rx-transition);
+}
+
+.policy-nav-link i {
+  font-size: 0.72rem;
+  color: var(--rx-sky);
+  transition: transform 0.18s ease;
+}
+
+.policy-nav-link:hover {
+  background-color: var(--rx-mint);
+  color: var(--rx-navy);
+  padding-left: 16px;
+}
+
+.policy-nav-link.active {
+  background-color: var(--rx-navy);
+  color: var(--rx-white);
+  font-weight: 700;
+}
+
+.policy-nav-link.active i {
+  color: var(--rx-gold);
+  transform: translateX(2px);
+}
+
+/* Customer Support Card */
+.policy-support-card {
+  background: linear-gradient(145deg, var(--rx-white) 0%, var(--rx-mint-subtle) 100%);
+  border: 1px solid var(--rx-pale-blue);
+  border-radius: var(--rx-radius-lg);
+  padding: 24px 22px;
+  box-shadow: var(--rx-shadow-card);
+}
+
+.policy-support-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--rx-mint);
+  color: var(--rx-navy);
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.policy-support-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin: 0 0 6px;
+}
+
+.policy-support-text {
+  font-size: 0.86rem;
+  color: var(--rx-navy-slate);
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.policy-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.policy-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: var(--rx-white);
+  border: 1px solid var(--rx-pale-blue);
+  color: var(--rx-navy);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--rx-transition);
+}
+
+.policy-contact-item i {
+  color: var(--rx-green-med);
+  font-size: 0.95rem;
+}
+
+.policy-contact-item:hover {
+  background: var(--rx-mint-light);
+  border-color: var(--rx-sky);
+  color: var(--rx-navy);
+  transform: translateY(-1px);
+}
+
+/* Related Policies Card */
+.policy-related-card {
+  background: var(--rx-white);
+  border: 1px solid var(--rx-pale-blue);
+  border-radius: var(--rx-radius-lg);
+  padding: 22px 20px;
+  box-shadow: var(--rx-shadow-card);
+}
+
+.policy-related-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--rx-gold);
+}
+
+.policy-related-title i {
+  color: var(--rx-navy);
+  font-size: 1.1rem;
+}
+
+.policy-related-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.policy-related-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--rx-navy);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--rx-transition);
+}
+
+.policy-related-list a i {
+  color: var(--rx-sky);
+  font-size: 0.8rem;
+  transition: transform 0.18s ease;
+}
+
+.policy-related-list a:hover {
+  background: var(--rx-mint);
+  color: var(--rx-navy);
+}
+
+.policy-related-list a:hover i {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Right Column: Policy Clauses
+   ========================================================================== */
+.policy-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Lead Statement Banner */
+.policy-intro-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--rx-white);
+  border: 1px solid var(--rx-pale-blue);
+  border-left: 5px solid var(--rx-gold);
+  border-radius: var(--rx-radius-lg);
+  padding: 22px 26px;
+  margin-bottom: 24px;
+  box-shadow: var(--rx-shadow-card);
+}
+
+.policy-intro-icon {
+  font-size: 1.6rem;
+  color: var(--rx-green-med);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.policy-intro-text {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--rx-navy);
+  line-height: 1.75;
+}
+
+.policy-intro-text strong,
+.policy-intro-text b {
+  color: var(--rx-navy);
+  font-weight: 700;
+}
+
+/* Policy Clause Cards */
+.policy-clause-card {
+  background: var(--rx-white);
+  border: 1px solid var(--rx-pale-blue);
+  border-radius: var(--rx-radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 22px;
+  box-shadow: var(--rx-shadow-card);
+  transition: var(--rx-transition);
+  scroll-margin-top: 96px;
+}
+
+.policy-clause-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--rx-shadow-hover);
+  border-color: var(--rx-sky);
+}
+
+.policy-clause-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.policy-clause-title-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.policy-clause-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--rx-mint);
+  color: var(--rx-navy);
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.policy-clause-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--rx-navy);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.policy-clause-badge {
+  background: var(--rx-mint-light);
+  border: 1px solid var(--rx-pale-blue);
+  color: var(--rx-navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--rx-radius-full);
+  white-space: nowrap;
+}
+
+.policy-clause-body {
+  color: var(--rx-navy-slate);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.policy-clause-body strong,
+.policy-clause-body b {
+  color: var(--rx-navy);
+  font-weight: 700;
+}
+
+/* Help Box in Clause 7 */
+.policy-help-box {
+  margin-top: 14px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--rx-mint-subtle);
+  border: 1px solid var(--rx-pale-blue);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.policy-help-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--rx-navy);
+}
+
+.policy-help-row i {
+  color: var(--rx-green-med);
+  font-size: 1rem;
+}
+
+.policy-help-row a {
+  color: var(--rx-navy);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--rx-gold);
+  transition: color 0.18s ease;
+}
+
+.policy-help-row a:hover {
+  color: var(--rx-sky);
+}
+
+/* Bottom Assistance Banner */
+.policy-bottom-cta {
+  background: var(--rx-navy);
+  color: var(--rx-white);
+  border-radius: var(--rx-radius-lg);
+  padding: 34px 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 26px;
+  box-shadow: 0 10px 30px rgba(27, 43, 80, 0.15);
+}
+
+.policy-cta-content h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--rx-white);
+  margin: 0 0 8px;
+}
+
+.policy-cta-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 540px;
+}
+
+.policy-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.btn-policy-primary {
+  background-color: var(--rx-gold);
+  color: var(--rx-navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 24px;
+  border-radius: var(--rx-radius-full);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(247, 196, 61, 0.35);
+  transition: var(--rx-transition);
+}
+
+.btn-policy-primary:hover {
+  background-color: var(--rx-gold-hover);
+  color: var(--rx-navy);
+  transform: translateY(-2px);
+}
+
+.btn-policy-secondary {
+  background-color: var(--rx-sky);
+  color: var(--rx-navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 24px;
+  border-radius: var(--rx-radius-full);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--rx-transition);
+}
+
+.btn-policy-secondary:hover {
+  background-color: var(--rx-sky-hover);
+  color: var(--rx-navy);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Floating Back-to-Top Button
+   ========================================================================== */
+.policy-back-to-top {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--rx-gold);
+  color: var(--rx-navy);
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: 0 6px 18px rgba(27, 43, 80, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--rx-transition);
+}
+
+.policy-back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.policy-back-to-top:hover {
+  background-color: var(--rx-sky);
+  transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   Mobile & Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 991px) {
+  .policy-page-wrapper {
+    padding-top: 70px;
+  }
+
+  .policy-hero-content {
+    padding: 0 20px;
+  }
+
+  .policy-hero-title {
+    font-size: 1.95rem;
+  }
+
+  .policy-main-container {
+    padding: 0 20px 48px;
+  }
+
+  .policy-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .policy-sidebar {
+    position: static;
+  }
+
+  .policy-clause-card {
+    padding: 24px 22px;
+  }
+
+  .policy-bottom-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px 24px;
+  }
+
+  .policy-cta-actions {
+    width: 100%;
+  }
+
+  .btn-policy-primary,
+  .btn-policy-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .policy-hero {
+    padding: 24px 0 18px;
+  }
+
+  .policy-hero-title {
+    font-size: 1.65rem;
+  }
+
+  .policy-intro-banner {
+    padding: 18px 20px;
+  }
+
+  .policy-clause-title {
+    font-size: 1.15rem;
+  }
+
+  .policy-clause-body {
+    font-size: 0.94rem;
+  }
+
+  .policy-back-to-top {
+    right: 18px;
+    bottom: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+}
