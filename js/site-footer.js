@@ -98,6 +98,7 @@
           <li><a href="__ROOT__OPD.html">OPD</a></li>
           <li><a href="__ROOT__Pharmacy.html">Pharmacy</a></li>
           <li><a href="__ROOT__Diagnostics.html">Diagnostics</a></li>
+        <li><a href="__ROOT__blogs.html">Blog</a></li>
         </ul>
       </div>
 
@@ -110,6 +111,8 @@
           <li><a href="__ROOT__specialist-consultations.html">Specialist Consultations</a></li>
           <li><a href="__ROOT__Diagnostics.html">Diagnostic Tests</a></li>
           <li><a href="__ROOT__hospital-packages.html">Hospital Packages</a></li>
+        <li><a href="__ROOT__disclaimer.html">Disclaimer</a></li>
+        <li><a href="__ROOT__cookie-policy.html">Cookie Policy</a></li>
           <li><a href="__ROOT__seniorshield.html">Senior Care</a></li>
           <li><a href="__ROOT__cancle.html">Cancellation &amp; Refund Policy</a></li>
           <li><a href="__ROOT__shipping.html">Shipping &amp; Delivery Policy</a></li>
@@ -167,6 +170,10 @@
         &copy; <span id="rxFooterCurrentYear">2025</span> - <strong>Rx Medo Card</strong>. All rights reserved.
       </div>
       <div class="footer-bottom-links">
+        <a href="__ROOT__contact-us.html">Contact Us</a>
+        <a href="__ROOT__disclaimer.html">Disclaimer</a>
+        <a href="__ROOT__cookie-policy.html">Cookie Policy</a>
+        <a href="__ROOT__blogs.html">Blog</a>
         <a href="__ROOT__policies.html">Privacy Policy</a>
         <a href="__ROOT__terms.html">Terms of Service</a>
         <a href="__ROOT__refund.html">Refund Policy</a>

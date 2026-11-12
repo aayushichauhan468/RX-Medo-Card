@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Important disclaimer information about Rx Medo Card healthcare membership, hospital package inclusions, direct member concessions, and third-party partner responsibilities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Disclaimer | Rx Medo Card</title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/navbar-footer1287.css">
+  <link rel="stylesheet" href="css/desktop-navbare91c.css">
+  <link rel="stylesheet" href="css/mobile-menu4616.css">
+  <link rel="stylesheet" href="css/site224e.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <style>
+    :root {
+      --rx-navy: #1B2B50;
+      --rx-slate: #33476B;
+      --rx-mint: #D1EFE6;
+      --rx-blue: #BFE3F6;
+      --rx-gold: #F7C43D;
+      --rx-sky: #7CC4E8;
+      --rx-green: #009B72;
+      --rx-bg: #f8fcfa;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body.rx-info {
+      margin: 0;
+      font-family: Poppins, Inter, Arial, sans-serif;
+      font-size: 1.0625rem;
+      color: var(--rx-navy);
+      line-height: 1.75;
+      background: var(--rx-bg);
+    }
+
+    .rx-info a {
+      color: #1B2B50;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .rx-info a:hover {
+      color: var(--rx-green);
+    }
+
+    /* Extra top padding clears the fixed #siteHeader pill navbar on all viewports */
+    .rx-info-hero {
+      background: linear-gradient(180deg, var(--rx-mint) 0%, #e4f7f1 100%);
+      padding: clamp(7.5rem, 6.25rem + 3.2vw, 8.75rem) 1.25rem 3.75rem;
+      border-bottom: 1px solid rgba(27, 43, 80, 0.08);
+    }
+
+    .rx-info-hero .inner,
+    .rx-info-main {
+      width: min(1160px, 100%);
+      margin: 0 auto;
+    }
+
+    .rx-info .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #fff;
+      padding: 0.375rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--rx-green);
+      box-shadow: 0 4px 14px rgba(27, 43, 80, 0.08);
+      margin-bottom: 1rem;
+    }
+
+    .rx-info h1 {
+      font-size: clamp(2.15rem, 1.35rem + 2.8vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.85rem;
+      text-wrap: balance;
+    }
+
+    .rx-info-hero p {
+      font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.22rem);
+      color: var(--rx-slate);
+      margin: 0;
+      max-width: 68ch;
+      text-wrap: pretty;
+    }
+
+    .rx-info-main {
+      padding: 2.75rem 1.25rem 4.75rem;
+    }
+
+    .rx-info-card {
+      background: #fff;
+      border: 1px solid var(--rx-blue);
+      border-radius: 22px;
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
+      box-shadow: 0 12px 32px rgba(27, 43, 80, 0.07);
+      margin-bottom: 1.5rem;
+    }
+
+    .rx-info-card--accent {
+      background: linear-gradient(135deg, #ffffff 0%, #f1faf7 100%);
+      border-color: #9edbcb;
+    }
+
+    .rx-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .rx-card-icon {
+      flex: 0 0 auto;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 14px;
+      background: var(--rx-mint);
+      color: var(--rx-green);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .rx-info-card h2 {
+      font-size: clamp(1.28rem, 1.12rem + 0.6vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0.25rem 0 0;
+      text-wrap: balance;
+    }
+
+    .rx-info-card p {
+      color: var(--rx-slate);
+      margin: 0 0 1rem;
+      text-wrap: pretty;
+    }
+
+    .rx-info-card p:last-child,
+    .rx-info-card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .rx-info-list {
+      margin: 0.5rem 0 1rem;
+      padding-left: 1.35rem;
+      color: var(--rx-slate);
+    }
+
+    .rx-info-list li {
+      margin-bottom: 0.65rem;
+      text-wrap: pretty;
+    }
+
+    .rx-info-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .rx-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .rx-info-grid .rx-info-card {
+      margin-bottom: 0;
+      height: 100%;
+    }
+
+    .rx-concession-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .rx-concession-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: #eef8fc;
+      border: 1px solid var(--rx-blue);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--rx-navy);
+    }
+
+    .rx-concession-pill i {
+      color: var(--rx-green);
+    }
+
+    .rx-contact-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .rx-info-contact {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid rgba(27, 43, 80, 0.1);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+    }
+
+    .rx-info-contact i {
+      font-size: 1.35rem;
+      color: var(--rx-green);
+      margin-top: 0.15rem;
+    }
+
+    .rx-info-contact strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--rx-navy);
+      margin-bottom: 0.15rem;
+    }
+
+    .rx-info-contact span,
+    .rx-info-contact a {
+      font-size: 0.96rem;
+      color: var(--rx-slate);
+    }
+
+    .rx-quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .rx-quick-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--rx-blue);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .rx-quick-links a:hover {
+      background: var(--rx-mint);
+      border-color: var(--rx-green);
+      color: var(--rx-navy);
+    }
+
+    @media (max-width: 991.98px) {
+      .rx-info-hero {
+        padding: 7rem 1.125rem 2.75rem;
+      }
+
+      .rx-contact-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .rx-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rx-info-main {
+        padding: 1.85rem 1rem 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="rx-info">
+  <div id="navbarMount"></div>
+
+  <header class="rx-info-hero">
+    <div class="inner">
+      <span class="eyebrow"><i class="bi bi-shield-check" aria-hidden="true"></i> RX MEDO CARD</span>
+      <h1>Disclaimer</h1>
+      <p>Important information about Rx Medo Card healthcare membership benefits, hospital package inclusions, direct member concessions, and third-party partner responsibilities.</p>
+    </div>
+  </header>
+
+  <main class="rx-info-main">
+    <section class="rx-info-card rx-info-card--accent">
+      <div class="rx-card-head">
+        <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-heart-pulse"></i></span>
+        <h2>1. General &amp; Medical Information Disclaimer</h2>
+      </div>
+      <p><strong>RX MEDO CARD</strong>, an initiative of <strong>Rx Medical Trust</strong>, operates as a healthcare discount and wellness membership programme designed to make medical care more accessible and affordable. Rx Medo Card is <strong>not</strong> a health insurance policy, medical underwriter, or clinical healthcare provider.</p>
+      <p>All content published on <a href="https://www.rxmedocard.com">www.rxmedocard.com</a>—including service overviews, package highlights, diagnostic categories, and partner summaries—is provided strictly for general informational purposes. Nothing on this website constitutes medical advice, clinical diagnosis, or a treatment recommendation. Always consult a qualified physician or specialist regarding any medical condition or emergency.</p>
+    </section>
+
+    <div class="rx-info-grid">
+      <section class="rx-info-card">
+        <div class="rx-card-head">
+          <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-hospital"></i></span>
+          <h2>2. Hospital Package Information</h2>
+        </div>
+        <p>Package inclusions, room categories, clinical consumables, surgeon or specialist fees, and concession structures are determined individually by each participating hospital and department depending on the clinical nature of the procedure, length of stay, and patient health condition.</p>
+        <p>Any package details shown on our website are indicative only. Final billing terms, non-package exclusions, and room upgrade differentials are governed by the respective hospital's billing policy at the time of admission.</p>
+      </section>
+
+      <section class="rx-info-card">
+        <div class="rx-card-head">
+          <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-percent"></i></span>
+          <h2>3. Direct Member Concessions</h2>
+        </div>
+        <p>Active Rx Medo Card members receive direct member concessions across participating network facilities during their valid membership period:</p>
+        <div class="rx-concession-pills">
+          <span class="rx-concession-pill"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> 10%–20% on hospital operations &amp; short-term hospitalization</span>
+          <span class="rx-concession-pill"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> 20%–50% on OPD &amp; diagnostics</span>
+        </div>
+        <p>Concession percentages vary by partner facility, test category, and department, and generally apply to standard billed rates unless restricted by existing promotional, corporate, or government tariff rules.</p>
+      </section>
+    </div>
+
+    <div class="rx-info-grid">
+      <section class="rx-info-card">
+        <div class="rx-card-head">
+          <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-building-check"></i></span>
+          <h2>4. Third-Party Healthcare Providers</h2>
+        </div>
+        <p>All medical consultations, diagnostic tests, pharmacy dispensing, and surgical or inpatient procedures are delivered independently by participating hospitals, clinics, diagnostic labs, and pharmacies.</p>
+        <ul class="rx-info-list">
+          <li><strong>Clinical Responsibility:</strong> Each partner facility operates under its own clinical standards, medical licensing, and professional protocols.</li>
+          <li><strong>Limitation of Liability:</strong> While Rx Medo Card strives to partner with trusted healthcare providers, <strong>Rx Medical Trust</strong> cannot assume liability for clinical outcomes, medical errors, or service quality rendered by third-party facilities.</li>
+          <li><strong>Partner Availability:</strong> Network participation, branch coverage, and specific service availability may change over time without individual prior notice.</li>
+        </ul>
+      </section>
+
+      <section class="rx-info-card">
+        <div class="rx-card-head">
+          <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-clipboard2-check"></i></span>
+          <h2>5. Pre-Admission Verification &amp; Website Accuracy</h2>
+        </div>
+        <p>To avoid surprises at the time of billing, members are strongly encouraged to present their active Rx Medo Card details early and confirm applicable rates before availing services:</p>
+        <ul class="rx-info-list">
+          <li><strong>Confirm Estimates First:</strong> Consult the hospital billing desk or call our care helpline at <a href="tel:+919999307517">+91 9999307517</a> before a planned admission or procedure.</li>
+          <li><strong>Information Updates:</strong> We work to keep website content accurate and current, but make no express or implied warranty regarding uninterrupted availability or real-time partner tariff changes.</li>
+          <li><strong>External Links:</strong> Links to third-party sites are provided for convenience only; Rx Medo Card is not responsible for external site content or privacy practices.</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="rx-info-card rx-info-card--accent">
+      <div class="rx-card-head">
+        <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-headset"></i></span>
+        <h2>6. Confirm Package Estimates or Contact Our Care Desk</h2>
+      </div>
+      <p>Have questions about hospital package inclusions, network eligibility, or member concessions? Reach out to the Rx Medo Card support team before your visit.</p>
+      <div class="rx-contact-row">
+        <div class="rx-info-contact">
+          <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+          <div>
+            <strong>Care Helpline</strong>
+            <a href="tel:+919999307517">+91 9999307517</a>
+          </div>
+        </div>
+        <div class="rx-info-contact">
+          <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+          <div>
+            <strong>Support Email</strong>
+            <a href="mailto:info@rxmedocard.com">info@rxmedocard.com</a>
+          </div>
+        </div>
+        <div class="rx-info-contact">
+          <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+          <div>
+            <strong>Office Address</strong>
+            <span>Essential Oil Association of India, C Block, Phase 2, Industrial Area, Sector 62, Noida, UP 201309</span>
+          </div>
+        </div>
+      </div>
+      <div class="rx-quick-links">
+        <a href="terms.html"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Terms &amp; Conditions</a>
+        <a href="policies.html"><i class="bi bi-shield-lock" aria-hidden="true"></i> Privacy Policy</a>
+        <a href="cookie-policy.html"><i class="bi bi-cookie" aria-hidden="true"></i> Cookie Policy</a>
+        <a href="contact-us.html"><i class="bi bi-chat-dots" aria-hidden="true"></i> Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooterMount"></div>
+  <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/site-navbar.js"></script>
+  <script src="js/site-footer.js"></script>
+</body>
+</html>

@@ -1792,3 +1792,31 @@ body.specialist-page {
     animation: none !important;
   }
 }
+
+/* Mobile layout safeguards */
+@media (max-width: 767px) {
+  .spec-hero { padding: 34px 0 54px; }
+  .spec-hero-title { font-size: clamp(2.1rem, 10vw, 3rem); overflow-wrap: anywhere; }
+  .spec-hero-subtitle { font-size: 1rem; }
+  .spec-hero-chips, .spec-hero-actions { align-items: stretch; }
+  .spec-hero-chips { gap: 8px; }
+  .spec-chip { max-width: 100%; white-space: normal; }
+  .spec-hero-actions { flex-direction: column; }
+  .spec-hero-actions > a { width: 100%; justify-content: center; min-height: 48px; }
+  .spec-hero-visual-wrapper { margin: 18px auto 0; width: min(100%, 440px); }
+  .spec-hero-badge-top, .spec-hero-badge-bottom { position: relative; inset: auto; margin: 10px 0 0; max-width: 100%; }
+  .spec-strip-inner, .spec-strip-logos { flex-wrap: wrap; }
+  .spec-strip-logos { justify-content: flex-start; gap: 10px 16px; }
+  .spec-section { padding: 48px 0; }
+  .spec-section-title { font-size: clamp(1.7rem, 7vw, 2.25rem); }
+  .spec-cta-actions { align-items: stretch; }
+  .spec-cta-actions > a { width: 100%; justify-content: center; min-height: 48px; }
+  .spec-back-to-top { right: 14px; bottom: 14px; }
+}
+
+@media (max-width: 420px) {
+  .spec-breadcrumb { font-size: .78rem; flex-wrap: wrap; }
+  .spec-page-wrapper { padding-top: 72px; }
+  .spec-hero-helpline-note { align-items: flex-start; }
+  .spec-card, .spec-info-card { padding: 18px; }
+}

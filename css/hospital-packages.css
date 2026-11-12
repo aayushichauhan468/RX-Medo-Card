@@ -1519,3 +1519,31 @@ body.packages-page {
     animation: none !important;
   }
 }
+
+/* Mobile layout safeguards */
+@media (max-width: 767px) {
+  .pkg-hero { padding: 34px 0 54px; }
+  .pkg-hero-title { font-size: clamp(2.1rem, 10vw, 3rem); overflow-wrap: anywhere; }
+  .pkg-hero-subtitle { font-size: 1rem; }
+  .pkg-hero-chips { align-items: stretch; gap: 8px; }
+  .pkg-chip { max-width: 100%; white-space: normal; }
+  .pkg-hero-actions { flex-direction: column; }
+  .pkg-hero-actions > a { width: 100%; justify-content: center; min-height: 48px; }
+  .pkg-hero-visual-wrapper { margin: 18px auto 0; width: min(100%, 440px); }
+  .pkg-hero-badge-top, .pkg-hero-badge-bottom { position: relative; inset: auto; margin: 10px 0 0; max-width: 100%; }
+  .pkg-strip-inner, .pkg-strip-logos { flex-wrap: wrap; }
+  .pkg-strip-logos { justify-content: flex-start; gap: 10px 16px; }
+  .pkg-section { padding: 48px 0; }
+  .pkg-section-title { font-size: clamp(1.7rem, 7vw, 2.25rem); }
+  .pkg-cta-actions { align-items: stretch; }
+  .pkg-cta-actions > a { width: 100%; justify-content: center; min-height: 48px; }
+  .pkg-back-to-top { right: 14px; bottom: 14px; }
+  .pkg-disclaimer-box { align-items: flex-start; }
+}
+
+@media (max-width: 420px) {
+  .pkg-breadcrumb { font-size: .78rem; flex-wrap: wrap; }
+  .pkg-page-wrapper { padding-top: 72px; }
+  .pkg-hero-helpline-note { align-items: flex-start; }
+  .pkg-card, .pkg-info-card { padding: 18px; }
+}

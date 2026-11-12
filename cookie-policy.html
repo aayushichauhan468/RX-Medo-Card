@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Detailed Cookie Policy explaining how Rx Medo Card uses cookies, browser storage, and related technologies as described in the Rx Medo Card Privacy Policy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Cookie Policy | Rx Medo Card</title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/navbar-footer1287.css">
+  <link rel="stylesheet" href="css/desktop-navbare91c.css">
+  <link rel="stylesheet" href="css/mobile-menu4616.css">
+  <link rel="stylesheet" href="css/site224e.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <style>
+    :root {
+      --rx-navy: #1B2B50;
+      --rx-slate: #33476B;
+      --rx-mint: #D1EFE6;
+      --rx-blue: #BFE3F6;
+      --rx-gold: #F7C43D;
+      --rx-sky: #7CC4E8;
+      --rx-green: #009B72;
+      --rx-bg: #f8fcfa;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body.rx-info {
+      margin: 0;
+      font-family: Poppins, Inter, Arial, sans-serif;
+      font-size: 1.0625rem;
+      color: var(--rx-navy);
+      line-height: 1.75;
+      background: var(--rx-bg);
+    }
+
+    .rx-info a {
+      color: #1B2B50;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .rx-info a:hover {
+      color: var(--rx-green);
+    }
+
+    /* Extra top padding clears the fixed #siteHeader pill navbar on all viewports */
+    .rx-info-hero {
+      background: linear-gradient(180deg, var(--rx-mint) 0%, #e4f7f1 100%);
+      padding: clamp(7.5rem, 6.25rem + 3.2vw, 8.75rem) 1.25rem 3.75rem;
+      border-bottom: 1px solid rgba(27, 43, 80, 0.08);
+    }
+
+    .rx-info-hero .inner,
+    .rx-info-main {
+      width: min(1160px, 100%);
+      margin: 0 auto;
+    }
+
+    .rx-info .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #fff;
+      padding: 0.375rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--rx-green);
+      box-shadow: 0 4px 14px rgba(27, 43, 80, 0.08);
+      margin-bottom: 1rem;
+    }
+
+    .rx-info h1 {
+      font-size: clamp(2.15rem, 1.35rem + 2.8vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.85rem;
+      text-wrap: balance;
+    }
+
+    .rx-info-hero p {
+      font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.22rem);
+      color: var(--rx-slate);
+      margin: 0;
+      max-width: 68ch;
+      text-wrap: pretty;
+    }
+
+    .rx-info-main {
+      padding: 2.75rem 1.25rem 4.75rem;
+    }
+
+    .rx-info-card {
+      background: #fff;
+      border: 1px solid var(--rx-blue);
+      border-radius: 22px;
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
+      box-shadow: 0 12px 32px rgba(27, 43, 80, 0.07);
+      margin-bottom: 1.5rem;
+    }
+
+    .rx-info-card--accent {
+      background: linear-gradient(135deg, #ffffff 0%, #f1faf7 100%);
+      border-color: #9edbcb;
+    }
+
+    .rx-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .rx-card-icon {
+      flex: 0 0 auto;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 14px;
+      background: var(--rx-mint);
+      color: var(--rx-green);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .rx-info-card h2 {
+      font-size: clamp(1.28rem, 1.12rem + 0.6vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0.25rem 0 0;
+      text-wrap: balance;
+    }
+
+    .rx-info-card h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--rx-navy);
+      margin: 0 0 0.45rem;
+    }
+
+    .rx-info-card p {
+      color: var(--rx-slate);
+      margin: 0 0 1rem;
+      text-wrap: pretty;
+    }
+
+    .rx-info-card p:last-child,
+    .rx-info-card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .rx-info-list {
+      margin: 0.5rem 0 1rem;
+      padding-left: 1.35rem;
+      color: var(--rx-slate);
+    }
+
+    .rx-info-list li {
+      margin-bottom: 0.65rem;
+      text-wrap: pretty;
+    }
+
+    .rx-info-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .rx-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .rx-info-grid .rx-info-card {
+      margin-bottom: 0;
+      height: 100%;
+    }
+
+    .rx-cookie-types {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .rx-cookie-item {
+      background: #f8fcfa;
+      border: 1px solid rgba(124, 196, 232, 0.55);
+      border-radius: 16px;
+      padding: 1.15rem 1.25rem;
+    }
+
+    .rx-cookie-item p {
+      font-size: 0.98rem;
+      margin-bottom: 0;
+    }
+
+    .rx-contact-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .rx-info-contact {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid rgba(27, 43, 80, 0.1);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+    }
+
+    .rx-info-contact i {
+      font-size: 1.35rem;
+      color: var(--rx-green);
+      margin-top: 0.15rem;
+    }
+
+    .rx-info-contact strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--rx-navy);
+      margin-bottom: 0.15rem;
+    }
+
+    .rx-info-contact span,
+    .rx-info-contact a {
+      font-size: 0.96rem;
+      color: var(--rx-slate);
+    }
+
+    .rx-quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .rx-quick-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--rx-blue);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .rx-quick-links a:hover {
+      background: var(--rx-mint);
+      border-color: var(--rx-green);
+      color: var(--rx-navy);
+    }
+
+    @media (max-width: 991.98px) {
+      .rx-info-hero {
+        padding: 7rem 1.125rem 2.75rem;
+      }
+
+      .rx-contact-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .rx-info-grid,
+      .rx-cookie-types {
+        grid-template-columns: 1fr;
+      }
+
+      .rx-info-main {
+        padding: 1.85rem 1rem 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="rx-info">
+  <div id="navbarMount"></div>
+
+  <header class="rx-info-hero">
+    <div class="inner">
+      <span class="eyebrow"><i class="bi bi-shield-check" aria-hidden="true"></i> RX MEDO CARD</span>
+      <h1>Cookie Policy</h1>
+      <p>Information about how Rx Medo Card uses cookies, browser storage, and tracking technologies as described in the Rx Medo Card Privacy Policy.</p>
+    </div>
+  </header>
+
+  <main class="rx-info-main">
+    <section class="rx-info-card rx-info-card--accent">
+      <div class="rx-card-head">
+        <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-cookie"></i></span>
+        <h2>1. Cookies &amp; Tracking Technologies</h2>
+      </div>
+      <p>Cookies are small text files placed on your browser or device when you visit <a href="https://www.rxmedocard.com">www.rxmedocard.com</a>. Alongside standard cookies, websites may use browser storage mechanisms (such as local storage and session storage) to keep pages responsive and remember interface states across visits.</p>
+      <p>We use cookies and related non-personal usage technologies to enhance your browsing experience, support smooth navigation, and maintain reliable functionality. As stated in our <a href="policies.html">Privacy Policy</a>, <strong>RX MEDO CARD</strong> does not sell or rent your personal information under any circumstances.</p>
+    </section>
+
+    <section class="rx-info-card">
+      <div class="rx-card-head">
+        <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-layers"></i></span>
+        <h2>2. Categories of Technologies We Use</h2>
+      </div>
+      <p>Different technologies serve distinct purposes when you browse our healthcare membership, hospital, diagnostic, and pharmacy pages:</p>
+      <div class="rx-cookie-types">
+        <div class="rx-cookie-item">
+          <h3><i class="bi bi-check2-circle me-1" aria-hidden="true"></i> Essential &amp; Functional</h3>
+          <p>Support core website navigation, responsive header and menu states, form submissions, and basic session continuity so key pages render and behave properly.</p>
+        </div>
+        <div class="rx-cookie-item">
+          <h3><i class="bi bi-bookmark-check me-1" aria-hidden="true"></i> Preference Storage</h3>
+          <p>Remember helpful display or interface choices during your visit so you do not have to repeat selections as you move between pages.</p>
+        </div>
+        <div class="rx-cookie-item">
+          <h3><i class="bi bi-speedometer2 me-1" aria-hidden="true"></i> Performance &amp; Diagnostics</h3>
+          <p>Capture aggregate usage statistics and device compatibility signals that help us identify broken links, improve page speed, and refine user experience.</p>
+        </div>
+        <div class="rx-cookie-item">
+          <h3><i class="bi bi-globe me-1" aria-hidden="true"></i> Third-Party Assets &amp; CDNs</h3>
+          <p>Pages may load fonts, icons, or UI libraries from trusted content delivery networks (such as Google Fonts and jsDelivr), which receive standard technical request metadata to deliver those assets.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="rx-info-grid">
+      <section class="rx-info-card">
+        <div class="rx-card-head">
+          <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-sliders"></i></span>
+          <h2>3. Managing or Disabling Cookies</h2>
+        </div>
+        <p>You stay in control of how cookies are handled on your device. Most modern web browsers allow you to inspect, block, or clear cookies at any time:</p>
+        <ul class="rx-info-list">
+          <li><strong>Browser Privacy Settings:</strong> Adjust cookie permissions or clear stored site data in Chrome, Safari, Edge, or Firefox settings.</li>
+          <li><strong>Selective Blocking:</strong> You may block third-party cookies while keeping essential site functionality enabled.</li>
+          <li><strong>Impact of Disabling:</strong> You can disable cookies in your browser settings, but some interactive features or saved preferences may not work correctly.</li>
+        </ul>
+      </section>
+
+      <section class="rx-info-card">
+        <div class="rx-card-head">
+          <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-file-earmark-lock"></i></span>
+          <h2>4. Policy Updates &amp; Related Information</h2>
+        </div>
+        <p>We may update this Cookie Policy from time to time to reflect service improvements, technical updates, or applicable Indian data protection requirements. Any revisions will be posted directly on this page.</p>
+        <p>For further information about personal and non-personal data collection, security safeguards, third-party links, and your privacy rights, please read our <a href="policies.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
+      </section>
+    </div>
+
+    <section class="rx-info-card rx-info-card--accent">
+      <div class="rx-card-head">
+        <span class="rx-card-icon" aria-hidden="true"><i class="bi bi-headset"></i></span>
+        <h2>5. Questions About Cookies or Privacy?</h2>
+      </div>
+      <p>If you have any questions about this Cookie Policy or how Rx Medo Card handles website data, please contact our team:</p>
+      <div class="rx-contact-row">
+        <div class="rx-info-contact">
+          <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+          <div>
+            <strong>Care Helpline</strong>
+            <a href="tel:+919999307517">+91 9999307517</a>
+          </div>
+        </div>
+        <div class="rx-info-contact">
+          <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+          <div>
+            <strong>Privacy &amp; Support Email</strong>
+            <a href="mailto:info@rxmedocard.com">info@rxmedocard.com</a>
+          </div>
+        </div>
+        <div class="rx-info-contact">
+          <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+          <div>
+            <strong>Office Address</strong>
+            <span>Essential Oil Association of India, C Block, Phase 2, Industrial Area, Sector 62, Noida, UP 201309</span>
+          </div>
+        </div>
+      </div>
+      <div class="rx-quick-links">
+        <a href="policies.html"><i class="bi bi-shield-lock" aria-hidden="true"></i> Privacy Policy</a>
+        <a href="terms.html"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Terms &amp; Conditions</a>
+        <a href="disclaimer.html"><i class="bi bi-shield-exclamation" aria-hidden="true"></i> Disclaimer</a>
+        <a href="contact-us.html"><i class="bi bi-chat-dots" aria-hidden="true"></i> Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooterMount"></div>
+  <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/site-navbar.js"></script>
+  <script src="js/site-footer.js"></script>
+</body>
+</html>
