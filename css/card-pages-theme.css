@@ -1,0 +1,120 @@
+/* ==========================================================
+   Rx MedoCard - card pages theme (matches new home page)
+   mint #CBEBDF / yellow #F5C03A / sky #7CC4EE / navbar #A9C8DC
+   Load LAST in <head> so it wins over each page's inline CSS.
+   ========================================================== */
+:root{
+  --rx-mint:#CBEBDF; --rx-mint-soft:#E3F5EE; --rx-yellow:#F5C03A; --rx-sky:#7CC4EE;
+  --rx-sky-soft:#BFE3F7; --rx-blue:#1B5E9E; --rx-green:#1E9E7A; --rx-ink:#14264F; --rx-nav:#A9C8DC;
+  --rx-bg:linear-gradient(160deg,#CBEBDF 0%,#D9F0E8 50%,#C7DDEA 100%);
+}
+html,body{font-family:'Poppins',system-ui,sans-serif!important}
+body{background:var(--rx-bg) fixed!important;color:var(--rx-ink)!important}
+body::before,body::after{content:"";position:fixed;z-index:0;border-radius:50%;pointer-events:none}
+body::before{right:-140px;top:-120px;width:460px;height:460px;background:radial-gradient(circle,rgba(245,192,58,.55),rgba(245,192,58,0) 70%);animation:rxDrift 14s ease-in-out infinite}
+body::after{left:-120px;bottom:-140px;width:440px;height:440px;background:radial-gradient(circle,rgba(30,158,122,.28),rgba(30,158,122,0) 70%);animation:rxDrift 17s ease-in-out infinite reverse}
+@keyframes rxDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,30px)}}
+body>*{position:relative;z-index:1}
+.header-modern{position:fixed!important;z-index:1030!important}
+
+/* ---------- sections: transparent so the page gradient shows ---------- */
+body section,.ticker-bar,.marquee-strip{background:transparent!important}
+.hero-card-section,.mega-hero,.hero-zone,.hero-wrapper,.hero-section{
+  padding-top:130px!important;color:var(--rx-ink)!important;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 92% 8%,rgba(245,192,58,.5) 0,rgba(245,192,58,0) 34%),radial-gradient(circle at 6% 92%,rgba(30,158,122,.2) 0,rgba(30,158,122,0) 38%)!important}
+:is(.hero-orb,.hero-orb-1,.hero-orb-2,.hero-orb-3,.hero-mesh,.hero-wave,.hero-grid-bg,.hero-grid-pattern,.hero-bg-shapes,.hero-shape,.geo,.grid-pattern,.shapes-bg,.deco-blob,.wave-bottom,.wave-hi,.cross-pattern,.confetti-bg,.particles-container,.love-particles,.card-decor,.rainbow-ring,.card-glow){display:none!important}
+
+/* ---------- text ---------- */
+:is(h1,h2,h3,h4,h5,.hero-title,.hero-h1,.hero-heading,.section-main-title,.sec-h2,.sec-title,.section-title,.cta-title,.expert-title){color:var(--rx-ink)!important;-webkit-text-fill-color:currentColor}
+:is(.hero-subtitle,.hero-p,.hero-sub,.section-desc,.section-description,.sec-desc,.sec-p,.cta-description,.expert-sub,.form-sub,.form-subtitle){color:#2c466e!important}
+:is(.gradient-text,.gradient-word,.text-grad,.highlight,.clr,.hl,.hl-grad,.form-hl){background:linear-gradient(90deg,#1B5E9E,#1E9E7A)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+:is(.hero-badge,.hero-top-badge,.hero-spark,.hero-badge-pill,.hero-pill,.section-badge,.section-tag,.sec-chip,.sec-label,.trust-badge-sm){background:#fff!important;color:var(--rx-ink)!important;border:1.5px solid rgba(20,38,79,.14)!important;border-radius:999px!important;box-shadow:0 4px 14px rgba(20,38,79,.08)}
+:is(.hero-badge,.hero-top-badge,.hero-spark,.hero-badge-pill,.hero-pill) :is(span,i,div){color:var(--rx-ink)!important}
+
+/* ---------- cards / boxes ---------- */
+:is(.benefit-card,.perk-card,.why-card,.why-box,.step-card,.step-item,.stat-card,.stat-block,.testimonial-card,.faq-item,.highlight-card,.discount-card,.hero-feature-card,.insurance-feature,.priv-block,.priv-box,.privilege-block,.metric,.quick-stat,.trust-item,.form-panel,.expert-form-card,.expert-container,.expert-wrap,.discount-item,.feature-tag,.hero-feature-pill,.insurance-content,.hero-quick-stats .quick-stat){
+  background:rgba(255,255,255,.88)!important;border:1.5px solid rgba(124,196,238,.55)!important;border-top:5px solid var(--rx-yellow)!important;
+  border-radius:22px!important;box-shadow:0 12px 32px rgba(20,38,79,.1)!important;color:var(--rx-ink)!important;backdrop-filter:blur(10px);
+  transition:transform .35s cubic-bezier(.2,.9,.3,1),box-shadow .35s ease,border-color .3s ease}
+:is(.benefit-card,.perk-card,.why-card,.why-box,.step-card,.step-item,.stat-card,.highlight-card,.discount-card,.hero-feature-card,.insurance-feature,.testimonial-card,.faq-item):hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 48px rgba(20,38,79,.18),0 0 22px rgba(245,192,58,.3)!important;border-color:var(--rx-yellow)!important}
+:is(.benefit-card,.perk-card,.why-card,.why-box,.step-card,.step-item,.stat-card,.stat-block,.highlight-card,.discount-card,.hero-feature-card,.insurance-feature,.testimonial-card,.faq-item,.priv-block,.priv-box,.privilege-block,.metric,.quick-stat,.discount-item,.form-panel,.expert-form-card) :is(h3,h4,h5,p,li,strong,.stat-number,.stat-value,.metric-val,.metric-lbl,.stat-label,.hl-number,.discount-percent,.discount-label,.quick-stat-value,.quick-stat-label){color:var(--rx-ink)!important;-webkit-text-fill-color:currentColor}
+:is(.benefit-icon,.benefit-icon-box,.bc-icon,.perk-ico,.why-icon,.step-icon,.stat-icon,.hl-icon,.discount-icon,.hero-feature-icon,.quick-stat-icon,.discount-item-icon){background:linear-gradient(135deg,#7CC4EE,#CDECE0)!important;color:var(--rx-ink)!important;border-radius:18px!important;box-shadow:0 6px 16px rgba(124,196,238,.4)}
+:is(.benefit-icon,.perk-ico,.why-icon,.step-icon,.stat-icon,.hl-icon,.hero-feature-icon) i{color:var(--rx-ink)!important}
+:is(.step-number,.step-circle,.step-num,.npill){background:var(--rx-yellow)!important;color:var(--rx-ink)!important;box-shadow:0 4px 12px rgba(245,192,58,.45)}
+.fa-check-circle,.fa-circle-check,.fa-check{color:var(--rx-green)!important}
+
+/* ---------- strips / banners / forms ---------- */
+:is(.ticker-bar,.marquee-strip,.scroll-banner,.metrics-bar,.stats-bar,.discount-strip,.trust-strip,.trust-row,.hero-trust-bar){background:var(--rx-nav)!important;color:var(--rx-ink)!important;border-radius:999px;box-shadow:0 8px 24px rgba(20,38,79,.14)}
+:is(.ticker-bar,.marquee-strip,.scroll-banner,.metrics-bar,.stats-bar,.discount-strip,.trust-strip,.trust-row) *{color:var(--rx-ink)!important;-webkit-text-fill-color:currentColor}
+:is(.cta-banner,.cta-section,.expert-section,.expert-form-section,.expert-area,.form-side,.how-it-works-section){background:transparent!important}
+:is(.cta-content,.cta-banner>.container,.expert-form-wrapper,.hero-price-box,.hero-price-container,.price-box,.price-float,.price-floating,.pricing-display,.price-pill){background:rgba(255,255,255,.92)!important;color:var(--rx-ink)!important;border:1.5px solid rgba(124,196,238,.6)!important;border-radius:22px!important;box-shadow:0 14px 34px rgba(20,38,79,.16)!important;animation:rxFloat 4.6s ease-in-out infinite}
+:is(.hero-price-box,.hero-price-container,.price-box,.price-float,.price-floating,.pricing-display,.price-pill) *{color:var(--rx-ink)!important;-webkit-text-fill-color:currentColor}
+:is(.price-amount,.price-num,.price-current,.new-price-tag,.hl-number){color:#B45309!important;-webkit-text-fill-color:#B45309!important;font-weight:900}
+:is(.savings-badge,.save-tag,.card-ribbon,.hot-tag){background:var(--rx-yellow)!important;color:var(--rx-ink)!important;border-radius:999px!important;font-weight:800;box-shadow:0 6px 18px rgba(245,192,58,.45);animation:rxFloat 5s ease-in-out infinite}
+input,select,textarea{background:#fff!important;color:var(--rx-ink)!important;border:1.5px solid rgba(20,38,79,.18)!important;border-radius:14px!important}
+input:focus,select:focus,textarea:focus{border-color:var(--rx-sky)!important;box-shadow:0 0 0 4px rgba(124,196,238,.3)!important;outline:0}
+
+/* ---------- buttons ---------- */
+:is(.btn-primary-custom,.btn-hero-primary,.btn-hero,.btn-primary-hero,.hero-btn-primary,.btn-fill,.btn-y,.btn-cta-primary,.btn-expert,.fab-cta,.floating-btn,.fab,.submit-btn,.expert-submit-btn,.btn-send,.back-to-top,.to-top,.scroll-top){background:var(--rx-yellow)!important;color:var(--rx-ink)!important;border:0!important;border-radius:999px!important;font-weight:800!important;box-shadow:0 8px 22px rgba(245,192,58,.5)!important;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+:is(.btn-secondary-custom,.btn-hero-secondary,.btn-hero-outline,.btn-outline-hero,.hero-btn-secondary,.btn-outline-y,.btn-cta-secondary){background:var(--rx-sky)!important;color:var(--rx-ink)!important;border:0!important;border-radius:999px!important;font-weight:800!important;box-shadow:0 8px 20px rgba(20,38,79,.18)!important;transition:transform .25s ease}
+:is(.btn-primary-custom,.btn-hero-primary,.btn-hero,.btn-primary-hero,.hero-btn-primary,.btn-fill,.btn-y,.btn-cta-primary,.btn-expert,.submit-btn,.btn-send,.btn-secondary-custom,.btn-hero-secondary,.btn-hero-outline,.btn-outline-hero,.hero-btn-secondary,.btn-outline-y,.btn-cta-secondary) :is(i,span){color:var(--rx-ink)!important}
+:is(.btn-primary-custom,.btn-hero-primary,.btn-hero,.btn-primary-hero,.hero-btn-primary,.btn-fill,.btn-y,.btn-cta-primary,.btn-expert,.btn-secondary-custom,.btn-hero-secondary,.btn-hero-outline,.btn-outline-hero,.hero-btn-secondary,.btn-outline-y,.btn-cta-secondary):hover,:is(.floating-btn,.fab-cta,.fab):hover{transform:translateY(-3px) scale(1.04);background:#96D6C8!important}
+:is(.floating-btn,.fab-cta){animation:rxFloat 3.6s ease-in-out infinite}
+
+/* ---------- NEW home-page card (replaces old card images) ---------- */
+:is(.card-nav,.card-nav-indicator,.slide-indicators,.slide-dots,.slider-dots,.dots-row,.flip-indicator,.card-back,.card-3d.card-back){display:none!important}
+:is(.card-showcase,.card-stage,.card-3d-wrapper,.card-3d-container,.card-stack,.card-wrapper,.card-frame,.card-frame-hero,.card-glass,.hero-slides,.slides,.slides-hero,.card-slider,.card-front,.card-face,.card-3d){background:none!important;border:0!important;box-shadow:none!important;padding:0!important;transform:none!important;perspective:none!important;opacity:1!important;visibility:visible!important;position:relative!important;overflow:visible!important;display:block!important;width:100%!important;height:auto!important;max-width:460px;margin-inline:auto;animation:none!important}
+.rx-card{font-size:clamp(12px,1vw,15px);position:relative;overflow:hidden;aspect-ratio:1.586/1;padding:1.2em 1.5em 1.1em;border-radius:1.6em;color:#14264F;display:flex;flex-direction:column;justify-content:space-between;text-align:left;
+  background:radial-gradient(circle at 100% 0%,rgba(124,196,238,.55) 0 22%,transparent 22.5%),radial-gradient(circle at 0% 100%,rgba(30,158,122,.18) 0 26%,transparent 26.5%),linear-gradient(140deg,#BEE8DE 0%,#d8f3ec 40%,#fbf397 85%,#EFE15C 100%);
+  border:1.5px solid rgba(255,255,255,.85);box-shadow:0 22px 46px rgba(20,38,79,.3),inset 0 1px 0 #fff;transform:rotate(-3deg);animation:rxCardFloat 5s ease-in-out infinite;transition:transform .4s ease}
+.rx-card:hover{animation-play-state:paused;transform:rotate(0) scale(1.05)}
+@keyframes rxCardFloat{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-10px)}}
+@keyframes rxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.rx-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1E9E7A,#EFE15C)}
+.rx-card::after{content:"";position:absolute;top:-30%;left:-70%;width:30%;height:160%;pointer-events:none;background:linear-gradient(105deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-22deg);animation:rxCardShine 5.5s ease-in-out infinite}
+@keyframes rxCardShine{0%{left:-70%}45%,100%{left:140%}}
+.rx-card>*{position:relative;z-index:1}
+.rx-card__top{display:flex;align-items:center;justify-content:space-between}
+.rx-card__brand{display:flex;align-items:center;gap:.7em}
+.rx-card__logo{width:2.7em;height:2.7em;border-radius:50%;background:#fff;padding:.2em;object-fit:contain;box-shadow:0 2px 6px rgba(20,38,79,.25)}
+.rx-card__name{font-weight:800;font-size:1.2em;line-height:1.1;color:#1B5E9E}
+.rx-card__name small{display:block;font-weight:700;font-size:.5em;letter-spacing:.16em;color:#0b4f3b;margin-top:.2em}
+.rx-card__tag{font-size:.55em;font-weight:800;letter-spacing:.14em;padding:.35em .9em;border-radius:999px;background:#fff;color:#14264F;border:1px solid rgba(20,38,79,.15)}
+.rx-card__mid{display:flex;align-items:center;gap:.8em}
+.rx-card__chip{width:3.2em;height:2.4em;border-radius:.5em;flex:none;background:linear-gradient(90deg,transparent 31%,rgba(120,80,0,.4) 32% 34%,transparent 35% 65%,rgba(120,80,0,.4) 66% 68%,transparent 69%),linear-gradient(0deg,transparent 46%,rgba(120,80,0,.4) 47% 53%,transparent 54%),linear-gradient(135deg,#FFE08A,#F5C03A 60%,#D9A21B);box-shadow:inset 0 0 0 1px rgba(120,80,0,.4)}
+.rx-card__nfc{font-size:1.1em;color:#14264F;transform:rotate(90deg);opacity:.7}
+.rx-card__off{margin-left:auto;text-align:right;font-weight:800;line-height:1;color:#14264F;font-size:1.9em}
+.rx-card__off small{display:block;font-size:.32em;letter-spacing:.18em;color:#1E9E7A;margin-bottom:.35em;font-weight:800}
+.rx-card__perks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.35em .9em}
+.rx-card__perks li{font-size:.78em;font-weight:600;line-height:1.2;display:flex;gap:.4em;color:#14264F}
+.rx-card__perks i{color:#1E9E7A;font-size:1em;margin-top:.05em}
+.rx-card__no{font-family:'Courier New',monospace;font-size:1.05em;letter-spacing:.2em;font-weight:800;color:#14264F}
+.rx-card__bottom{display:flex;justify-content:space-between;align-items:flex-end;font-size:.55em;letter-spacing:.14em;font-weight:700;color:#0b4f3b}
+.rx-card__bottom b{display:block;font-size:1.25em;letter-spacing:.08em;color:#14264F}
+.rx-card__bottom>div:last-child{text-align:right}
+
+/* ---------- scroll reveal (added by the small script at page end) ---------- */
+.rx-pre{opacity:0;transform:translateY(34px) scale(.96);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rx-pre.rx-in{opacity:1;transform:none}
+@media(max-width:991px){.hero-card-section,.mega-hero,.hero-zone,.hero-wrapper,.hero-section{padding-top:110px!important}.rx-card{transform:none;animation:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rx-pre{opacity:1;transform:none}}
+
+/* ---------- extra class names: medocard, medofamily, medoFamilysecure ---------- */
+.hero-modern,.hero-family-section,.hero-bright{padding-top:130px!important;color:var(--rx-ink)!important;position:relative;overflow:hidden;background:radial-gradient(circle at 92% 8%,rgba(245,192,58,.5) 0,rgba(245,192,58,0) 34%),radial-gradient(circle at 6% 92%,rgba(30,158,122,.2) 0,rgba(30,158,122,0) 38%)!important}
+:is(.hero-particles,.particle,.hero-shape,.hero-card-back,.card-dots,.floating-price-tag .fpt-label){display:none!important}
+:is(.hero-heading,.hero-desc,.section-title-modern){color:var(--rx-ink)!important;-webkit-text-fill-color:currentColor}
+.highlight-warm{background:linear-gradient(90deg,#B45309,#F5C03A)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+:is(.card-visual-area,.card-slider-modern,.card-display,.card-slides){background:none!important;border:0!important;box-shadow:none!important;padding:0!important;transform:none!important;position:relative!important;overflow:visible!important;display:block!important;width:100%!important;height:auto!important;max-width:460px;margin-inline:auto;animation:none!important}
+:is(.benefit-card-v2,.cip-item,.card-info-panel,.offer-price-box,.stat-box,.why-item,.why-row,.expert-card,.card-stat-box,.card-feature-item,.trust-badge-card,.benefit-pill,.stat-item,.partner-logo,.hero-chip,.price-badge,.floating-price-tag,.benefit-row){background:rgba(255,255,255,.88)!important;border:1.5px solid rgba(124,196,238,.55)!important;border-radius:22px!important;box-shadow:0 12px 30px rgba(20,38,79,.1)!important;color:var(--rx-ink)!important;transition:transform .35s cubic-bezier(.2,.9,.3,1),box-shadow .35s ease}
+:is(.benefit-card-v2,.why-item,.stat-box,.cip-item,.card-stat-box,.card-feature-item,.trust-badge-card,.benefit-pill):hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 44px rgba(20,38,79,.18),0 0 20px rgba(245,192,58,.3)!important;border-color:var(--rx-yellow)!important}
+:is(.benefit-card-v2,.cip-item,.card-info-panel,.offer-price-box,.stat-box,.why-item,.card-stat-box,.card-feature-item,.trust-badge-card,.benefit-pill,.stat-item,.price-badge,.floating-price-tag,.hero-chip,.offer-features-list li) :is(h3,h4,h5,p,li,span,strong,div,.stat-val,.stat-lbl,.stat-number,.stat-label){color:var(--rx-ink)!important;-webkit-text-fill-color:currentColor}
+:is(.offer-price-current,.price-val,.fpt-current){color:#B45309!important;-webkit-text-fill-color:#B45309!important;font-weight:900}
+:is(.price-badge,.floating-price-tag,.offer-price-box){animation:rxFloat 4.8s ease-in-out infinite}
+:is(.save-chip,.offer-price-badge,.btn-badge){background:var(--rx-yellow)!important;color:var(--rx-ink)!important;border-radius:999px!important;font-weight:800;box-shadow:0 6px 18px rgba(245,192,58,.45)}
+:is(.trust-bar,.hero-stats-bar,.hero-micro-trust,.stats-strip,.partners-stats,.stats-flex){background:var(--rx-nav)!important;color:var(--rx-ink)!important;border-radius:26px;box-shadow:0 8px 24px rgba(20,38,79,.14)}
+:is(.trust-bar,.hero-stats-bar,.hero-micro-trust,.stats-strip,.partners-stats,.stats-flex) *{color:var(--rx-ink)!important;-webkit-text-fill-color:currentColor}
+:is(.btn-offer,.btn-cta,.btn-bright,.btn-coral,.btn-submit-modern,.btn-submit-form){background:var(--rx-yellow)!important;color:var(--rx-ink)!important;border:0!important;border-radius:999px!important;font-weight:800!important;box-shadow:0 8px 22px rgba(245,192,58,.5)!important;transition:transform .25s ease,background .25s ease}
+:is(.btn-offer,.btn-cta,.btn-bright,.btn-coral,.btn-submit-modern,.btn-submit-form):hover{transform:translateY(-3px) scale(1.04);background:#96D6C8!important}
+.btn-ghost{background:var(--rx-sky)!important;color:var(--rx-ink)!important;border:0!important;border-radius:999px!important;font-weight:800!important}
+:is(.hero-modern,.hero-family-section,.hero-bright) :is(.benefit-tab,.benefit-pill) i{color:var(--rx-green)!important}
+:is(.expert-zone,.benefits-area,.why-section,.why-family-section,.benefits-section,.offer-section,.partners-section,.benefits-cta){background:transparent!important}
