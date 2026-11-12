@@ -1,541 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="UTF-8">
   <title>RX Medo Signup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial;
-      background: #f0f8ff;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      overflow-x: hidden;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    select,
-    button,
-    input {
-      padding: 8px;
-      width: 100%;
-      margin-bottom: 10px;
-      box-sizing: border-box;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .info-card {
-      background: #fff;
-      padding: 15px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .highlight-card {
-      border-color: #3062ea;
-      background: #eaf0ff;
-    }
-
-    #aiResult {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #3062ea;
-    }
-
-    .member-block {
-      background: #fff;
-      padding: 15px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .member-title {
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #3062ea;
-    }
-
-    .left label {
-      color: #001d4f
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      width: 95%;
-      max-width: 1300px;
-      background: #113cbe;
-      border-radius: 18px;
-      padding: 35px;
-      gap: 30px;
-      box-shadow: 0 15px 40px rgba(0, 86, 179, 0.15);
-      margin: 20px auto;
-    }
-
-    .left {
-      flex: 1;
-      min-width: 320px;
-      background: #f3f7ff;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0, 116, 255, 0.08);
-    }
-
-    .left h2 {
-      text-align: center;
-      color: #0066ff;
-      font-size: 28px;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    label {
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1.5px solid #cbd9ff;
-      font-size: 15px;
-      transition: 0.3s ease;
-      box-sizing: border-box;
-    }
-
-    input:focus,
-    select:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-      outline: none;
-    }
-
-    .update-btn {
-      width: 100%;
-      padding: 14px;
-      background: #007bff;
-      color: white;
-      border-radius: 10px;
-      border: none;
-      font-size: 17px;
-      font-weight: bold;
-      transition: 0.3s;
-      cursor: pointer;
-      box-sizing: border-box;
-    }
-
-    .update-btn:hover {
-      background: #0056b3;
-      transform: scale(1.03);
-    }
-
-    .right {
-      flex: 1.3;
-      min-width: 320px;
-    }
-
-    .right h2 {
-      text-align: center;
-      font-size: 28px;
-      color: white;
-      margin-bottom: 10px;
-    }
-
-    .ai-box {
-      background: #0066ff;
-      color: white;
-      padding: 14px;
-      text-align: center;
-      border-radius: 10px;
-      font-size: 20px;
-      box-shadow: 0 5px 12px rgba(0, 123, 255, 0.3);
-      margin-bottom: 20px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      width: 100%;
-    }
-
-    .info-card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 10px 35px rgba(0, 132, 255, 0.15);
-      transition: 0.3s;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .info-card:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 12px 35px rgba(0, 123, 255, 0.35);
-    }
-
-    .info-card h3 {
-      font-size: 17px;
-      color: #0066ff;
-      margin-bottom: 6px;
-    }
-
-    .info-card p {
-      font-size: 13px;
-      color: #555;
-    }
-
-    .ai-result {
-      display: none;
-      margin-top: 20px;
-      background: #ecf5ff;
-      padding: 14px;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: bold;
-      border-left: 5px solid #007bff;
-      font-size: 17px;
-    }
-
-    .download-btn {
-      margin-top: 10px;
-      background: #28a745;
-      padding: 10px 18px;
-      color: white;
-      border-radius: 7px;
-      cursor: pointer;
-      border: none;
-      font-weight: bold;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      opacity: 0;
-      transform: scale(0.95);
-      transition: 0.4s ease;
-    }
-
-    .modal.show {
-      opacity: 1;
-      transform: scale(1);
-      display: flex !important;
-    }
-
-    .modal-content {
-      width: 90%;
-      max-width: 750px;
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      position: relative;
-      height: 300px;
-    }
-
-    .modal-left {
-      flex: 1;
-    }
-
-    .modal-right {
-      flex: 1;
-      background: linear-gradient(135deg, #0066ff, #00b7ff);
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-weight: bold;
-      padding: 20px;
-      font-size: 20px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 32px;
-      cursor: pointer;
-      color: #333;
-      justify-content: right;
-    }
-
-    .firework {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      background: #28de32;
-      border-radius: 50%;
-      animation: explode 900ms ease-out forwards;
-      pointer-events: none;
-      z-index: 2000;
-    }
-
-    @keyframes explode {
-      0% {
-        transform: scale(0.5);
-        opacity: 1;
-      }
-
-      50% {
-        transform: scale(2);
-        opacity: 1;
-      }
-
-      100% {
-        transform: scale(0);
-        opacity: 0;
-      }
-    }
-
-    .modern-btn {
-      padding: 12px 28px;
-      border: none;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #0061ff);
-      color: white;
-      font-size: 17px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
-      margin: auto;
-      margin-top: 5px;
-    }
-
-    .modern-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 102, 255, 0.6);
-    }
-
-    .info-card {
-      cursor: pointer;
-      transition: 0.3s ease;
-      border-radius: 10px;
-    }
-
-    .info-card.selected {
-      background-color: #007bff !important;
-      color: white !important;
-    }
-
-    .info-card.selected h3,
-    .info-card.selected p {
-      color: white !important;
-    }
-
-    .form-group label {
-      color: white;
-    }
-
-    .left label {
-      color: #001d4f
-    }
-
-
-    /* RESPONSIVE FIXES */
-    @media (max-width: 991px) {
-
-      body,
-      html {
-        width: 100%;
-        overflow-x: hidden !important;
-      }
-
-      .header-modern {
-        width: 100%;
-      }
-
-      .container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 100%;
-        padding: 20px 15px;
-        margin: 0;
-        border-radius: 0;
-      }
-
-      .left,
-      .right {
-        width: 100% !important;
-        min-width: 100% !important;
-        padding: 20px 15px !important;
-        margin-bottom: 20px;
-      }
-
-      .left h2,
-      .right h2 {
-        font-size: 22px;
-      }
-
-      form,
-      .section,
-      .card {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        width: 100%;
-      }
-
-      input,
-      select,
-      button,
-      .form-group,
-      .ai-section,
-      .cards-section,
-      .update-btn {
-        width: 100% !important;
-        max-width: 100%;
-        box-sizing: border-box;
-      }
-
-      .card-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        grid-template-columns: 1fr;
-      }
-
-      .info-card {
-        width: 100% !important;
-        padding: 20px;
-        margin: 0;
-      }
-
-      .info-card h3 {
-        font-size: 16px;
-      }
-
-      .info-card p {
-        font-size: 12px;
-      }
-
-      .navbar-collapse {
-        max-width: 100%;
-      }
-
-      .mobile-menu-header {
-        padding: 15px;
-        background: #f8f9fa;
-        border-bottom: 1px solid #dee2e6;
-        margin: 0 0 10px 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .mobile-menu-close {
-        position: relative;
-        z-index: 9999;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #333;
-        padding: 10px;
-        cursor: pointer;
-      }
-
-      /* Mobile menu default hidden */
-      .mobile-menu {
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-      }
-
-      /* When opened */
-      .mobile-menu.open {
-        transform: translateX(0);
-      }
-    }
-
-    @media (max-width: 576px) {
-      .container {
-        padding: 15px 10px;
-      }
-
-      .left,
-      .right {
-        padding: 15px 10px !important;
-      }
-
-      .left h2,
-      .right h2 {
-        font-size: 20px;
-      }
-
-      input,
-      select {
-        font-size: 14px;
-        padding: 10px 12px;
-      }
-
-      .update-btn {
-        font-size: 15px;
-        padding: 12px;
-      }
-
-      .info-card {
-        padding: 15px;
-      }
-
-      .info-card h3 {
-        font-size: 15px;
-      }
-
-      .info-card p {
-        font-size: 11px;
-      }
-    }
-
-    /* Tablet responsive */
-    @media (min-width: 768px) and (max-width: 991px) {
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-
-      .container {
-        padding: 25px 20px;
-      }
-    }
-  </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -581,8 +50,6 @@
     }
 
     /* Mobile dropdown styling */
-
-
     .mobile-dropdown .dropdown-item {
       display: flex;
       align-items: center;
@@ -600,9 +67,438 @@
     }
   </style>
 
+  <!-- =====================================================
+       SIGNUP PAGE THEME (matches new Home page theme)
+       Mint/sky background, blue headings, yellow buttons,
+       Poppins font, rounded cards
+       ===================================================== -->
+  <style>
+    :root {
+      --rx-blue: #1a5fa8;
+      --rx-blue-dark: #0f3f7a;
+      --rx-navy: #001d4f;
+      --rx-sky: #6ec6f2;
+      --rx-yellow: #f5c242;
+      --rx-yellow-dark: #e4ac1f;
+      --rx-mint: #d9f2ea;
+      --rx-ice: #cfe4f3;
+      --rx-text: #1f3556;
+      --rx-border: #cfe3f2;
+    }
+
+    html,
+    body.signup-page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body.signup-page {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--rx-text);
+      background: linear-gradient(135deg, var(--rx-mint) 0%, var(--rx-ice) 100%);
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* soft yellow blob like the home page */
+    body.signup-page::before {
+      content: "";
+      position: fixed;
+      top: 120px;
+      right: -140px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: var(--rx-yellow);
+      opacity: .55;
+      z-index: -1;
+    }
+
+    body.signup-page::after {
+      content: "";
+      position: fixed;
+      bottom: -160px;
+      left: -120px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: var(--rx-sky);
+      opacity: .35;
+      z-index: -1;
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    .container.signup-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 95%;
+      max-width: 1300px;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      gap: 30px;
+      box-shadow: none;
+      margin: 35px auto 20px;
+      align-items: flex-start;
+    }
+
+    /* ===== LEFT CARD (User Information) ===== */
+    .signup-container .left {
+      flex: 1;
+      min-width: 320px;
+      background: #ffffff;
+      padding: 35px 32px;
+      border-radius: 28px;
+      box-shadow: 0 18px 45px rgba(26, 95, 168, 0.14);
+      border-top: 6px solid var(--rx-yellow);
+    }
+
+    .signup-container .left h2 {
+      text-align: center;
+      color: var(--rx-blue);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    /* ===== RIGHT PANEL (AI + Cards) ===== */
+    .signup-container .right {
+      flex: 1.3;
+      min-width: 320px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(6px);
+      padding: 35px 32px;
+      border-radius: 28px;
+      box-shadow: 0 18px 45px rgba(26, 95, 168, 0.14);
+      border-top: 6px solid var(--rx-sky);
+    }
+
+    .signup-container .right h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--rx-blue);
+      margin-bottom: 18px;
+    }
+
+    /* ===== FORM ELEMENTS ===== */
+    .signup-container .form-group {
+      margin-bottom: 18px;
+    }
+
+    .signup-container label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--rx-navy);
+    }
+
+    .signup-container .form-group label {
+      color: var(--rx-navy);
+    }
+
+    .signup-container input,
+    .signup-container select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1.5px solid var(--rx-border);
+      background: #f7fbff;
+      color: var(--rx-text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      transition: 0.3s ease;
+      box-sizing: border-box;
+      margin-bottom: 4px;
+    }
+
+    .signup-container input::placeholder {
+      color: #8aa0bd;
+    }
+
+    .signup-container input:focus,
+    .signup-container select:focus {
+      border-color: var(--rx-blue);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(110, 198, 242, 0.35);
+      outline: none;
+    }
+
+    .signup-container input[type="file"] {
+      padding: 9px 12px;
+      background: #fff;
+      border-style: dashed;
+      cursor: pointer;
+    }
+
+    .signup-container input[type="file"]::file-selector-button {
+      background: var(--rx-sky);
+      color: var(--rx-navy);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    /* ===== BUTTONS ===== */
+    .signup-container .update-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--rx-yellow);
+      color: var(--rx-navy);
+      border-radius: 40px;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      transition: 0.3s;
+      cursor: pointer;
+      box-sizing: border-box;
+      box-shadow: 0 8px 20px rgba(245, 194, 66, 0.45);
+    }
+
+    .signup-container .update-btn:hover {
+      background: var(--rx-yellow-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(245, 194, 66, 0.6);
+    }
+
+    #toggleCardsBtn {
+      background: var(--rx-sky);
+      box-shadow: 0 8px 20px rgba(110, 198, 242, 0.5);
+      max-width: 260px;
+    }
+
+    #toggleCardsBtn:hover {
+      background: #4db5ea;
+      box-shadow: 0 12px 26px rgba(110, 198, 242, 0.65);
+    }
+
+    /* ===== AI RESULT ===== */
+    #aiResult {
+      margin-top: 14px;
+      margin-bottom: 18px;
+      font-weight: 600;
+      color: var(--rx-blue) !important;
+      text-align: center;
+    }
+
+    #couponResult {
+      margin-top: 10px;
+      color: var(--rx-blue) !important;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* ===== FAMILY MEMBER BLOCKS ===== */
+    .signup-container .member-block {
+      background: #ffffff;
+      padding: 18px;
+      border: 1.5px solid var(--rx-border);
+      border-left: 5px solid var(--rx-yellow);
+      border-radius: 18px;
+      margin-top: 12px;
+    }
+
+    .signup-container .member-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--rx-blue);
+    }
+
+    /* ===== CARD GRID ===== */
+    .signup-container .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .signup-container .info-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 26px 20px;
+      text-align: center;
+      border: 2px solid transparent;
+      box-shadow: 0 10px 30px rgba(26, 95, 168, 0.12);
+      transition: 0.3s ease;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .signup-container .info-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--rx-yellow);
+      box-shadow: 0 16px 36px rgba(26, 95, 168, 0.22);
+    }
+
+    .signup-container .info-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--rx-blue);
+      margin-bottom: 8px;
+    }
+
+    .signup-container .info-card p {
+      font-size: 13px;
+      color: #5a6f8c;
+      margin-bottom: 6px;
+    }
+
+    .signup-container .info-card p strong {
+      color: var(--rx-navy);
+    }
+
+    .signup-container .highlight-card {
+      border-color: var(--rx-sky);
+      background: #eaf6fd;
+    }
+
+    .signup-container .info-card.selected {
+      background: linear-gradient(135deg, var(--rx-blue), var(--rx-blue-dark)) !important;
+      border-color: var(--rx-yellow);
+      color: #fff !important;
+    }
+
+    .signup-container .info-card.selected h3,
+    .signup-container .info-card.selected p,
+    .signup-container .info-card.selected p strong {
+      color: #fff !important;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 991px) {
+      body.signup-page::before {
+        width: 260px;
+        height: 260px;
+        right: -110px;
+      }
+
+      .container.signup-container {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 15px;
+        margin: 25px 0 10px;
+        gap: 22px;
+      }
+
+      .signup-container .left,
+      .signup-container .right {
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 25px 18px !important;
+        margin-bottom: 0;
+      }
+
+      .signup-container .left h2,
+      .signup-container .right h2 {
+        font-size: 22px;
+      }
+
+      .signup-container .card-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .signup-container .info-card {
+        width: 100% !important;
+        padding: 20px;
+        margin: 0;
+      }
+
+      .signup-container .info-card h3 {
+        font-size: 16px;
+      }
+
+      .signup-container .info-card p {
+        font-size: 12px;
+      }
+
+      .mobile-menu-header {
+        padding: 15px;
+        background: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        margin: 0 0 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-menu-close {
+        position: relative;
+        z-index: 9999;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #333;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .container.signup-container {
+        padding: 0 10px;
+      }
+
+      .signup-container .left,
+      .signup-container .right {
+        padding: 22px 14px !important;
+        border-radius: 22px;
+      }
+
+      .signup-container .left h2,
+      .signup-container .right h2 {
+        font-size: 20px;
+      }
+
+      .signup-container input,
+      .signup-container select {
+        font-size: 14px;
+        padding: 10px 12px;
+      }
+
+      .signup-container .update-btn {
+        font-size: 15px;
+        padding: 12px;
+      }
+
+      .signup-container .info-card {
+        padding: 15px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      .signup-container .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+  </style>
+
 </head>
 
-<body>
+<body class="signup-page">
       <header class="header-modern">
         <link rel="stylesheet" href="header-modern.css" />
 
@@ -826,7 +722,7 @@
     }
   </style>
 
-  <div class="container">
+  <div class="container signup-container">
     <div class="left">
       <form id="signupForm" method="POST" action="signup.php" enctype="multipart/form-data"
         onsubmit="return validateForm()">
@@ -853,7 +749,7 @@
   <div style="position:relative;">
     <input type="password" name="password" id="password" placeholder="Enter your password" required>
     <i class="fas fa-eye" id="togglePassword" 
-       style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer;"></i>
+       style="position:absolute; right:14px; top:50%; transform:translateY(-50%); cursor:pointer; color:#1a5fa8;"></i>
   </div>
 </div>
 
