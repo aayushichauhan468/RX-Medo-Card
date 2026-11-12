@@ -118,3 +118,545 @@ input:focus,select:focus,textarea:focus{border-color:var(--rx-sky)!important;box
 .btn-ghost{background:var(--rx-sky)!important;color:var(--rx-ink)!important;border:0!important;border-radius:999px!important;font-weight:800!important}
 :is(.hero-modern,.hero-family-section,.hero-bright) :is(.benefit-tab,.benefit-pill) i{color:var(--rx-green)!important}
 :is(.expert-zone,.benefits-area,.why-section,.why-family-section,.benefits-section,.offer-section,.partners-section,.benefits-cta){background:transparent!important}
+
+/* 1. Offer box: move ticks and button inside the grid */
+.offer-section .offer-price-box {
+  padding: 30px 32px !important;
+}
+.offer-section .offer-features-list {
+  padding: 0 !important;
+}
+.offer-section .offer-features-list li {
+  padding-left: 4px !important;
+}
+
+/* 2. "Why Choose Us" heading bar: make text visible */
+.benefits-section .benefits-heading-bar .section-title-modern {
+  color: #ffffff !important;
+}
+.benefits-section .benefits-heading-bar .section-title-modern .highlight {
+  background: none !important;
+  -webkit-text-fill-color: #7fd8ff !important;
+  color: #7fd8ff !important;
+}
+.benefits-section .benefits-heading-bar .section-title-modern .highlight-warm {
+  background: none !important;
+  -webkit-text-fill-color: #ffd45e !important;
+  color: #ffd45e !important;
+}
+.benefits-section .benefits-heading-bar .section-desc {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.benefits-section .benefits-heading-bar .heading-stat h4 {
+  color: #ffffff !important;
+}
+.benefits-section .benefits-heading-bar .heading-stat h4 span {
+  color: #7fd8ff !important;
+}
+.benefits-section .benefits-heading-bar .heading-stat p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 3. "Ready to Start Saving" banner: white text was invisible on the light background */
+.benefits-section .benefits-cta p {
+  color: #2c426b !important;
+  opacity: 1 !important;
+}
+
+/* 1. Price box: shrink to fit, remove the empty white wrapper */
+.hero-card-section .hero-price-container {
+  display: inline-flex !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.hero-card-section .price-box {
+  width: fit-content !important;
+  padding: 22px 38px !important;
+}
+
+/* 2. Card: same design as the Rx Medo Card, no flip (the back side was blank) */
+.hero-card-section .card-3d-container {
+  width: 500px !important;
+  max-width: 100% !important;
+  aspect-ratio: 1.5 / 1 !important;
+}
+.hero-card-section .card-3d {
+  overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.hero-card-section .card-3d-container:hover .card-front,
+.hero-card-section .card-3d-container.flipped .card-front {
+  transform: rotateY(0deg) !important;
+}
+.hero-card-section .card-back,
+.hero-card-section .card-glow,
+.hero-card-section .flip-indicator {
+  display: none !important;
+}
+.hero-card-section .card-3d .rx-card {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+/* stop the page's generic "img fills the box" rule from stretching the logo */
+.hero-card-section .card-3d .rx-card img,
+.hero-card-section .card-3d .rx-card__logo {
+  width: 58px !important;
+  height: 58px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  background: #ffffff !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  flex-shrink: 0 !important;
+}
+.hero-card-section .card-3d .rx-card__name {
+  white-space: nowrap !important;
+}
+
+/* 3. "Exclusive Card Benefits" heading: visible on the dark blue background */
+.benefits-section .section-header h2 {
+  background: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.benefits-section .section-header p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 4. Insurance section: space inside the box and readable text */
+.insurance-highlight .insurance-content {
+  padding: 44px 48px !important;
+  gap: 48px !important;
+}
+.insurance-highlight .insurance-text h2 {
+  background: none !important;
+  color: #1b2b50 !important;
+  -webkit-text-fill-color: #1b2b50 !important;
+  margin-bottom: 16px !important;
+}
+.insurance-highlight .insurance-text p {
+  color: #2c426b !important;
+  opacity: 1 !important;
+}
+.insurance-highlight .amount-details h3 {
+  color: #1b2b50 !important;
+  -webkit-text-fill-color: #1b2b50 !important;
+}
+.insurance-highlight .amount-details p {
+  color: #2c426b !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .hero-card-section .card-3d-container { width: 100% !important; }
+  .insurance-highlight .insurance-content { padding: 28px 22px !important; }
+}
+
+/* ===== Card: same design as Rx Medo Card, no flip ===== */
+.card-3d-container {
+  width: 500px !important;
+  max-width: 100% !important;
+  aspect-ratio: 1.5 / 1 !important;
+  margin-bottom: 30px !important;
+}
+.card-3d {
+  overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.card-3d-container:hover .card-front,
+.card-3d-container.flipped .card-front {
+  transform: rotateY(0deg) !important;
+}
+.card-back,
+.card-glow,
+.flip-indicator {
+  display: none !important;
+}
+.card-3d .rx-card {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+.card-3d .rx-card img,
+.card-3d .rx-card__logo {
+  width: 58px !important;
+  height: 58px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  background: #ffffff !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  flex-shrink: 0 !important;
+}
+.card-3d .rx-card__name {
+  white-space: nowrap !important;
+}
+
+/* ===== White text on the light background: make it readable ===== */
+.insurance-highlight h2,
+.insurance-highlight h3,
+.insurance-highlight h4,
+[class*="protection"] h2,
+[class*="protection"] h3,
+[class*="protection"] h4 {
+  color: #1b2b50 !important;
+  -webkit-text-fill-color: #1b2b50 !important;
+  background: none !important;
+}
+.insurance-highlight p,
+.insurance-highlight span,
+[class*="protection"] p,
+[class*="protection"] span,
+.insurance-text p,
+.insurance-feature p,
+.amount-details p,
+.hero-card-section [class*="member"] p,
+.hero-card-section [class*="member"] span,
+.hero-card-section [class*="cover"] p,
+.hero-card-section [class*="cover"] span {
+  color: #2c426b !important;
+  -webkit-text-fill-color: #2c426b !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .card-3d-container { width: 100% !important; }
+}
+
+.floating-btn {
+  display: none !important;
+}
+
+.benefits-section .section-header h2 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+}
+.benefits-section .section-header p {
+  color: rgba(255, 255, 255, 0.92) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+  opacity: 1 !important;
+}
+
+
+/* ===== Hero: compact so everything fits on one screen ===== */
+.mega-hero {
+  min-height: auto !important;
+  padding: 120px 0 50px !important;
+}
+.mega-hero .hero-top-badge {
+  margin-bottom: 18px !important;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.mega-hero .hero-main-grid {
+  gap: 40px !important;
+  align-items: center !important;
+}
+.mega-hero .hero-title {
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem) !important;
+  margin-bottom: 12px !important;
+  line-height: 1.15 !important;
+}
+.mega-hero .hero-subtitle {
+  font-size: 0.98rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 18px !important;
+}
+.mega-hero .hero-price-box {
+  padding: 16px 22px !important;
+  margin-bottom: 18px !important;
+}
+.mega-hero .price-label { font-size: 0.8rem !important; margin-bottom: 2px !important; }
+.mega-hero .price-currency { font-size: 1.3rem !important; }
+.mega-hero .price-amount { font-size: 2.6rem !important; }
+.mega-hero .price-validity { padding: 8px 16px !important; }
+.mega-hero .validity-label { font-size: 0.7rem !important; }
+.mega-hero .validity-date { font-size: 1.05rem !important; }
+.mega-hero .hero-quick-stats {
+  gap: 10px !important;
+  margin-bottom: 18px !important;
+}
+.mega-hero .quick-stat { padding: 12px 8px !important; }
+.mega-hero .quick-stat-icon {
+  width: 34px !important;
+  height: 34px !important;
+  margin-bottom: 6px !important;
+  font-size: 0.95rem !important;
+}
+.mega-hero .quick-stat-value { font-size: 1.2rem !important; margin-bottom: 2px !important; }
+.mega-hero .quick-stat-label { font-size: 0.62rem !important; }
+.mega-hero .btn-hero-primary,
+.mega-hero .btn-hero-secondary {
+  padding: 12px 28px !important;
+  font-size: 0.95rem !important;
+}
+
+/* ===== Card: same design as Rx Medo Card, no flip ===== */
+.mega-hero .card-stack { max-width: 460px !important; }
+.mega-hero .card-wrapper { aspect-ratio: 1.5 / 1 !important; }
+.mega-hero .card-face {
+  overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+.mega-hero .card-front { opacity: 1 !important; z-index: 2 !important; }
+.mega-hero .card-back,
+.mega-hero .card-glow,
+.mega-hero .card-nav,
+.mega-hero .card-label { display: none !important; }
+.mega-hero .card-face .rx-card {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+.mega-hero .card-face .rx-card img,
+.mega-hero .card-face .rx-card__logo {
+  width: 58px !important;
+  height: 58px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  background: #ffffff !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  flex-shrink: 0 !important;
+}
+.mega-hero .card-face .rx-card__name { white-space: nowrap !important; }
+
+/* ===== Features: 3 cards per row (3 + 3) ===== */
+.mega-hero .hero-features-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+@media (max-width: 991px) {
+  .mega-hero .hero-features-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 768px) {
+  .mega-hero .hero-features-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ===== Bottom "Ready to Protect Your Family?" box: bigger ===== */
+.cta-section .cta-content {
+  max-width: 1000px !important;
+  width: 92% !important;
+  padding: 56px 60px !important;
+  box-sizing: border-box !important;
+}
+.cta-section .cta-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+  margin-bottom: 16px !important;
+}
+.cta-section .cta-description {
+  font-size: 1.05rem !important;
+  margin-bottom: 30px !important;
+}
+@media (max-width: 767px) {
+  .cta-section .cta-content { padding: 36px 22px !important; }
+}
+
+
+/* ===== Stats band: 4 in one row, boxes with comfortable padding ===== */
+.stats-bar,
+.stats-strip {
+  padding: 28px 20px !important;
+}
+
+.stats-inner,
+.stats-flex {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 24px !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+}
+
+.stats-inner .stat-block,
+.stats-flex .stat-box {
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  padding: 22px 30px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+
+.stats-inner .stat-value,
+.stats-flex .stat-val {
+  font-size: 1.9rem !important;
+  line-height: 1.15 !important;
+}
+
+.stats-inner .stat-label,
+.stats-flex .stat-lbl {
+  font-size: 0.85rem !important;
+  margin-top: 6px !important;
+}
+
+@media (max-width: 767px) {
+  .stats-inner,
+  .stats-flex {
+    flex-wrap: wrap !important;
+  }
+  .stats-inner .stat-block,
+  .stats-flex .stat-box {
+    flex: 1 1 40% !important;
+  }
+}
+
+/* ===== 1. Section headings + subtitles: readable on light background ===== */
+.section-main-title {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.section-main-title span {
+  /* keeps the gradient on "RX Medo SeniorShield" */
+  -webkit-text-fill-color: transparent !important;
+}
+.section-desc {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  opacity: 1 !important;
+}
+
+/* ===== 2. CTA box ("Ready to Protect Your Health?"): padding + readable text ===== */
+.cta-content {
+  padding: 48px 56px !important;
+  max-width: 900px !important;
+  box-sizing: border-box !important;
+}
+.cta-content h2 {
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+}
+.cta-content p {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  opacity: 1 !important;
+  margin-bottom: 28px !important;
+}
+.cta-buttons {
+  gap: 16px !important;
+}
+
+@media (max-width: 576px) {
+  .cta-content { padding: 32px 20px !important; }
+}
+/* ===== Force dark, readable headings + subtitles ===== */
+body .benefits-section .section-header .section-main-title,
+body .how-it-works .section-header .section-main-title,
+body .why-choose .section-header .section-main-title,
+body section .section-header h2.section-main-title {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* keep the coloured gradient part (RX Medo SeniorShield) */
+body section .section-header h2.section-main-title span {
+  -webkit-text-fill-color: transparent !important;
+}
+
+body .benefits-section .section-header .section-desc,
+body .how-it-works .section-header .section-desc,
+body .why-choose .section-header .section-desc,
+body section .section-header p.section-desc {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* ===== 1. Trust bar: 5 boxes with more padding ===== */
+body .trust-bar {
+  padding: 28px 20px !important;
+}
+body .trust-bar .trust-bar-inner {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+body .trust-bar .trust-bar-inner .trust-item {
+  padding: 14px 28px !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* ===== 2. Dark "Why Choose Us" bar: make the paragraph light ===== */
+body .benefits-section .benefits-heading-bar .section-desc {
+  color: rgba(255, 255, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.88) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* ===== YoungShield stats band: boxes with more padding ===== */
+body .metrics-bar {
+  padding: 28px 20px !important;
+}
+body .metrics-bar .metrics-flex {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 24px !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+}
+body .metrics-bar .metrics-flex .metric {
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  padding: 20px 30px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  overflow: visible !important;
+}
+body .metrics-bar .metric-val {
+  font-size: 1.9rem !important;
+  line-height: 1.2 !important;
+}
+body .metrics-bar .metric-lbl {
+  font-size: 0.85rem !important;
+  margin-top: 6px !important;
+}
+
+@media (max-width: 767px) {
+  body .metrics-bar .metrics-flex { flex-wrap: wrap !important; }
+  body .metrics-bar .metrics-flex .metric { flex: 1 1 40% !important; }
+}
+
+/* ===== All card pages: original card shape, logo kept small so nothing is cut ===== */
+.rx-card .rx-card__logo,
+.rx-card img {
+  width: 2.7em !important;
+  height: 2.7em !important;
+  max-width: none !important;
+  max-height: none !important;
+  flex: none !important;
+  object-fit: contain !important;
+  background: #fff !important;
+  border-radius: 50% !important;
+  padding: 0.2em !important;
+}
+
+.rx-card {
+  aspect-ratio: 1.586 / 1 !important;   /* original card shape */
+  height: auto !important;
+  min-height: 0 !important;
+  gap: 0.4em !important;
+  padding: 1.1em 1.4em 1em !important;
+}

@@ -2310,7 +2310,7 @@
                             <div class="original-price">₹20,000</div>
                             <div class="price-label">Special Offer Price</div>
                             <div class="price-amount">₹8,000</div>
-                            <div class="price-validity">Valid till June 2026</div>
+                            <div class="price-validity">Valid till Dec 2026</div>
                         </div>
     
                         <div class="hero-features">
@@ -2778,6 +2778,52 @@ var els=[].slice.call(document.querySelectorAll(s)).filter(function(e){return !/
 if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('rx-in');io.unobserve(x.target)}})},{threshold:.12});
 els.forEach(function(e,i){e.classList.add('rx-pre');e.style.transitionDelay=(i%4)*90+'ms';io.observe(e)})})();
+</script>
+
+
+<script>
+(function () {
+  function rgb(str) {
+    var m = str && str.match(/rgba?\(([^)]+)\)/);
+    if (!m) return null;
+    var p = m[1].split(',').map(parseFloat);
+    return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 };
+  }
+  function lum(c) { return (0.299 * c.r + 0.587 * c.g + 0.114 * c.b) / 255; }
+
+  function backdropIsDark(el) {
+    for (var n = el.parentElement; n; n = n.parentElement) {
+      var cs = getComputedStyle(n);
+      var bg = rgb(cs.backgroundColor);
+      if (bg && bg.a > 0.6) return lum(bg) < 0.45;
+      if (cs.backgroundImage && cs.backgroundImage.indexOf('gradient') > -1) {
+        var g = rgb(cs.backgroundImage);
+        if (g && g.a > 0.5) return lum(g) < 0.45;
+      }
+    }
+    return false;
+  }
+
+  function fix() {
+    document.querySelectorAll('body *').forEach(function (el) {
+      if (el.closest('a, button, .rx-card, .navbar, header, footer, #siteFooterMount, .floating-btn, .section-header')) return;
+      var hasText = Array.prototype.some.call(el.childNodes, function (n) {
+        return n.nodeType === 3 && n.textContent.trim();
+      });
+      if (!hasText) return;
+      var c = rgb(getComputedStyle(el).color);
+      if (!c || Math.min(c.r, c.g, c.b) < 200) return;   // not whitish
+      if (backdropIsDark(el)) return;                     // white is correct on dark
+      var dark = /^H[1-6]$/.test(el.tagName) || getComputedStyle(el).fontWeight >= 600;
+      var col = dark ? '#1b2b50' : '#2c426b';
+      el.style.setProperty('color', col, 'important');
+      el.style.setProperty('-webkit-text-fill-color', col, 'important');
+      el.style.setProperty('opacity', '1', 'important');
+    });
+  }
+
+  window.addEventListener('load', function () { fix(); setTimeout(fix, 600); });
+})();
 </script>
 </body>
 

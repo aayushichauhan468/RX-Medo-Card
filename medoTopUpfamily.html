@@ -1561,7 +1561,7 @@
                             <div class="price-validity">
                                 <p class="validity-label">Valid Until</p>
                                 <p class="validity-date">
-                                    <i class="fas fa-calendar-check me-2"></i>June 2026
+                                    <i class="fas fa-calendar-check me-2"></i>Dec 2026
                                 </p>
                             </div>
                         </div>
@@ -2021,6 +2021,30 @@ var els=[].slice.call(document.querySelectorAll(s)).filter(function(e){return !/
 if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('rx-in');io.unobserve(x.target)}})},{threshold:.12});
 els.forEach(function(e,i){e.classList.add('rx-pre');e.style.transitionDelay=(i%4)*90+'ms';io.observe(e)})})();
+</script>
+
+<script>
+(function () {
+  function paint(el, color) {
+    el.style.setProperty('color', color, 'important');
+    el.style.setProperty('-webkit-text-fill-color', color, 'important');
+    el.style.setProperty('background', 'none', 'important');
+    el.style.setProperty('opacity', '1', 'important');
+  }
+  function fix() {
+    document.querySelectorAll('.benefits-section .section-header, .discount-section .section-header')
+      .forEach(function (h) {
+        h.querySelectorAll('.section-title').forEach(function (t) { paint(t, '#1b2b50'); });
+        h.querySelectorAll('.section-title span').forEach(function (s) { paint(s, '#0b5cd5'); });
+        h.querySelectorAll('.section-description').forEach(function (p) { paint(p, '#2c426b'); });
+        h.querySelectorAll('.section-badge').forEach(function (b) {
+          b.style.setProperty('color', '#1b2b50', 'important');
+          b.style.setProperty('background', '#ffffff', 'important');
+        });
+      });
+  }
+  window.addEventListener('load', function () { fix(); setTimeout(fix, 500); setTimeout(fix, 1500); });
+})();
 </script>
 </body> 
 
