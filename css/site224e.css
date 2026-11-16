@@ -32,8 +32,10 @@ body {
 /* Responsive container adjustments */
 @media (max-width: 767px) {
   .container {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 

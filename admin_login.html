@@ -111,17 +111,27 @@
       }
 
       @media (max-width: 850px) {
+        body {
+          height: auto;
+          min-height: 100vh;
+          overflow-y: auto;
+          padding: 24px 12px;
+          box-sizing: border-box;
+        }
+
         .container-box {
           flex-direction: column;
-          width: 92%;
+          width: 100%;
+          max-width: 500px;
+          margin: auto;
         }
 
         .left-panel {
-          padding: 40px 30px;
+          padding: 30px 20px;
         }
 
         .right-panel {
-          padding: 40px 30px;
+          padding: 30px 20px;
         }
       }
     </style>

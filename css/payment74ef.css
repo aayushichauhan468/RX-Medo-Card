@@ -48,7 +48,7 @@
 }
 
 @media (max-width: 991.98px) {
-    .payment-page, .container, .payment-container {
+    .payment-page .container, .payment-container {
         
         max-width: 100vw !important;
         margin: 0 !important;

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Registration Form</title>
     <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
       body {
         font-family: "Poppins", sans-serif;
         background: linear-gradient(135deg, #e3f2fd, #bbdefb);
@@ -13,6 +16,7 @@
         align-items: center;
         min-height: 100vh;
         margin: 0;
+        padding: 20px 14px;
       }
       .form-box {
         background: #fff;
@@ -21,6 +25,11 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         width: 100%;
         max-width: 500px;
+      }
+      @media (max-width: 480px) {
+        .form-box {
+          padding: 24px 16px;
+        }
       }
       h2 {
         text-align: center;

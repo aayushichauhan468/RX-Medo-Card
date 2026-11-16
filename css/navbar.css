@@ -414,27 +414,163 @@ body {
   }
 }
 
-/* Responsive Rules for intermediate desktop / tablet landscape (992px - 1240px) */
-@media (max-width: 1240px) and (min-width: 992px) {
-  .site-nav-links > li > a,
-  .site-nav-dropdown {
-    padding: 0.44rem 0.55rem !important;
-    font-size: 0.80rem !important;
-    gap: 0.30rem !important;
+/* Responsive Rules for intermediate desktop / tablet landscape (992px - 1420px) */
+@media (max-width: 1420px) and (min-width: 1261px) {
+  .header-modern,
+  #siteHeader {
+    padding: 12px 16px 0 !important;
   }
-  .site-nav-links > li > a i,
-  .site-nav-dropdown i {
-    font-size: 0.80rem !important;
+  .header-modern .navbar-pill,
+  .header-modern .navbar-modern {
+    padding: 7px 16px 7px 14px !important;
   }
-  .nav-actions-wrapper a {
-    padding: 0.44rem 0.85rem !important;
-    font-size: 0.80rem !important;
+  .header-modern .navbar-brand {
+    margin: 0 0.65rem 0 0 !important;
   }
   .logo-text {
-    font-size: 1.02rem !important;
+    font-size: 1.08rem !important;
   }
   .logo-subtitle {
     font-size: 0.50rem !important;
+  }
+  .site-nav-links {
+    gap: 0.15rem !important;
+  }
+  .site-nav-links > li > a,
+  .site-nav-dropdown {
+    padding: 0.46rem 0.56rem !important;
+    font-size: 0.84rem !important;
+    gap: 0.32rem !important;
+  }
+  .site-nav-links > li > a.active,
+  .site-nav-dropdown.active {
+    padding: 0.46rem 0.82rem !important;
+  }
+  .nav-actions-wrapper {
+    gap: 0.45rem !important;
+    margin-left: 0.50rem !important;
+  }
+  .nav-actions-wrapper a {
+    padding: 0.46rem 0.95rem !important;
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1101px) {
+  .header-modern,
+  #siteHeader {
+    padding: 10px 12px 0 !important;
+  }
+  .header-modern .navbar-pill,
+  .header-modern .navbar-modern {
+    padding: 6px 14px 6px 10px !important;
+  }
+  .logo-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .logo-image {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .logo-with-icon {
+    gap: 0.50rem !important;
+  }
+  .header-modern .navbar-brand {
+    margin: 0 0.45rem 0 0 !important;
+  }
+  .logo-text {
+    font-size: 1.00rem !important;
+  }
+  .logo-subtitle {
+    font-size: 0.46rem !important;
+    letter-spacing: 0.3px !important;
+  }
+  .site-nav-links {
+    gap: 0.10rem !important;
+  }
+  .site-nav-links > li > a,
+  .site-nav-dropdown {
+    padding: 0.42rem 0.42rem !important;
+    font-size: 0.78rem !important;
+    gap: 0.24rem !important;
+  }
+  .site-nav-links > li > a i,
+  .site-nav-dropdown i {
+    font-size: 0.78rem !important;
+  }
+  .site-nav-links > li > a.active,
+  .site-nav-dropdown.active {
+    padding: 0.42rem 0.65rem !important;
+  }
+  .nav-actions-wrapper {
+    gap: 0.35rem !important;
+    margin-left: 0.40rem !important;
+  }
+  .nav-actions-wrapper a {
+    padding: 0.44rem 0.80rem !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 992px) {
+  .header-modern,
+  #siteHeader {
+    padding: 8px 10px 0 !important;
+  }
+  .header-modern .navbar-pill,
+  .header-modern .navbar-modern {
+    padding: 5px 10px 5px 8px !important;
+  }
+  .logo-icon {
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .logo-image {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .logo-with-icon {
+    gap: 0.40rem !important;
+  }
+  .header-modern .navbar-brand {
+    margin: 0 0.30rem 0 0 !important;
+  }
+  .logo-text {
+    font-size: 0.92rem !important;
+  }
+  .logo-subtitle {
+    font-size: 0.42rem !important;
+    letter-spacing: 0.1px !important;
+  }
+  .site-nav-links {
+    gap: 0.05rem !important;
+  }
+  .site-nav-links > li > a,
+  .site-nav-dropdown {
+    padding: 0.38rem 0.28rem !important;
+    font-size: 0.73rem !important;
+    gap: 0.18rem !important;
+  }
+  .site-nav-links > li > a i,
+  .site-nav-dropdown i {
+    font-size: 0.72rem !important;
+  }
+  .nav-dropdown-arrow {
+    font-size: 0.50rem !important;
+    margin-left: 1px !important;
+  }
+  .site-nav-links > li > a.active,
+  .site-nav-dropdown.active {
+    padding: 0.38rem 0.48rem !important;
+  }
+  .nav-actions-wrapper {
+    gap: 0.25rem !important;
+    margin-left: 0.25rem !important;
+  }
+  .nav-actions-wrapper a {
+    padding: 0.38rem 0.62rem !important;
+    font-size: 0.72rem !important;
   }
 }
 

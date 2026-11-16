@@ -167,6 +167,46 @@ body {
   }
 }
 
+@media (max-width: 1200px) and (min-width: 992px) {
+  .header-modern .logo-image {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .header-modern .logo-text {
+    font-size: 1.15rem !important;
+  }
+  .header-modern .logo-subtitle {
+    font-size: 0.44rem !important;
+  }
+  .header-modern .navbar-brand {
+    margin-right: 6px !important;
+  }
+  .header-modern .navbar-nav {
+    margin: 0 4px !important;
+    gap: 1px !important;
+  }
+  .header-modern .navbar-nav .nav-link {
+    padding: 2px 2px !important;
+  }
+  .header-modern .mobile-item {
+    padding: 5px 6px !important;
+    gap: 3px !important;
+  }
+  .header-modern .mobile-item span {
+    font-size: 0.74rem !important;
+  }
+  .header-modern .mobile-item i {
+    font-size: 0.78rem !important;
+  }
+  .header-modern .navbar-collapse > .ms-auto {
+    margin-left: 4px !important;
+  }
+  .header-modern .get-card-btn {
+    padding: 6px 10px !important;
+    font-size: 0.74rem !important;
+  }
+}
+
 /* active page = yellow pill */
 .header-modern .nav-link.active .mobile-item,
 .header-modern .mobile-item.active {
