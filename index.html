@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="css/form-styles8a13.css?v=zSAznF140rYcoTXwiAallK5gfUGB-VZGQL5zlOPTsJc" />
     <link rel="stylesheet" href="css/payment74ef.css?v=UCYk3iwqqX5W-Yi1G0g64c9kO3HQ5mHH7HOkLoNJ27s" />
     <link rel="stylesheet" href="css/membership-cardc6be.css?v=OxEHaafmd6dRia_Nj4k-Pnj_pMPtI3syy_2E65R656I" />
-    <link rel="stylesheet" href="css/navbar-toggle-fix.html" />
+    <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/mobile-menu4616.css?v=p4MnaAuXFpNys3AG04iB5aLCbvv4A-mY2_X2xe5iaGk" />
     <link rel="stylesheet" href="css/desktop-navbare91c.css?v=g0YoDaVHWq81kNpZbEqnO5fJcuF2R9YHdGKBIxqOYB4" />
     <link rel="stylesheet" href="RxMedoWeb.styles62d4.css?v=N9Re2D58oUQbSd4-jRhQLvwzv_lN0Gc1E-wUmfruPf4" />
@@ -89,7 +89,7 @@
 </script>
     <style>
         /* Hide original dropdown on mobile */
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
             .desktop-dropdown {
                 display: none !important;
             }
@@ -100,7 +100,7 @@
         }
 
         /* Hide new dropdown on desktop */
-        @media (min-width: 769px) {
+        @media (min-width: 992px) {
             .mobile-dropdown {
                 display: none !important;
             }
@@ -418,199 +418,6 @@
         .btn-secondary:hover,
         .btn-warning:hover {
             filter: brightness(.95);
-        }
-
-        /* ---------- Floating pill navbar (one line) ---------- */
-        .header-modern {
-            position: fixed !important;
-            top: 12px;
-            left: 0;
-            right: 0;
-            z-index: 1030;
-            background: transparent !important;
-            border: 0 !important;
-            box-shadow: none !important;
-            padding: 0 16px;
-            pointer-events: none;
-        }
-
-        .header-modern .navbar-modern,
-        .header-modern.is-scrolled .navbar-modern {
-            pointer-events: auto;
-            width: 96vw;
-            max-width: 1600px;
-            margin: 0 auto;
-            background: var(--rx-nav-bg) !important;
-            -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, .45);
-            border-radius: 999px;
-            box-shadow: 0 8px 28px rgba(20, 38, 79, .14);
-            padding: 4px 14px !important;
-            transition: box-shadow .3s ease;
-        }
-
-        .header-modern.is-scrolled .navbar-modern {
-            box-shadow: 0 12px 34px rgba(20, 38, 79, .22);
-        }
-
-        /* equal space on the left (logo) and on the right (Login) */
-        .header-modern .navbar-modern>.container-fluid {
-            padding-left: 22px !important;
-            padding-right: 22px !important;
-        }
-
-        .header-modern .navbar-collapse {
-            min-width: 0;
-        }
-
-        .header-modern .navbar-collapse>.ms-auto:last-child {
-            margin-right: 0 !important;
-            padding-right: 0 !important;
-        }
-
-        /* logo */
-        .header-modern .navbar-brand {
-            flex: none !important;
-            margin: 0 12px 0 0 !important;
-            padding: 0 !important;
-        }
-
-        .header-modern .logo-with-icon,
-        .header-modern .logo-icon {
-            margin-left: 0 !important;
-            padding-left: 0 !important;
-        }
-
-        .header-modern .logo-image {
-            width: 56px !important;
-            height: 56px !important;
-            box-sizing: border-box;
-            padding: 4px;
-            background: #FFFFFF;
-            border-radius: 50%;
-            object-fit: contain;
-            box-shadow: 0 2px 10px rgba(20, 38, 79, .22);
-        }
-
-        .header-modern .logo-text {
-            font-size: 1.05rem !important;
-            line-height: 1.1 !important;
-            color: var(--rx-blue-text) !important;
-        }
-
-        .header-modern .logo-subtitle {
-            font-size: .52rem !important;
-            letter-spacing: .6px !important;
-            line-height: 1.2 !important;
-            white-space: nowrap;
-            color: #145C47 !important;
-        }
-
-        @media (min-width:992px) {
-            .header-modern .navbar-nav {
-                flex-direction: row !important;
-                flex-wrap: nowrap !important;
-                width: auto !important;
-                flex: 1 1 auto;
-                justify-content: center;
-                align-items: center;
-                gap: 2px;
-                margin: 0 12px !important;
-                min-width: 0;
-            }
-
-            .header-modern .navbar-nav>.nav-item {
-                margin: 0 !important;
-            }
-
-            /* removes the inline margin-top on Hospitals */
-            .header-modern .navbar-nav .nav-link {
-                padding: 4px 4px !important;
-                white-space: nowrap;
-                line-height: 1.2;
-            }
-
-            .header-modern .mobile-item {
-                display: inline-flex !important;
-                align-items: center;
-                gap: 5px !important;
-                padding: 6px 9px !important;
-                border-radius: 999px;
-                border: 0 !important;
-                box-shadow: none !important;
-                transition: background .2s ease;
-            }
-
-            .header-modern .mobile-item span {
-                font-size: .82rem !important;
-                line-height: 1.2;
-            }
-
-            .header-modern .mobile-item i {
-                font-size: .9rem !important;
-            }
-
-            .header-modern .nav-link:hover .mobile-item {
-                background: var(--rx-mint-soft);
-            }
-
-            .header-modern .navbar-collapse>.ms-auto {
-                margin-left: 8px !important;
-                flex: none;
-            }
-
-            .header-modern .get-card-btn {
-                padding: 7px 15px !important;
-                font-size: .82rem !important;
-                white-space: nowrap;
-            }
-        }
-
-        /* remove the pink box behind links */
-        .header-modern .navbar-nav .nav-link,
-        .header-modern .navbar-nav .nav-link.active,
-        .header-modern .navbar-nav .nav-link:focus {
-            background: transparent !important;
-            box-shadow: none !important;
-        }
-
-        /* active page = yellow pill */
-        .header-modern .nav-link.active .mobile-item,
-        .header-modern .mobile-item.active {
-            background: var(--rx-yellow) !important;
-            color: var(--rx-ink) !important;
-        }
-
-        .header-modern .nav-link.active::after,
-        .header-modern .nav-link.active::before {
-            display: none !important;
-        }
-
-        .header-modern .mobile-item i {
-            color: var(--rx-ink) !important;
-        }
-
-        /* Get Your Card = yellow, Login = sky */
-        .header-modern a.get-card-btn {
-            border-radius: 999px !important;
-            font-weight: 800 !important;
-            color: #14264F !important;
-            box-shadow: none !important;
-        }
-
-        .header-modern a.get-card-btn[href="signup.html"] {
-            background: var(--rx-yellow) !important;
-        }
-
-        .header-modern a.get-card-btn[href="login.html"] {
-            background: var(--rx-sky) !important;
-        }
-
-        @media (max-width:991px) {
-            .header-modern .navbar-modern {
-                border-radius: 28px;
-            }
         }
 
         /* ---------- STATIC hero ---------- */
@@ -1601,99 +1408,337 @@
             display: none !important;
         }
 
-        .adsense-container{ display:none !important; }
+        .adsense-container {
+            display: none !important;
+        }
 
 
         /* ===== Rx MedoCard (compact, matches hero theme: mint + yellow + sky) ===== */
-.rx-hero__side--left{ left:34px; bottom:26px; width:clamp(300px,21vw,350px); }
-.rx-card{
-  font-size:clamp(11px,.8vw,13px);
-  position:relative; overflow:hidden; aspect-ratio:1.586/1; min-height:0;
-  padding:1.2em 1.5em 1.1em; border-radius:1.6em; color:#14264F;
-  display:flex; flex-direction:column; justify-content:space-between;
-  background:
-    radial-gradient(circle at 100% 0%, rgba(124,196,238,.55) 0 22%, transparent 22.5%),
-    radial-gradient(circle at 0% 100%, rgba(30,158,122,.18) 0 26%, transparent 26.5%),
-    linear-gradient(140deg,#BEE8DE 0%,#d8f3ec 40%,#fbf397 85%,#EFE15C 100%);
-  border:1.5px solid rgba(255,255,255,.85);
-  box-shadow:0 16px 36px rgba(20,38,79,.28), inset 0 1px 0 #fff;
-  transform:rotate(-3deg);
-  animation:rxCardFloat 5s ease-in-out infinite;
-}
-@keyframes rxCardFloat{ 0%,100%{ transform:rotate(-3deg) translateY(0); } 50%{ transform:rotate(-3deg) translateY(-8px); } }
-.rx-card::before{
-  content:""; position:absolute; top:0; left:0; right:0; bottom:auto; height:4px; font-size:0; line-height:0;
-  background:linear-gradient(90deg,#1E9E7A,#EFE15C);
-}
-.rx-card::after{
-  content:""; position:absolute; top:-30%; left:-70%; width:30%; height:160%; pointer-events:none;
-  background:linear-gradient(105deg,transparent,rgba(255,255,255,.65),transparent);
-  transform:skewX(-22deg); animation:rxCardShine 5.5s ease-in-out infinite;
-}
-@keyframes rxCardShine{ 0%{ left:-70%; } 45%,100%{ left:140%; } }
-.rx-card > *{ position:relative; z-index:1; }
-.rx-card__top{ display:flex; align-items:center; justify-content:space-between; }
-.rx-card__brand{ display:flex; align-items:center; gap:.7em; }
-.rx-card__logo{ width:2.7em; height:2.7em; border-radius:50%; background:#fff; padding:.2em; object-fit:contain; box-shadow:0 2px 6px rgba(20,38,79,.25); }
-.rx-card__name{ font-weight:800; font-size:1.2em; line-height:1.1; color:#1B5E9E; text-shadow:none; letter-spacing:0; }
-.rx-card__name small{ display:block; font-weight:700; font-size:.5em; letter-spacing:.16em; color:#0b4f3b; margin-top:.2em; text-shadow:none; }
-.rx-card__tag{ font-size:.55em; font-weight:800; letter-spacing:.14em; padding:.35em .9em; border-radius:999px; background:#fff; color:#14264F; border:1px solid rgba(20,38,79,.15); }
-.rx-card__mid{ display:flex; align-items:center; gap:.8em; margin:0; }
-.rx-card__chip{ width:3.2em; height:2.4em; border-radius:.5em; flex:none;
-  background:
-    linear-gradient(90deg,transparent 31%,rgba(120,80,0,.4) 32% 34%,transparent 35% 65%,rgba(120,80,0,.4) 66% 68%,transparent 69%),
-    linear-gradient(0deg,transparent 46%,rgba(120,80,0,.4) 47% 53%,transparent 54%),
-    linear-gradient(135deg,#FFE08A,#F5C03A 60%,#D9A21B);
-  box-shadow:inset 0 0 0 1px rgba(120,80,0,.4); }
-.rx-card__nfc{ font-size:1.1em; color:#14264F; transform:rotate(90deg); opacity:.7; }
-.rx-card__off{ margin-left:auto; text-align:right; font-weight:800; line-height:1; color:#14264F; font-size:1.9em; background:none; text-shadow:none; }
-.rx-card__off small{ text-shadow:none; display:block; font-size:.32em; letter-spacing:.18em; color:#1E9E7A; margin-bottom:.35em; font-weight:800; }
-.rx-card__perks{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:.35em .9em; background:none; border:0; box-shadow:none; }
-.rx-card__perks li{ font-size:.78em; font-weight:600; line-height:1.2; display:flex; gap:.4em; color:#14264F; text-shadow:none; }
-.rx-card__perks i{ color:#1E9E7A; font-size:1em; margin-top:.05em; }
-.rx-card__no{ font-family:'Courier New',monospace; font-size:1.05em; letter-spacing:.2em; font-weight:800; color:#14264F; text-shadow:none; }
-.rx-card__bottom{ display:flex; justify-content:space-between; align-items:flex-end; font-size:.55em; letter-spacing:.14em; font-weight:700; color:#0b4f3b; opacity:1; }
-.rx-card__bottom b{ text-shadow:none; display:block; font-size:1.25em; letter-spacing:.08em; color:#14264F; }
-.rx-card__bottom > div:last-child{ text-align:right; }
-@media (prefers-reduced-motion:reduce){ .rx-card,.rx-card::after{ animation:none; } }
-@media (max-width:991px){ .rx-hero__side--left{ width:auto; max-width:360px; left:auto; bottom:auto; } }
-    
-/* ===== Hero text: left-aligned, big title + short paragraph (desktop only) ===== */
-@media (min-width:992px){
-  .rx-hero__head{
-    top:64px; left:calc(10.7% + 48px); right:auto;
-    width:min(560px, 42%); padding:0; text-align:left;
-  }
-  .rx-hero__title{
-    font-size:clamp(2.6rem, 4.4vw, 4.2rem); font-weight:800; line-height:1.05;
-    max-width:7.4em; margin:0 0 16px; letter-spacing:-.5px;
-    text-shadow:0 4px 18px rgba(0,0,0,.45);
-  }
-  .rx-hero__lead{
-    font-size:clamp(1rem, 1.3vw, 1.3rem); line-height:1.55; font-weight:500;
-    max-width:30em; margin:0; opacity:.95; text-shadow:0 2px 10px rgba(0,0,0,.5);
-  }
-  .rx-hero__media::after{
-    background:linear-gradient(90deg, rgba(5,15,35,.78) 0%, rgba(5,15,35,.45) 45%, rgba(5,15,35,.25) 100%);
-  }
-}
-    
-/* ===== Hero buttons: in a row, between the text and the card (desktop only) ===== */
-@media (min-width:992px){
-  .rx-hero__head{ top:40px; }
-  .rx-hero__side--right{
-    left:calc(10.7% + 48px); right:auto; top:306px; margin-top:0;
-    width:auto; flex-direction:row; align-items:center; gap:16px;
-  }
-  .rx-hero__side--right .btn{
-    width:auto; padding:12px 26px; font-size:1rem; white-space:nowrap;
-  }
-}
-/* ===== Push hero below the fixed navbar (desktop only) ===== */
-@media (min-width:992px){
-  main[role="main"]{ padding-top:90px; }
-}
-    
+        .rx-hero__side--left {
+            left: 34px;
+            bottom: 26px;
+            width: clamp(300px, 21vw, 350px);
+        }
+
+        .rx-card {
+            font-size: clamp(11px, .8vw, 13px);
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1.586/1;
+            min-height: 0;
+            padding: 1.2em 1.5em 1.1em;
+            border-radius: 1.6em;
+            color: #14264F;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background:
+                radial-gradient(circle at 100% 0%, rgba(124, 196, 238, .55) 0 22%, transparent 22.5%),
+                radial-gradient(circle at 0% 100%, rgba(30, 158, 122, .18) 0 26%, transparent 26.5%),
+                linear-gradient(140deg, #BEE8DE 0%, #d8f3ec 40%, #fbf397 85%, #EFE15C 100%);
+            border: 1.5px solid rgba(255, 255, 255, .85);
+            box-shadow: 0 16px 36px rgba(20, 38, 79, .28), inset 0 1px 0 #fff;
+            transform: rotate(-3deg);
+            animation: rxCardFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes rxCardFloat {
+
+            0%,
+            100% {
+                transform: rotate(-3deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(-3deg) translateY(-8px);
+            }
+        }
+
+        .rx-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: auto;
+            height: 4px;
+            font-size: 0;
+            line-height: 0;
+            background: linear-gradient(90deg, #1E9E7A, #EFE15C);
+        }
+
+        .rx-card::after {
+            content: "";
+            position: absolute;
+            top: -30%;
+            left: -70%;
+            width: 30%;
+            height: 160%;
+            pointer-events: none;
+            background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .65), transparent);
+            transform: skewX(-22deg);
+            animation: rxCardShine 5.5s ease-in-out infinite;
+        }
+
+        @keyframes rxCardShine {
+            0% {
+                left: -70%;
+            }
+
+            45%,
+            100% {
+                left: 140%;
+            }
+        }
+
+        .rx-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .rx-card__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rx-card__brand {
+            display: flex;
+            align-items: center;
+            gap: .7em;
+        }
+
+        .rx-card__logo {
+            width: 2.7em;
+            height: 2.7em;
+            border-radius: 50%;
+            background: #fff;
+            padding: .2em;
+            object-fit: contain;
+            box-shadow: 0 2px 6px rgba(20, 38, 79, .25);
+        }
+
+        .rx-card__name {
+            font-weight: 800;
+            font-size: 1.2em;
+            line-height: 1.1;
+            color: #1B5E9E;
+            text-shadow: none;
+            letter-spacing: 0;
+        }
+
+        .rx-card__name small {
+            display: block;
+            font-weight: 700;
+            font-size: .5em;
+            letter-spacing: .16em;
+            color: #0b4f3b;
+            margin-top: .2em;
+            text-shadow: none;
+        }
+
+        .rx-card__tag {
+            font-size: .55em;
+            font-weight: 800;
+            letter-spacing: .14em;
+            padding: .35em .9em;
+            border-radius: 999px;
+            background: #fff;
+            color: #14264F;
+            border: 1px solid rgba(20, 38, 79, .15);
+        }
+
+        .rx-card__mid {
+            display: flex;
+            align-items: center;
+            gap: .8em;
+            margin: 0;
+        }
+
+        .rx-card__chip {
+            width: 3.2em;
+            height: 2.4em;
+            border-radius: .5em;
+            flex: none;
+            background:
+                linear-gradient(90deg, transparent 31%, rgba(120, 80, 0, .4) 32% 34%, transparent 35% 65%, rgba(120, 80, 0, .4) 66% 68%, transparent 69%),
+                linear-gradient(0deg, transparent 46%, rgba(120, 80, 0, .4) 47% 53%, transparent 54%),
+                linear-gradient(135deg, #FFE08A, #F5C03A 60%, #D9A21B);
+            box-shadow: inset 0 0 0 1px rgba(120, 80, 0, .4);
+        }
+
+        .rx-card__nfc {
+            font-size: 1.1em;
+            color: #14264F;
+            transform: rotate(90deg);
+            opacity: .7;
+        }
+
+        .rx-card__off {
+            margin-left: auto;
+            text-align: right;
+            font-weight: 800;
+            line-height: 1;
+            color: #14264F;
+            font-size: 1.9em;
+            background: none;
+            text-shadow: none;
+        }
+
+        .rx-card__off small {
+            text-shadow: none;
+            display: block;
+            font-size: .32em;
+            letter-spacing: .18em;
+            color: #1E9E7A;
+            margin-bottom: .35em;
+            font-weight: 800;
+        }
+
+        .rx-card__perks {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .35em .9em;
+            background: none;
+            border: 0;
+            box-shadow: none;
+        }
+
+        .rx-card__perks li {
+            font-size: .78em;
+            font-weight: 600;
+            line-height: 1.2;
+            display: flex;
+            gap: .4em;
+            color: #14264F;
+            text-shadow: none;
+        }
+
+        .rx-card__perks i {
+            color: #1E9E7A;
+            font-size: 1em;
+            margin-top: .05em;
+        }
+
+        .rx-card__no {
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            letter-spacing: .2em;
+            font-weight: 800;
+            color: #14264F;
+            text-shadow: none;
+        }
+
+        .rx-card__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: .55em;
+            letter-spacing: .14em;
+            font-weight: 700;
+            color: #0b4f3b;
+            opacity: 1;
+        }
+
+        .rx-card__bottom b {
+            text-shadow: none;
+            display: block;
+            font-size: 1.25em;
+            letter-spacing: .08em;
+            color: #14264F;
+        }
+
+        .rx-card__bottom>div:last-child {
+            text-align: right;
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            .rx-card,
+            .rx-card::after {
+                animation: none;
+            }
+        }
+
+        @media (max-width:991px) {
+            .rx-hero__side--left {
+                width: auto;
+                max-width: 360px;
+                left: auto;
+                bottom: auto;
+            }
+        }
+
+        /* ===== Hero text: left-aligned, big title + short paragraph (desktop only) ===== */
+        @media (min-width:992px) {
+            .rx-hero__head {
+                top: 64px;
+                left: calc(10.7% + 48px);
+                right: auto;
+                width: min(560px, 42%);
+                padding: 0;
+                text-align: left;
+            }
+
+            .rx-hero__title {
+                font-size: clamp(2.6rem, 4.4vw, 4.2rem);
+                font-weight: 800;
+                line-height: 1.05;
+                max-width: 7.4em;
+                margin: 0 0 16px;
+                letter-spacing: -.5px;
+                text-shadow: 0 4px 18px rgba(0, 0, 0, .45);
+            }
+
+            .rx-hero__lead {
+                font-size: clamp(1rem, 1.3vw, 1.3rem);
+                line-height: 1.55;
+                font-weight: 500;
+                max-width: 30em;
+                margin: 0;
+                opacity: .95;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
+            }
+
+            .rx-hero__media::after {
+                background: linear-gradient(90deg, rgba(5, 15, 35, .78) 0%, rgba(5, 15, 35, .45) 45%, rgba(5, 15, 35, .25) 100%);
+            }
+        }
+
+        /* ===== Hero buttons: in a row, between the text and the card (desktop only) ===== */
+        @media (min-width:992px) {
+            .rx-hero__head {
+                top: 40px;
+            }
+
+            .rx-hero__side--right {
+                left: calc(10.7% + 48px);
+                right: auto;
+                top: 306px;
+                margin-top: 0;
+                width: auto;
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .rx-hero__side--right .btn {
+                width: auto;
+                padding: 12px 26px;
+                font-size: 1rem;
+                white-space: nowrap;
+            }
+        }
+
+        /* ===== Push hero below the fixed navbar (desktop only) ===== */
+        @media (min-width:992px) {
+            main[role="main"] {
+                padding-top: 90px;
+            }
+        }
     </style>
 </head>
 
@@ -1713,234 +1758,8 @@
     <!--</div>-->
 
 
-    <header class="header-modern">
-        <link rel="stylesheet" href="header-modern.css" />
-
-        <nav class="navbar navbar-expand-custom navbar-light navbar-modern">
-            <div class="container-fluid px-4 d-flex justify-content-between align-items-center position-relative">
-
-                <!-- BRAND -->
-                <a class="navbar-brand me-4" href="index.html">
-                    <div class="logo-with-icon">
-                        <div class="logo-icon">
-                            <img src="images/logo.ico" alt="RX MEDO CARD Logo" class="logo-image">
-                        </div>
-                        <div class="logo-text-wrapper">
-                            <div class="logo-text">Rx Medo Card</div>
-                            <div class="logo-subtitle">AN INITIATIVE OF Rx MEDICAL TRUST</div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- MOBILE TOGGLER -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars-staggered" style="font-size:2rem;"></i>
-                </button>
-
-                <!-- NAV LINKS -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <!-- MOBILE MENU HEADER -->
-                    <div class="mobile-menu-header d-md-none">
-                        <h5 class="mobile-menu-title">Menu</h5>
-                        <button class="mobile-menu-close" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-
-                    <ul class="navbar-nav d-flex flex-column flex-lg-row w-100">
-
-                        <!-- HOME -->
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">
-                                <div class="mobile-item active">
-                                    <i class="fas fa-home"></i>
-                                    <span>Home</span>
-                                </div>
-                            </a>
-                        </li>
-
-                        <!-- CARDS DROPDOWN -->
-                        <li class="nav-item dropdown desktop-dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="cardDropdown" data-bs-toggle="dropdown">
-                                <div class="mobile-item">
-                                    <i class="fas fa-tags"></i>
-                                    <span>Card Details</span>
-                                </div>
-                            </a>
-
-                            <ul class="dropdown-menu" aria-labelledby="cardDropdown">
-                                <li><a class="dropdown-item" href="medocard.html"><i class="fas fa-id-card"></i> Rx Medo
-                                        Card</a></li>
-                                <!-- <li><a class="dropdown-item" href="Offers.html#membership-plans"><i class="fas fa-shield-alt"></i>  Rx Medo Insure Card</a></li> -->
-                                <li><a class="dropdown-item" href="medoTopUpCard.html"><i
-                                            class="fas fa-plus-circle"></i> RX Medo Top-Up Card</a></li>
-                                <li><a class="dropdown-item" href="medofamily.html"><i class="fas fa-users"></i> Rx Medo
-                                        Family Card</a></li>
-                                <li><a class="dropdown-item" href="medoTopUpfamily.html"><i
-                                            class="fas fa-layer-group"></i> Rx Medo Family Top-Up Card</a></li>
-                                <li><a class="dropdown-item" href="youngshield.html"><i class="fas fa-child"></i> Rx
-                                        Medo YoungShield Card</a></li>
-                                <li><a class="dropdown-item" href="citizecare.html"><i class="fas fa-user-shield"></i>
-                                        Rx Medo CitizenCare Card</a></li>
-                                <li><a class="dropdown-item" href="guardiancare.html"><i class="fas fa-user-shield"></i>
-                                        Rx Medo GuardianCare Card</a></li>
-                                <li><a class="dropdown-item" href="medoFamilysecure.html"><i class="fas fa-home"></i> Rx
-                                        Medo FamilySecure Card</a></li>
-                                <li><a class="dropdown-item" href="seniorshield.html"><i class="fas fa-user"></i> Rx
-                                        Medo SeniorShield Card</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- mobile dropdown -->
-                        <div class="dropdown mobile-dropdown">
-                            <button class="btn w-100 d-flex justify-content-between align-items-center no-focus"
-                                data-bs-toggle="dropdown">
-                                <span><i class="fas fa-tags"></i> Card Details</span>
-                                <i class="fas fa-chevron-down" style="margin-left: 70px;"></i>
-                            </button>
-
-
-                            <ul class="dropdown-menu w-100 mt-1">
-                                <li><a class="dropdown-item" href="medocard.html"><i class="fas fa-id-card"></i> Rx Medo
-                                        Card</a></li>
-                                <!-- <li><a class="dropdown-item" href="Offers.html#membership-plans"><i class="fas fa-shield-alt"></i> Rx Medo
-                                    Insure Card</a></li> -->
-                                <li><a class="dropdown-item" href="medoTopUpCard.html"><i
-                                            class="fas fa-plus-circle"></i> RX Medo
-                                        Top-Up Card</a></li>
-                                <li><a class="dropdown-item" href="medofamily.html"><i class="fas fa-users"></i> Rx Medo
-                                        Family
-                                        Card</a></li>
-                                <li><a class="dropdown-item" href="medoTopUpfamily.html"><i
-                                            class="fas fa-layer-group"></i> Rx Medo
-                                        Family Top-Up</a></li>
-                                <li><a class="dropdown-item" href="youngshield.html"><i class="fas fa-child"></i> Rx
-                                        Medo
-                                        YoungShield</a></li>
-                                <li><a class="dropdown-item" href="citizecare.html"><i class="fas fa-user-shield"></i>
-                                        Rx Medo
-                                        CitizenCare</a></li>
-                                <li><a class="dropdown-item" href="guardiancare.html"><i class="fas fa-user-shield"></i>
-                                        Rx Medo
-                                        GuardianCare</a></li>
-                                <li><a class="dropdown-item" href="medoFamilysecure.html"><i class="fas fa-home"></i> Rx
-                                        Medo
-                                        FamilySecure</a></li>
-                                <li><a class="dropdown-item" href="seniorshield.html"><i class="fas fa-user"></i> Rx
-                                        Medo
-                                        SeniorShield</a></li>
-                            </ul>
-                        </div>
-
-
-                        <!-- HOSPITALS -->
-                        <li class="nav-item" style="margin-top: .5rem;">
-                            <a class="nav-link" href="Hospitals.html">
-                                <div class="mobile-item">
-                                    <i class="fas fa-hospital"></i>
-                                    <span>Hospitals</span>
-                                </div>
-                            </a>
-                        </li>
-
-                        <!-- OPD -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="OPD.html">
-                                <div class="mobile-item">
-                                    <i class="fas fa-stethoscope"></i>
-                                    <span>OPD</span>
-                                </div>
-                            </a>
-                        </li>
-
-                        <!-- PHARMACY -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pharmacy.html">
-                                <div class="mobile-item">
-                                    <i class="fas fa-pills"></i>
-                                    <span>Pharmacy</span>
-                                </div>
-                            </a>
-                        </li>
-
-                        <!-- DIAGNOSTICS -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="Diagnostics.html">
-                                <div class="mobile-item">
-                                    <i class="fas fa-microscope"></i>
-                                    <span>Diagnostics</span>
-                                </div>
-                            </a>
-                        </li>
-
-                        <!-- CAREER -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="Career.html">
-                                <div class="mobile-item">
-                                    <i class="fas fa-briefcase"></i>
-                                    <span>Career</span>
-                                </div>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                    <!-- BUTTONS -->
-                    <div b-kr65r3xkkp class="ms-auto">
-                        <a class="nav-link get-card-btn" href="signup.html">
-                            <i b-kr65r3xkkp class="fas fa-id-card d-md-none me-2"></i> Get Your Card
-                        </a>
-                    </div>
-                    <div b-kr65r3xkkp class="ms-auto">
-                        <a class="nav-link get-card-btn" href="login.html">
-                            <i b-kr65r3xkkp class="fas fa-id-card d-md-none me-2"></i> Login
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </nav>
-        <script src="header-modern.js" defer></script>
-    </header>
-    <style>
-        /* basic dropdown position fix */
-        .nav-item.dropdown {
-            position: relative;
-        }
-
-        .nav-item .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 5px;
-            display: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s ease;
-        }
-
-        /* Desktop → Hover to open */
-        @media (min-width: 992px) {
-            .nav-item.dropdown:hover .dropdown-menu {
-                display: block !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
-        }
-
-        /* Mobile → open when `.show` class is added */
-        @media (max-width: 991px) {
-            .nav-item.dropdown.show .dropdown-menu {
-                display: block !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
-        }
-    </style>
+    <!-- Centralized Shared Navbar Mount -->
+    <div id="navbarMount"></div>
     <main b-kr65r3xkkp role="main">
         <section class="rx-hero" id="rxHero">
             <div class="rx-hero__media">
@@ -5884,9 +5703,6 @@
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/site3d49.js?v=3mhbb32mML9fvJL9BlFT134NRMU0vqwPRnZEDt880_E"></script>
-    <script src="js/navbar-active8e7c.js?v=dGPriXiIAjlcajsO9YP960In1CeOdTqoMQj1hIvVDHA"></script>
-    <script src="js/navbar-toggle-fix.html"></script>
-    <script src="js/mobile-menub273.js?v=Gh3nMh0WrzIl_Vl8_zqvsQ4blj2vRct2WTrrzuvIwVU"></script>
     <script src="js/disable-swipe2953.js?v=PwgUEYjVAVjGPihdqv4XRIAwAykwOU08FzZSoeTBu08"></script>
     <script src="../unpkg.com/aos%402.3.1/dist/aos.js"></script>
     <script>
@@ -6159,16 +5975,6 @@
             });
     </script>
 
-    <script>
-            (function () {
-                var header = document.querySelector('.header-modern');
-                function onScroll() {
-                    if (header) header.classList.toggle('is-scrolled', window.scrollY > 20);
-                }
-                window.addEventListener('scroll', onScroll, { passive: true });
-                onScroll();
-            })();
-    </script>
 
 
     <script src="js/intro-animation.js"></script>
@@ -6203,6 +6009,8 @@
             })();
     </script>
 
+    <!-- Centralized Shared Navbar & Footer Loaders -->
+    <script src="js/site-navbar.js"></script>
     <script src="js/site-footer.js"></script>
 </body>
 

@@ -93,7 +93,7 @@
         <div class="footer-heading-bar" aria-hidden="true"></div>
         <ul class="footer-links-list">
           <li><a href="__ROOT__index.html">Home</a></li>
-          <li><a href="__ROOT__Offers.html">Card Details</a></li>
+          <li><a href="__ROOT__card-details.html">Card Details</a></li>
           <li><a href="__ROOT__Hospitals.html">Hospitals</a></li>
           <li><a href="__ROOT__OPD.html">OPD</a></li>
           <li><a href="__ROOT__Pharmacy.html">Pharmacy</a></li>
@@ -403,9 +403,10 @@
 
   .footer-modern-ref .footer-action-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .footer-modern-ref .footer-btn-card {
@@ -498,48 +499,151 @@
     }
   }
 
+  /* Compact and concise layout on mobile (<= 767px) */
   @media (max-width: 767px) {
     .footer-modern-ref {
-      padding: 48px 0 84px;
+      padding: 36px 0 32px;
     }
 
     .footer-modern-ref .footer-container {
       padding: 0 20px;
     }
 
+    /* 2-column grid: Brand & Contact span full, Quick Links & Services sit side-by-side */
     .footer-modern-ref .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 22px 18px;
+    }
+
+    .footer-modern-ref .footer-col-brand {
+      grid-column: 1 / -1;
+    }
+
+    .footer-modern-ref .footer-col-contact {
+      grid-column: 1 / -1;
+    }
+
+    .footer-modern-ref .footer-brand-title {
+      font-size: 1.45rem;
+    }
+
+    .footer-modern-ref .footer-brand-subtitle {
+      font-size: 0.62rem;
+    }
+
+    .footer-modern-ref .footer-logo-img {
+      width: 46px;
+      height: 46px;
     }
 
     .footer-modern-ref .footer-description {
       max-width: 100%;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      margin: 10px 0 6px 0;
+    }
+
+    .footer-modern-ref .footer-tagline {
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-modern-ref .footer-social-icons {
+      gap: 8px;
+    }
+
+    .footer-modern-ref .footer-social-link {
+      width: 34px;
+      height: 34px;
+      font-size: 0.88rem;
+    }
+
+    .footer-modern-ref .footer-col-heading {
+      font-size: 1.02rem;
+    }
+
+    .footer-modern-ref .footer-heading-bar {
+      width: 28px;
+      height: 3px;
+      margin: 6px 0 10px 0;
+    }
+
+    .footer-modern-ref .footer-links-list {
+      gap: 7px;
+    }
+
+    .footer-modern-ref .footer-links-list li a {
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .footer-modern-ref .footer-contact-items {
+      gap: 7px;
+    }
+
+    .footer-modern-ref .footer-contact-item {
+      font-size: 0.84rem;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .footer-modern-ref .footer-contact-icon {
+      font-size: 0.88rem;
     }
 
     .footer-modern-ref .footer-contact-actions {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .footer-modern-ref .footer-action-buttons {
-      align-items: stretch;
-      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto;
     }
 
     .footer-modern-ref .footer-btn-card,
     .footer-modern-ref .footer-btn-challenge {
-      width: 100%;
+      width: auto;
+      padding: 9px 20px;
+      font-size: 0.84rem;
+    }
+
+    .footer-modern-ref .footer-bottom-divider {
+      margin: 20px 0 14px 0;
     }
 
     .footer-modern-ref .footer-bottom-bar {
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
+      font-size: 0.80rem;
     }
 
     .footer-modern-ref .footer-bottom-links {
-      gap: 16px;
+      gap: 8px 16px;
+    }
+
+    .footer-modern-ref .footer-bottom-links a {
+      font-size: 0.80rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .footer-modern-ref .footer-grid {
+      gap: 20px 14px;
+    }
+
+    .footer-modern-ref .footer-btn-card,
+    .footer-modern-ref .footer-btn-challenge {
+      padding: 8px 16px;
+      font-size: 0.80rem;
     }
   }
 </style>

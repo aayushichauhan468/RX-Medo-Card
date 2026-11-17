@@ -240,7 +240,7 @@ body {
 }
 
 /* Hide original dropdown on mobile */
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .desktop-dropdown {
     display: none !important;
   }
@@ -250,7 +250,7 @@ body {
 }
 
 /* Hide new dropdown on desktop */
-@media (min-width: 769px) {
+@media (min-width: 992px) {
   .mobile-dropdown {
     display: none !important;
   }

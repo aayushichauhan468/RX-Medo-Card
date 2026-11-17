@@ -90,22 +90,10 @@
 
 <style>
   /* Hide original dropdown on mobile */
-  @media (max-width: 768px) {
-    .desktop-dropdown {
-      display: none !important;
-    }
-
-    .mobile-dropdown {
-      display: block !important;
-    }
-  }
+  @media (max-width: 991px) { .desktop-dropdown { display: none !important; } .mobile-dropdown { display: block !important; } }
 
   /* Hide new dropdown on desktop */
-  @media (min-width: 769px) {
-    .mobile-dropdown {
-      display: none !important;
-    }
-  }
+  @media (min-width: 992px) { .mobile-dropdown { display: none !important; } }
 
   /* Mobile dropdown styling */
 
@@ -388,41 +376,7 @@
 
 <body>
 
-  <style>
-    /* basic dropdown position fix */
-    .nav-item.dropdown {
-      position: relative;
-    }
 
-    .nav-item .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      margin-top: 5px;
-      display: none;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease;
-    }
-
-    /* Desktop → Hover to open */
-    @media (min-width: 992px) {
-      .nav-item.dropdown:hover .dropdown-menu {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-    }
-
-    /* Mobile → open when .show class is added */
-    @media (max-width: 991px) {
-      .nav-item.dropdown.show .dropdown-menu {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-    }
-  </style>
   <main b-kr65r3xkkp role="main">
     <!-- ==========================================================================
          IMMERSIVE 3D PHARMACY EXPERIENCE (GSAP ScrollTrigger Pinned Journey)

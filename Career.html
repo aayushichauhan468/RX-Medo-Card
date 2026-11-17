@@ -108,8 +108,11 @@
   }
 
   .step-box {
-    width: 100%;
-    max-width: 320px;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: auto !important;
   }
 }
   </style>
@@ -563,7 +566,7 @@
 .step-box p{color:var(--cs)!important;margin:0!important;line-height:1.6}
 .arrow{display:grid!important;place-items:center;flex:0 0 46px;font-size:0!important;color:transparent!important}
 .arrow::before{content:"";width:20px;height:20px;border-top:4px solid var(--cy);border-right:4px solid var(--cy);rotate:45deg;animation:cr-chev 1.6s ease-in-out infinite}
-@media(max-width:991px){.hiring-steps{flex-direction:column}.arrow{flex-basis:44px}.arrow::before{rotate:135deg}}
+@media(max-width:991px){.hiring-steps{flex-direction:column!important;align-items:center!important;gap:0!important}.step-box{flex:0 0 auto!important;width:100%!important;max-width:320px!important;height:auto!important;min-height:auto!important}.arrow{flex:0 0 54px!important;height:54px!important;margin:0 auto!important}.arrow::before{rotate:135deg!important}}
 
 /* ===== job roles: hanging staff-ID badges ===== */
 .career-section{background:linear-gradient(180deg,#eaf6f2,#e3f0fa)!important;padding:clamp(60px,8vw,100px) 0 0!important;margin:0!important}

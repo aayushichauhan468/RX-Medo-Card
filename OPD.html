@@ -74,22 +74,10 @@
 
 <style>
   /* Hide original dropdown on mobile */
-  @media (max-width: 768px) {
-    .desktop-dropdown {
-      display: none !important;
-    }
-
-    .mobile-dropdown {
-      display: block !important;
-    }
-  }
+  @media (max-width: 991px) { .desktop-dropdown { display: none !important; } .mobile-dropdown { display: block !important; } }
 
   /* Hide new dropdown on desktop */
-  @media (min-width: 769px) {
-    .mobile-dropdown {
-      display: none !important;
-    }
-  }
+  @media (min-width: 992px) { .mobile-dropdown { display: none !important; } }
 
   /* Mobile dropdown styling */
 
@@ -1137,8 +1125,20 @@ main .animate__animated{animation:none!important}
 
 /* ---------- responsive + reduced motion ---------- */
 @media (max-width:991px){
+  /* Fix Issue 1: remove artificial 190vh track and vacant space on responsive/tablet/mobile */
+  .xh{height:auto!important;min-height:0!important}
+  .xh-s{position:relative!important;top:auto!important;height:auto!important;min-height:0!important;padding:clamp(90px,11vh,110px) clamp(16px,4vw,28px) clamp(24px,4vh,36px)!important;display:flex!important;align-items:stretch!important;justify-content:center!important}
+  .xh-card{position:relative!important;inset:auto!important;width:100%!important;max-width:960px!important;min-height:480px!important;border-radius:28px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+  .xh-c{position:relative!important;top:auto!important;left:auto!important;transform:none!important;padding:clamp(32px,5vw,48px) clamp(20px,4vw,36px)!important;max-width:100%!important}
+  .xh-hint{display:none!important}
+
+  /* Fix Issue 2: prevent about card and explore button from overlapping doctor card */
+  .about-section .row > div + div{margin-top:48px!important}
+  .about-section .about-image{margin-top:36px!important}
   .x-d.circ{--w:260px!important}.x-d.orb{--w:300px!important}
-  .x-js .x-r.fx-left,.x-js .x-r.fx-right{transform:translateY(60px) scale(.96)}
+  .x-js .x-r.fx-left:not(.x-in),.x-js .x-r.fx-right:not(.x-in){transform:translateY(40px) scale(.96)}
+  .x-js .x-r.fx-up:not(.x-in){transform:translateY(30px) scale(.98)}
+  .x-js .x-r.x-in{transform:none!important;opacity:1!important;filter:none!important}
 }
 @media (max-width:575px){
   .x-sec .about-image::before,.x-js .x-in .about-image::before{inset:-10px;border-radius:42px;transform:none}
@@ -1153,7 +1153,7 @@ main .animate__animated{animation:none!important}
 <script>
 (function(){
 var h=document.getElementById('xh'),hd=document.querySelector('header.header-modern'),v=document.getElementById('xhv');
-function f(){var ps=hd?getComputedStyle(hd).position:'',hh=(ps==='fixed'||ps==='sticky')?hd.offsetHeight:0;h.style.setProperty('--hh',hh+'px');var t=h.offsetHeight-innerHeight,p=Math.min(1,Math.max(0,-h.getBoundingClientRect().top/(t*.9)));h.style.setProperty('--p',p.toFixed(3));h.classList.toggle('xh-full',p>.5)}
+function f(){var ps=hd?getComputedStyle(hd).position:'',hh=(ps==='fixed'||ps==='sticky')?hd.offsetHeight:0;h.style.setProperty('--hh',hh+'px');if(window.innerWidth<=991){h.style.setProperty('--p','0');h.classList.remove('xh-full');return;}var t=h.offsetHeight-innerHeight,p=t>0?Math.min(1,Math.max(0,-h.getBoundingClientRect().top/(t*.9))):0;h.style.setProperty('--p',p.toFixed(3));h.classList.toggle('xh-full',p>.5)}
 addEventListener('scroll',f,{passive:true});addEventListener('resize',f);f();
 if(v){v.play&&v.play().catch(function(){})}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});

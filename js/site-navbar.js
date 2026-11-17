@@ -82,7 +82,7 @@
           }
         }
       });
-      if (currentFile === 'offers.html') {
+      if (currentFile === 'card-details.html' || currentFile === 'offers.html') {
         const desktopDropBtn = header.querySelector('#desktopSiteNavigation .site-nav-dropdown');
         if (desktopDropBtn) desktopDropBtn.classList.add('active');
       }
@@ -226,6 +226,7 @@
           e.stopPropagation();
           const isOpen = menu.classList.contains('show');
           menu.classList.toggle('show', !isOpen);
+          dropdown.classList.toggle('show', !isOpen);
           button.setAttribute('aria-expanded', String(!isOpen));
         });
       });
