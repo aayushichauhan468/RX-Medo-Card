@@ -1739,7 +1739,202 @@
                 padding-top: 90px;
             }
         }
+
+        /* =====================================================================
+           MOBILE FIX 1 — hero: card + buttons sit ON the video (same as desktop)
+           ===================================================================== */
+        @media (max-width:991px) {
+            .rx-hero {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-rows: auto auto auto;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+                padding: 104px 14px 60px;
+            }
+
+            /* the video frame spans all 3 rows = it grows with the content */
+            .rx-hero__media {
+                grid-column: 1;
+                grid-row: 1 / 4;
+                position: relative;
+                inset: auto;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                width: auto;
+                height: auto;
+                min-height: 0;
+                margin: 0;
+                border-radius: 24px;
+                z-index: 1;
+            }
+
+            .rx-hero__media video {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .rx-hero__media::after {
+                background: linear-gradient(180deg, rgba(5, 15, 35, .72) 0%, rgba(5, 15, 35, .5) 55%, rgba(5, 15, 35, .35) 100%);
+            }
+
+            /* row 1: heading + paragraph */
+            .rx-hero__head {
+                grid-column: 1;
+                grid-row: 1;
+                position: relative;
+                inset: auto;
+                top: auto;
+                left: auto;
+                right: auto;
+                width: auto;
+                height: auto;
+                min-height: 0;
+                margin: 0;
+                padding: 26px 20px 10px;
+                display: block;
+                text-align: left;
+                color: #fff;
+                z-index: 2;
+            }
+
+            .rx-hero__title {
+                font-size: clamp(1.9rem, 8vw, 2.5rem);
+                font-weight: 800;
+                line-height: 1.1;
+                max-width: none;
+                margin: 0 0 12px;
+                text-shadow: 0 4px 18px rgba(0, 0, 0, .45);
+            }
+
+            .rx-hero__lead {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin: 0;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
+            }
+
+            /* row 2: the two buttons */
+            .rx-hero__side--right {
+                grid-column: 1;
+                grid-row: 2;
+                position: relative;
+                inset: auto;
+                top: auto;
+                left: auto;
+                right: auto;
+                margin: 0;
+                width: auto;
+                padding: 6px 20px 22px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+                z-index: 3;
+            }
+
+            .rx-hero__side--right .btn {
+                width: auto;
+                flex: 1 1 150px;
+                padding: 11px 14px;
+                font-size: .88rem;
+            }
+
+            /* row 3: the card, hanging a little over the bottom edge of the video */
+            .rx-hero__side--left {
+                grid-column: 1;
+                grid-row: 3;
+                position: relative;
+                inset: auto;
+                top: auto;
+                left: auto;
+                bottom: auto;
+                width: calc(100% - 40px);
+                max-width: 340px;
+                margin: 0 0 -34px 18px;
+                z-index: 3;
+            }
+        }
+
+        /* =====================================================================
+           MOBILE FIX 2 — "Our plans specialize in your health"
+           The doctor stays fully visible on top (head + shoulders + hand);
+           the blue text panel starts below her, so it never covers her.
+           Tune: --dp-top  = how much of the doctor shows above the panel
+                 --dp-vh   = size of the doctor video (bigger = bigger doctor)
+                 --dp-pos  = move the doctor left/right (0% = left, 100% = right)
+           ===================================================================== */
+        @media (max-width:768px) {
+            .doctor-video-board-container {
+                --dp-top: 190px;
+                --dp-vh: 440px;
+                --dp-pos: 92%;
+                aspect-ratio: auto;
+                min-height: 0;
+                background: #C8EDE6;
+                border-radius: 22px;
+                padding: var(--dp-top) 12px 14px;
+                display: block;
+            }
+
+            .doctor-board-video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: auto;
+                width: 100%;
+                height: var(--dp-vh);
+                object-fit: cover;
+                object-position: var(--dp-pos) 0%;
+            }
+
+            .blue-page-content {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 20px 18px 22px;
+                background: rgba(126, 200, 227, 0.95);
+                border-radius: 20px;
+                box-shadow: 0 -6px 24px rgba(20, 38, 79, .12);
+            }
+
+            .blue-page-inner {
+                height: auto;
+                gap: 6px;
+            }
+
+            .blue-page-heading {
+                font-size: 1.4rem;
+            }
+
+            .blue-page-text {
+                font-size: .88rem;
+                max-width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .blue-page-list li {
+                font-size: .84rem;
+                align-items: flex-start;
+            }
+
+            .blue-page-cta-btn {
+                padding: 10px 22px;
+                font-size: .88rem;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="mobile-fixes.css?v=1">
 </head>
 
 <body>

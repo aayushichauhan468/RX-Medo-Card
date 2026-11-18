@@ -1,0 +1,283 @@
+/* =====================================================================
+   RX MEDOCARD - MOBILE FIXES  (phones & small tablets only; desktop is untouched)
+
+   1) HERO: the heading + buttons sit on the video; the Rx MedoCard sits half on the
+      video and hangs out over its edge (like desktop)
+   2) "Our plans specialize in your health": doctor on top, text card below
+      (same layout as the nurse section) - nothing covers the doctor
+
+   HOW TO USE
+   Put this file next to index.html and add ONE link line at the very end of
+   the head section of index.html (after the last style block):
+
+       <link rel="stylesheet" href="mobile-fixes.css?v=5">
+
+   (v=2 is a cache-buster, so the browser loads the new version.)
+
+   Everything below uses #ids + !important so it beats the older mobile rules
+   that are still inside index.html. You can delete those old rules later.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1) HERO  (<= 991px)
+   One grid. The video frame spans all 3 rows, so the heading, the buttons
+   and the card are all drawn on top of the video.
+   --------------------------------------------------------------------- */
+@media (max-width: 991px) {
+
+  #rxHero.rx-hero {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    --card-hang: 90px;                          /* how far the card hangs OUT below the video frame */
+    padding: 100px 14px calc(var(--card-hang) + 28px) !important;   /* top space = floating navbar */
+  }
+
+  /* the video frame: behind everything, spans rows 1-3 */
+  #rxHero .rx-hero__media {
+    grid-column: 1 !important;
+    grid-row: 1 / 4 !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important; right: auto !important; bottom: auto !important; left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+  }
+
+  #rxHero .rx-hero__media video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* dark overlay so the white text is readable */
+  #rxHero .rx-hero__media::after {
+    background: linear-gradient(180deg,
+        rgba(5, 15, 35, .72) 0%,
+        rgba(5, 15, 35, .50) 55%,
+        rgba(5, 15, 35, .42) 100%) !important;
+  }
+
+  /* row 1: heading + paragraph */
+  #rxHero .rx-hero__head {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important; right: auto !important; left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 28px 20px 8px !important;
+    display: block !important;
+    text-align: left !important;
+    color: #fff !important;
+    z-index: 2 !important;
+  }
+
+  #rxHero .rx-hero__title {
+    font-size: clamp(1.9rem, 8vw, 2.5rem) !important;
+    line-height: 1.1 !important;
+    max-width: none !important;
+    margin: 0 0 10px !important;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, .45) !important;
+  }
+
+  #rxHero .rx-hero__lead {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .5) !important;
+  }
+
+  /* row 2: the two buttons, side by side, on the video */
+  #rxHero .rx-hero__side--right {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important; right: auto !important; left: auto !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 6px 20px 14px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    z-index: 3 !important;
+  }
+
+  #rxHero .rx-hero__side--right .btn {
+    width: auto !important;
+    flex: 1 1 140px !important;
+    padding: 11px 14px !important;
+    font-size: .88rem !important;
+    white-space: normal !important;
+  }
+
+  /* row 3: the Rx MedoCard - half on the video, hanging out over the bottom edge
+     and a little over the left side (same idea as desktop).
+     Change --card-hang above (bigger = card sticks out more at the bottom). */
+  #rxHero .rx-hero__side--left {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important; right: auto !important; bottom: auto !important; left: auto !important;
+    justify-self: start !important;
+    width: min(330px, calc(100% - 28px)) !important;
+    max-width: none !important;
+    margin: 6px 0 calc(var(--card-hang) * -1) -6px !important;    /* -6px = sticks out a little on the left */
+    z-index: 3 !important;
+  }
+}
+
+
+/* ---------------------------------------------------------------------
+   2) "Our plans specialize in your health"  (<= 768px)
+
+   Same layout as the nurse ("Find the Best Healthcare Facilities") section on a
+   phone: the doctor is shown fully on top, centred on the mint background, and the
+   text card sits BELOW him (nothing covers the doctor).
+
+   The blue board that is drawn inside the video is hidden on phones, because the
+   text is not written on it any more. It is hidden with a CSS "mask" (see below).
+
+   Tune these if needed:
+     --dp-h          height of the doctor (bigger = bigger doctor)
+     --dp-center     which part of the video is centred: 82% = the doctor.
+                     (smaller = moves the picture right, bigger = moves it left)
+     --dp-fade-from / --dp-fade-to
+                     LAYER 1: everything LEFT of --dp-fade-from is hidden, and the
+                     picture fades in until --dp-fade-to (in % of the video width).
+                     Blue strip still visible? Add 1% to both values.
+                     Set BOTH to 0% to show the whole video again, board included.
+     --dp-hand-x / --dp-hand-top / --dp-hand-h
+                     LAYER 2: a small box around the waving hand that is ALWAYS
+                     visible (fractions of the video: 0.71 = 71%). Needed because the
+                     hand overlaps the blue board, so layer 1 alone would cut it.
+                     Hand clipped?       -> lower --dp-hand-x or raise --dp-hand-h
+                     Blue sliver by hand -> raise --dp-hand-x or lower --dp-hand-h
+   --------------------------------------------------------------------- */
+@media (max-width: 768px) {
+
+  .service-bg-plans-section .doctor-video-board-container {
+    --dp-h: 290px;
+    --dp-center: 82%;
+
+    /* LAYER 1: hides the blue board */
+    --dp-fade-from: 75%;     /* was 65% originally */
+    --dp-fade-to: 76%;       /* was 73% originally */
+
+    /* LAYER 2: keep-visible box around the waving hand (NEW) */
+    --dp-hand-x: 0.725;      /* box starts 72.5% from the left (middle value: smaller blue patch, arm barely clipped) */
+    --dp-hand-top: 0.28;    /* box starts 28% from the top of the video (tighter around the hand) */
+    --dp-hand-h: 0.21;      /* box height = 21% of the video height */
+
+    position: relative !important;
+    display: block !important;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: calc(var(--dp-h) + 40px) 14px 22px !important;   /* room on top for the doctor */
+    background: #C8EDE6 !important;
+    border-radius: 22px !important;
+    overflow: hidden !important;
+  }
+
+  /* the doctor: video frame is sized exactly 16:9, then shifted so the doctor is centred */
+  .service-bg-plans-section .doctor-board-video {
+    position: absolute !important;
+    top: 24px !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    width: calc(var(--dp-h) * 16 / 9) !important;
+    height: var(--dp-h) !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    transform: translateX(calc(var(--dp-center) * -1)) !important;
+
+    /* Two mask layers (comma separated). Where they overlap, the visible areas
+       are added together, so the hand stays visible even inside the faded zone.
+       Layer 1 = horizontal fade that hides the blue board.
+       Layer 2 = solid box (only the size/position below makes it a small box). */
+    -webkit-mask-image:
+      linear-gradient(to right, transparent var(--dp-fade-from), #000 var(--dp-fade-to)),
+      linear-gradient(#000, #000);
+            mask-image:
+      linear-gradient(to right, transparent var(--dp-fade-from), #000 var(--dp-fade-to)),
+      linear-gradient(#000, #000);
+
+    /* Layer 1 covers the whole video; layer 2 is only the hand box (its height) */
+    -webkit-mask-size: 100% 100%, 100% calc(var(--dp-h) * var(--dp-hand-h));
+            mask-size: 100% 100%, 100% calc(var(--dp-h) * var(--dp-hand-h));
+
+    /* Position of the hand box. Video width = dp-h * 16/9, video height = dp-h.
+       Note: the hand box spans from --dp-hand-x to the right edge of the video. */
+    -webkit-mask-position: 0 0,
+      calc(var(--dp-h) * 16 / 9 * var(--dp-hand-x)) calc(var(--dp-h) * var(--dp-hand-top));
+            mask-position: 0 0,
+      calc(var(--dp-h) * 16 / 9 * var(--dp-hand-x)) calc(var(--dp-h) * var(--dp-hand-top));
+
+    /* do not tile the layers, draw each one once */
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+  }
+
+  /* the text card: below the doctor, with the dark-blue layer peeking out like the nurse card */
+  .service-bg-plans-section .blue-page-content {
+    position: relative !important;
+    top: auto !important; left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 22px 18px 24px !important;
+    box-sizing: border-box !important;
+    background: rgba(126, 200, 227, .95) !important;
+    border-radius: 20px !important;
+    box-shadow: -8px 6px 0 #004db6, 0 14px 34px rgba(20, 38, 79, .16) !important;
+    z-index: 3 !important;
+  }
+
+  .service-bg-plans-section .blue-page-inner {
+    height: auto !important;
+    gap: 6px !important;
+  }
+
+  .service-bg-plans-section .blue-page-heading {
+    font-size: 1.4rem !important;
+    color: #14264F !important;
+  }
+
+  .service-bg-plans-section .blue-page-text {
+    font-size: .88rem !important;
+    max-width: 100% !important;
+    margin-bottom: 10px !important;
+    color: #14264F !important;
+  }
+
+  .service-bg-plans-section .blue-page-list li {
+    font-size: .84rem !important;
+    align-items: flex-start !important;
+    color: #14264F !important;
+  }
+
+  .service-bg-plans-section .blue-page-cta-btn {
+    padding: 10px 22px !important;
+    font-size: .88rem !important;
+  }
+}
