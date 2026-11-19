@@ -168,11 +168,11 @@
 
   .service-bg-plans-section .doctor-video-board-container {
     --dp-h: 290px;
-    --dp-center: 82%;
+    --dp-center: 79%;
 
     /* Hides the blue presentation board completely so no blue artifact/stick appears */
-    --dp-fade-from: 74.2%;
---dp-fade-to: 74.6%;
+    --dp-fade-from: 74.6%;
+    --dp-fade-to: 74.9%;
 
     position: relative !important;
     display: block !important;
