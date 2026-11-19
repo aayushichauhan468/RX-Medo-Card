@@ -171,8 +171,8 @@
     --dp-center: 82%;
 
     /* Hides the blue presentation board completely so no blue artifact/stick appears */
-    --dp-fade-from: 73.5%;
-    --dp-fade-to: 74.2%;
+    --dp-fade-from: 74.2%;
+--dp-fade-to: 74.6%;
 
     position: relative !important;
     display: block !important;
