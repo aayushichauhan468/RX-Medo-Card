@@ -6207,6 +6207,36 @@
     <!-- Centralized Shared Navbar & Footer Loaders -->
     <script src="js/site-navbar.js"></script>
     <script src="js/site-footer.js"></script>
+
+
+    <script>
+(function () {
+  var FREEZE_TIME = 0.8;   // seconds: the frame where the hand is in the "hi" pose
+  var mq = window.matchMedia('(max-width: 768px)');
+  var v = document.querySelector('.doctor-board-video');
+  if (!v) return;
+
+  function freeze() {
+    v.pause();
+    v.currentTime = FREEZE_TIME;
+  }
+
+  function apply() {
+    if (mq.matches) {
+      if (v.readyState >= 1) freeze();
+      else v.addEventListener('loadedmetadata', freeze, { once: true });
+    } else {
+      v.play();   // desktop: normal animation
+    }
+  }
+
+  // keep it frozen on mobile even if another script tries to play it
+  v.addEventListener('play', function () { if (mq.matches) freeze(); });
+
+  apply();
+  mq.addEventListener('change', apply);
+})();
+</script>
 </body>
 
 
