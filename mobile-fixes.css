@@ -153,24 +153,16 @@
    phone: the doctor is shown fully on top, centred on the mint background, and the
    text card sits BELOW him (nothing covers the doctor).
 
-   The blue board that is drawn inside the video is hidden on phones, because the
-   text is not written on it any more. It is hidden with a CSS "mask" (see below).
+   The blue board from the video is completely masked out on mobile using a clean
+   gradient mask, leaving only the doctor.
 
    Tune these if needed:
      --dp-h          height of the doctor (bigger = bigger doctor)
      --dp-center     which part of the video is centred: 82% = the doctor.
                      (smaller = moves the picture right, bigger = moves it left)
      --dp-fade-from / --dp-fade-to
-                     LAYER 1: everything LEFT of --dp-fade-from is hidden, and the
-                     picture fades in until --dp-fade-to (in % of the video width).
-                     Blue strip still visible? Add 1% to both values.
-                     Set BOTH to 0% to show the whole video again, board included.
-     --dp-hand-x / --dp-hand-top / --dp-hand-h
-                     LAYER 2: a small box around the waving hand that is ALWAYS
-                     visible (fractions of the video: 0.71 = 71%). Needed because the
-                     hand overlaps the blue board, so layer 1 alone would cut it.
-                     Hand clipped?       -> lower --dp-hand-x or raise --dp-hand-h
-                     Blue sliver by hand -> raise --dp-hand-x or lower --dp-hand-h
+                     Everything LEFT of --dp-fade-from is hidden, and the
+                     doctor cleanly fades in until --dp-fade-to.
    --------------------------------------------------------------------- */
 @media (max-width: 768px) {
 
@@ -178,14 +170,9 @@
     --dp-h: 290px;
     --dp-center: 82%;
 
-    /* LAYER 1: hides the blue board */
-    --dp-fade-from: 75%;     /* was 65% originally */
-    --dp-fade-to: 76%;       /* was 73% originally */
-
-    /* LAYER 2: keep-visible box around the waving hand (NEW) */
-    --dp-hand-x: 0.725;      /* box starts 72.5% from the left (middle value: smaller blue patch, arm barely clipped) */
-    --dp-hand-top: 0.28;    /* box starts 28% from the top of the video (tighter around the hand) */
-    --dp-hand-h: 0.21;      /* box height = 21% of the video height */
+    /* Hides the blue presentation board completely so no blue artifact/stick appears */
+    --dp-fade-from: 74.8%;
+    --dp-fade-to: 76%;
 
     position: relative !important;
     display: block !important;
@@ -211,31 +198,15 @@
     object-fit: cover !important;
     transform: translateX(calc(var(--dp-center) * -1)) !important;
 
-    /* Two mask layers (comma separated). Where they overlap, the visible areas
-       are added together, so the hand stays visible even inside the faded zone.
-       Layer 1 = horizontal fade that hides the blue board.
-       Layer 2 = solid box (only the size/position below makes it a small box). */
-    -webkit-mask-image:
-      linear-gradient(to right, transparent var(--dp-fade-from), #000 var(--dp-fade-to)),
-      linear-gradient(#000, #000);
-            mask-image:
-      linear-gradient(to right, transparent var(--dp-fade-from), #000 var(--dp-fade-to)),
-      linear-gradient(#000, #000);
-
-    /* Layer 1 covers the whole video; layer 2 is only the hand box (its height) */
-    -webkit-mask-size: 100% 100%, 100% calc(var(--dp-h) * var(--dp-hand-h));
-            mask-size: 100% 100%, 100% calc(var(--dp-h) * var(--dp-hand-h));
-
-    /* Position of the hand box. Video width = dp-h * 16/9, video height = dp-h.
-       Note: the hand box spans from --dp-hand-x to the right edge of the video. */
-    -webkit-mask-position: 0 0,
-      calc(var(--dp-h) * 16 / 9 * var(--dp-hand-x)) calc(var(--dp-h) * var(--dp-hand-top));
-            mask-position: 0 0,
-      calc(var(--dp-h) * 16 / 9 * var(--dp-hand-x)) calc(var(--dp-h) * var(--dp-hand-top));
-
-    /* do not tile the layers, draw each one once */
-    -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
+    /* Clean horizontal mask: everything to the left of the doctor (the blue board) is hidden */
+    -webkit-mask-image: linear-gradient(to right, transparent var(--dp-fade-from), #000 var(--dp-fade-to)) !important;
+            mask-image: linear-gradient(to right, transparent var(--dp-fade-from), #000 var(--dp-fade-to)) !important;
+    -webkit-mask-size: 100% 100% !important;
+            mask-size: 100% 100% !important;
+    -webkit-mask-position: 0 0 !important;
+            mask-position: 0 0 !important;
+    -webkit-mask-repeat: no-repeat !important;
+            mask-repeat: no-repeat !important;
   }
 
   /* the text card: below the doctor, with the dark-blue layer peeking out like the nurse card */
