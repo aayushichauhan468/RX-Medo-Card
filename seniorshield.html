@@ -1017,6 +1017,64 @@
         }
     </style>
     <link rel="stylesheet" href="css/card-pages-theme.css" />
+     <style>
+@media (max-width: 768px) {
+
+  /* 1) navbar -> "Limited Period Offer" gap */
+  html body .hero-wrapper {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 50px !important;
+    padding-bottom: 30px !important;
+  }
+  html body .hero-left { gap: 16px !important; }
+
+  /* 2) feature pills: 2 per row, compact */
+  html body .hero-features-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  html body .hero-feature-pill {
+    justify-content: center !important;
+    padding: 9px 8px !important;
+    font-size: .76rem !important;
+    gap: 6px !important;
+    text-align: center;
+  }
+
+  /* 3) gap before "How It Works" */
+  html body .how-it-works { padding-top: 30px !important; padding-bottom: 30px !important; }
+  html body .section-header { margin-bottom: 28px !important; }
+
+  /* 4) gap before "Card Benefits" */
+  html body .benefits-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+
+  /* 5) stats: small boxes, 2 per row */
+  html body .stats-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+  html body .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  html body .stat-card { padding: 14px 8px !important; border-radius: 16px !important; }
+  html body .stat-icon {
+    width: 38px !important; height: 38px !important;
+    margin: 0 auto 8px !important;
+    font-size: 1.05rem !important;
+    display: flex !important; align-items: center; justify-content: center;
+    -webkit-text-fill-color: #1b2b50 !important;
+    color: #1b2b50 !important;
+  }
+  html body .stat-number { font-size: 1.7rem !important; }
+  html body .stat-label { font-size: .72rem !important; margin-top: 4px !important; }
+
+  /* 6) gap before "Why Seniors Trust" */
+  html body .why-choose { padding-top: 30px !important; padding-bottom: 30px !important; }
+
+  /* 7) gap before "Ready to Protect Your Health?" */
+  html body .cta-banner { padding-top: 10px !important; padding-bottom: 30px !important; }
+}
+</style>
 </head>
 
 <body>
@@ -1530,12 +1588,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // ===== PAGE LOADER =====
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('pageLoader').classList.add('hidden');
-            }, 600);
-        });
 
         // ===== PARTICLES =====
         (function () {

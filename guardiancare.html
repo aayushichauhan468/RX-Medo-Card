@@ -1972,6 +1972,57 @@
         }
     </style>
     <link rel="stylesheet" href="css/card-pages-theme.css" />
+
+    <style>
+@media (max-width: 768px) {
+
+  /* "How It Works" sub-line: dark text (phone only) */
+  html body .how-header p { color: #1b2b50 !important; }
+
+  /* navbar -> "Limited Time Offer" gap, and gap after the price card */
+  html body .hero-wrapper {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 50px !important;
+    padding-bottom: 30px !important;
+  }
+  html body .hero-wrapper .hero-content { gap: 24px !important; margin-top: 0 !important; }
+
+  /* Get Your Card Now / View Benefits: smaller and centered */
+  html body .hero-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  html body .hero-buttons a {
+    width: auto !important;
+    min-width: 230px !important;
+    padding: 12px 28px !important;
+    justify-content: center !important;
+  }
+
+  /* the oval with 4 boxes: 2 per row, compact */
+  html body .trust-strip { margin: 0 14px !important; padding: 14px 0 !important; border-radius: 26px !important; }
+  html body .trust-items {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    padding: 0 12px !important;
+  }
+  html body .trust-item { width: auto !important; max-width: none !important; padding: 10px !important; gap: 9px !important; border-radius: 16px !important; }
+  html body .trust-icon { width: 38px !important; height: 38px !important; font-size: 1rem !important; border-radius: 12px !important; }
+  html body .trust-text { font-size: .78rem !important; }
+  html body .trust-sub { font-size: .65rem !important; }
+
+  /* section gaps */
+  html body .benefits-section { padding-bottom: 30px !important; }
+  html body .how-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+  html body .how-header { margin-bottom: 24px !important; }
+  html body .highlights-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+  html body .why-strip { padding-top: 30px !important; }
+  html body .section-header { margin-bottom: 28px !important; }
+}
+</style>
 </head>
 
 <body>

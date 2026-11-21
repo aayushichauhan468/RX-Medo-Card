@@ -882,6 +882,40 @@
         }
     </style>
     <link rel="stylesheet" href="css/card-pages-theme.css" />
+     
+    <style>
+/* ===== PRICE: centre the cut price and shift slightly right (phone + desktop) ===== */
+.pricing-display { gap: 14px !important; }
+.price-struck {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 12px 20px 12px 28px !important;
+  min-width: 120px;
+}
+
+/* ===== PHONE ONLY: reduce gaps (desktop untouched) ===== */
+@media (max-width: 768px) {
+  /* navbar -> "50% OFF" badge */
+  html body .hero-section {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 60px !important;
+    margin-top: -60px !important;
+  }
+  html body .hero-section .hero-grid,
+  html body .hero-section .hero-left {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  /* marquee -> "Exclusive Perks" */
+  html body .benefits-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+  /* last perks card -> "Easy Steps" */
+  html body .steps-section { padding-top: 30px !important; }
+}
+</style>
 </head>
 
 <body>

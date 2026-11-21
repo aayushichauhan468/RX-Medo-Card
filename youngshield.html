@@ -572,6 +572,36 @@
         @media (max-width: 480px) { .hero-h1 { font-size: 1.8rem; } .price-num { font-size: 1.8rem; } }
     </style>
     <link rel="stylesheet" href="css/card-pages-theme.css" />
+
+    <style>
+/* ===== PRICE BOX: centre ₹15,000 and shift slightly right (phone + desktop) ===== */
+.price-float { gap: 14px !important; }
+.price-cross {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 12px 20px 12px 28px !important;
+  min-width: 120px;
+}
+.price-pill { margin-left: 0 !important; }
+
+/* ===== PHONE ONLY: reduce gaps (desktop untouched) ===== */
+@media (max-width: 768px) {
+  /* navbar -> "53% OFF" badge */
+  .hero-zone {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 60px !important;
+    margin-top: -70px !important;
+  }
+  /* banner -> "Exclusive Perks" */
+  .perks-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+  /* last perks card -> "Easy Steps" */
+  .steps-zone { padding-top: 30px !important; }
+}
+</style>
 </head>
 
 <body>

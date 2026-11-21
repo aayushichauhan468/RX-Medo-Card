@@ -164,6 +164,13 @@
         ]
       }
     </script>
+
+    <style>
+/* phones only: space between the navbar and the page heading */
+@media (max-width: 768px) {
+  h1 { padding-top: 40px !important; }
+}
+</style>
   </head>
 
   <body>
@@ -2281,5 +2288,42 @@ if('IntersectionObserver' in window&&!rm){
   <!-- Centralized Shared Navbar & Footer Loaders -->
   <script src="js/site-navbar.js"></script>
   <script src="js/site-footer.js"></script>
+
+  <style>
+/* phones only: stop the two CTA buttons from covering the bullet lists (loads last) */
+@media (max-width: 768px) {
+
+  /* cancel the reveal-animation offset on bullets so they don't sit under the button */
+  main .apollo-modern-section ul.list-unstyled li,
+  main .redcliffe-modern-section ul.list-unstyled li {
+    transform: none !important;
+    translate: none !important;
+    filter: none !important;
+  }
+
+  /* keep the button in normal flow, below the bullets, and push it down into the empty space */
+  main a.btn.btn-primary.btn-lg[href="login.html"] {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    translate: none !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 320px;
+    margin: 48px auto 0 !important;   /* change this 48px to adjust the gap */
+  }
+}
+
+  /* NEW: reduce the gap after the button, before the next heading */
+  main .apollo-modern-section.d-sec,
+  main .redcliffe-modern-section.d-sec {
+    padding-bottom: 30px !important;
+  }
+  main .pharmacy-hero.d-h2 {
+    padding-top: 30px !important;
+  }
+
+ </style>
 </body>
 </html>

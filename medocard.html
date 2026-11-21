@@ -3786,6 +3786,149 @@ if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: red
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('rx-in');io.unobserve(x.target)}})},{threshold:.12});
 els.forEach(function(e,i){e.classList.add('rx-pre');e.style.transitionDelay=(i%4)*90+'ms';io.observe(e)})})();
 </script>
+
+<style>
+/* phones only */
+@media (max-width: 768px) {
+
+  /* 1. Trust bar: 2 + 2 + 1 (last one centered) */
+  body .trust-bar {
+    padding: 16px 0 !important;
+  }
+  body .trust-bar .trust-bar-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+  body .trust-bar .trust-item {
+    flex: 0 0 calc(50% - 5px) !important;
+    width: calc(50% - 5px) !important;
+    max-width: calc(50% - 5px) !important;
+    margin: 0 !important;
+    justify-content: center;
+    padding: 8px 6px !important;
+    font-size: 0.7rem !important;
+    gap: 6px !important;
+  }
+  body .trust-bar .trust-item i {
+    font-size: 0.95rem !important;
+  }
+
+  /* 2. Price tag: small, centered, slightly above the card's bottom edge */
+  .card-visual-area {
+    margin-bottom: 28px !important;
+  }
+  .floating-price-tag {
+    left: 50% !important;
+    right: auto !important;
+    bottom: -8px !important;
+    transform: translateX(-50%) !important;
+    animation: none !important;
+    display: flex !important;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 16px !important;
+    border-radius: 14px !important;
+    white-space: nowrap;
+  }
+  .floating-price-tag .fpt-original { font-size: 0.7rem !important; }
+  .floating-price-tag .fpt-current  { font-size: 1.1rem !important; line-height: 1 !important; }
+  .floating-price-tag .fpt-label    { font-size: 0.58rem !important; }
+
+  /* 3. Verified / Instant / Family: three separate small boxes */
+  .hero-micro-trust {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px !important;
+    margin-bottom: 0 !important;
+  }
+  .hero-micro-trust .micro-trust-item {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 4px !important;
+    padding: 10px 4px !important;
+    font-size: 0.58rem !important;
+    line-height: 1.2;
+    color: #16304a !important;
+    background: #fff !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(40, 90, 120, 0.15);
+  }
+  .hero-micro-trust .micro-trust-item i {
+    font-size: 1rem !important;
+    color: #1a8f78 !important;
+  }
+
+  /* 4. Less gap between those boxes and the card */
+  .hero-buttons {
+    margin-bottom: 14px !important;
+  }
+  .hero-card-wrapper {
+    margin-top: 0 !important;
+  }
+  .hero-card-container {
+    margin-top: 10px !important;
+  }
+
+  /* 5. Offer card (lower one): show the full card, nothing cut off */
+  .card-slider-modern {
+    height: auto !important;
+  }
+  .card-slider-modern .slides,
+  .card-slider-modern .rx-card {
+    height: auto !important;
+    aspect-ratio: auto !important;
+    min-height: 240px !important;
+    padding-bottom: 20px !important;
+  }
+
+  /* 6. Reduce gaps: offer card -> Trusted Partners -> logos -> next section */
+  .offer-section {
+    padding-bottom: 20px !important;
+  }
+  .partners-section {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  .partners-section .section-header {
+    margin-bottom: 15px !important;
+  }
+  .partners-scroller {
+    padding: 10px 0 !important;
+  }
+  .benefits-section {
+    padding-top: 30px !important;
+  }
+
+    /* Card Highlights: left-align text in all four boxes */
+  .cip-item .cip-text {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  .cip-item .cip-text strong,
+  .cip-item .cip-text span {
+    display: block;
+    width: 100%;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+    /* reduce gap between navbar and "Trusted by 50,000+" badge */
+  .hero-modern {
+    padding-top: 85px !important;
+  }
+  .hero-modern .hero-badge {
+    margin-top: 0 !important;
+  }
+  .hero-modern .hero-content {
+    padding-top: 0 !important;
+  }
+}
+
+</style>
 </body>
 
 </html>

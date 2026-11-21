@@ -1873,6 +1873,90 @@
         }
     </style>
     <link rel="stylesheet" href="css/card-pages-theme.css" />
+    <style>
+    /* phones only */
+@media (max-width: 768px) {
+
+  /* 1. Four feature boxes: icon on top, text centered on one line */
+  .card-features-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .card-feature-item {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+    padding: 14px 8px !important;
+  }
+  .card-feature-text {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .card-feature-text h5,
+  .card-feature-text p {
+    text-align: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 3. Less gap: Premium Privileges -> Complete Family Protection */
+  .benefits-section {
+    padding-bottom: 30px !important;
+  }
+  .family-coverage {
+    padding-top: 30px !important;
+  }
+
+  /* 4. Step labels + animated arrows between the 4 coverage boxes */
+  .coverage-features {
+    counter-reset: step;
+    gap: 48px !important;
+  }
+  .coverage-feature {
+    position: relative;
+    counter-increment: step;
+  }
+  .coverage-feature::before {
+    content: "STEP " counter(step);
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: #f9d423;
+    color: #1e1b4b;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .coverage-feature:not(:last-child)::after {
+    content: "\f063";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 50%;
+    bottom: -40px;
+    width: 32px;
+    height: 32px;
+    margin-left: -16px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #f9d423;
+    color: #1e1b4b;
+    font-size: 0.9rem;
+    animation: stepArrow 1.4s ease-in-out infinite;
+  }
+  @keyframes stepArrow {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50%      { transform: translateY(8px); opacity: 0.6; }
+  }
+}
+</style>
+
+
 </head>
 
 <body>
@@ -2683,17 +2767,17 @@
             observer.observe(el);
         });
 
-        // Expert form submission
-        document.getElementById('expertForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('expertName').value;
-            const email = document.getElementById('expertEmail').value;
-
-            // Show success message
-            alert(`Thank you ${name}! Our family healthcare expert will contact you shortly at ${email}.`);
-            this.reset();
-        });
+        // Expert form submission (form is currently commented out)
+        var expertForm = document.getElementById('expertForm');
+        if (expertForm) {
+            expertForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('expertName').value;
+                const email = document.getElementById('expertEmail').value;
+                alert(`Thank you ${name}! Our family healthcare expert will contact you shortly at ${email}.`);
+                this.reset();
+            });
+        }
 
         // Member avatar hover effect
         document.querySelectorAll('.member-avatar').forEach(avatar => {
@@ -2763,6 +2847,135 @@ els.forEach(function(e,i){e.classList.add('rx-pre');e.style.transitionDelay=(i%4
   window.addEventListener('load', function () { fix(); setTimeout(fix, 600); });
 })();
 </script>
+
+<script>
+/* phones only: count-up numbers when they scroll into view */
+(function () {
+  if (window.innerWidth > 768) return;
+  var nums = document.querySelectorAll('.card-stat-number');
+  if (!nums.length || !('IntersectionObserver' in window)) return;
+
+  nums.forEach(function (el) {
+    var m = el.textContent.trim().match(/^(\d+)(.*)$/);   // "10K+" -> 10 + "K+"
+    if (!m) return;
+    el.dataset.target = m[1];
+    el.dataset.suffix = m[2];
+    el.textContent = '0' + m[2];
+  });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var el = e.target, target = +el.dataset.target, suffix = el.dataset.suffix || '';
+      var start = null, dur = 1800;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+
+  nums.forEach(function (el) { if (el.dataset.target) io.observe(el); });
+})();
+</script>
+
+<style>
+/* phones only: Step 1-4 as a flow timeline + smaller gap before "Why Choose Family Card?" */
+@media (max-width: 768px) {
+
+  .coverage-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    position: relative !important;
+    counter-reset: step !important;
+  }
+
+  /* moving dashed line behind the step numbers */
+  .coverage-features::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 30px;
+    bottom: 30px;
+    width: 3px;
+    background: linear-gradient(to bottom, #f9d423 50%, transparent 50%);
+    background-size: 3px 14px;
+    animation: flowLine 0.9s linear infinite;
+  }
+  @keyframes flowLine { to { background-position: 0 14px; } }
+
+  /* each step = a card on the right of the line */
+  .coverage-feature {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: 44px 1fr !important;
+    column-gap: 12px !important;
+    align-items: center !important;
+    text-align: left !important;
+    margin-left: 56px !important;
+    padding: 16px 16px 16px 14px !important;
+    background: rgba(255, 255, 255, .88) !important;
+    border: 1.5px solid rgba(124, 196, 238, .55) !important;
+    border-left: 5px solid #f9d423 !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 22px rgba(20, 38, 79, .12) !important;
+    counter-increment: step !important;
+  }
+
+  /* numbered circle sitting on the line */
+  .coverage-feature::before {
+    content: counter(step) !important;
+    position: absolute !important;
+    left: -56px !important;
+    top: 50% !important;
+    margin: -19px 0 0 0 !important;
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 50% !important;
+    background: #f9d423 !important;
+    color: #1e1b4b !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    animation: stepPulse 2s ease-in-out infinite !important;
+  }
+  @keyframes stepPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(249, 212, 35, .35); }
+    50%      { box-shadow: 0 0 0 9px rgba(249, 212, 35, 0); }
+  }
+
+  /* remove the old down-arrows (the line replaces them) */
+  .coverage-feature:not(:last-child)::after {
+    content: none !important;
+    display: none !important;
+    animation: none !important;
+  }
+
+  .coverage-feature i {
+    grid-row: 1 / span 2;
+    margin: 0 !important;
+    font-size: 1.7rem !important;
+    color: #1B5E9E !important;
+    text-align: center;
+  }
+  .coverage-feature h4 { margin: 0 0 3px !important; font-size: .98rem !important; text-align: left !important; }
+  .coverage-feature p  { margin: 0 !important; font-size: .8rem !important; text-align: left !important; }
+
+  /* smaller gap: after Step 4 -> before "Why Choose Family Card?" */
+  .family-coverage   { padding-bottom: 24px !important; }
+  .why-family-section { padding-top: 24px !important; }
+}
+</style>
+
 </body>
 
 </html>

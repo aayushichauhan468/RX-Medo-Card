@@ -965,6 +965,85 @@
         }
     </style>
     <link rel="stylesheet" href="css/card-pages-theme.css" />
+
+    <style>
+@media (max-width: 768px) {
+
+  /* 1) navbar -> "Limited Time Offer" gap */
+  html body .hero-bright {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 85px !important;
+    padding-bottom: 30px !important;
+  }
+
+  /* 2) ₹25,000: centre it inside its box and shift right */
+  html body .price-old {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 12px 20px 12px 28px !important;
+    min-width: 120px;
+  }
+  html body .price-badge { gap: 14px !important; }
+
+  /* 3) gap before "Exclusive Perks" */
+  html body .benefits-area { padding-top: 30px !important; padding-bottom: 30px !important; }
+
+  /* 4) gap before "Easy Steps" */
+  html body .timeline-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+  html body .sec-head { margin-bottom: 28px !important; }
+
+  /* 5) How It Works redesign: step cards with number + icon, joined by a line */
+  html body .timeline-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+  }
+  html body .timeline-row::before {
+    top: 30px !important;
+    bottom: 30px !important;
+    left: 35px !important;
+    right: auto !important;
+    width: 3px !important;
+    height: auto !important;
+  }
+  html body .tl-step {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: 44px 1fr;
+    column-gap: 14px;
+    align-items: center;
+    text-align: left !important;
+    flex: none !important;
+    background: #fff;
+    border-radius: 18px;
+    padding: 12px 56px 12px 14px !important;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  }
+  html body .tl-num {
+    grid-row: 1 / span 2;
+    margin: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.05rem !important;
+  }
+  html body .tl-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 !important;
+    font-size: 1.5rem !important;
+  }
+  html body .tl-step h5 { margin: 0 0 2px !important; font-size: .95rem !important; }
+  html body .tl-step p { margin: 0 !important; font-size: .78rem !important; line-height: 1.4 !important; }
+}
+</style>
 </head>
 
 <body>

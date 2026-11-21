@@ -285,3 +285,31 @@
     letter-spacing: 0 !important;
   }
 }
+
+/* v10: both hero buttons the same size, smaller, no float (phones only) */
+@media (max-width: 991px) {
+  #rxHero .rx-hero__side--right {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    padding: 4px 20px 10px !important;
+  }
+  #rxHero .rx-hero__side--right .btn {
+    flex: 1 1 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    height: 40px !important;
+    min-height: 0 !important;
+    padding: 0 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: .64rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+

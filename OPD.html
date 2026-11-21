@@ -1482,6 +1482,89 @@ window.__xok=true;
 </script>
   <script src="js/site-navbar.js"></script>
   <script src="js/site-footer.js"></script>
+
+
+  <style>
+/* phones only */
+@media (max-width: 768px) {
+
+  /* subtitle readable over the decorative pills */
+  .x-sec .section-subtitle {
+    position: relative;
+    z-index: 3;
+    color: #16304a !important;
+    font-weight: 600 !important;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 16px;
+    border-radius: 16px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .x-d.pill {
+    opacity: 0.25 !important;
+  }
+
+  /* gap: last hospital card -> About */
+  .hospital-cards-container { padding-bottom: 20px !important; }
+  .about-section.x-sec { padding-top: 30px !important; }
+
+  /* gap: Diagnostics image -> Services */
+  .x-diag { padding-bottom: 20px !important; }
+  .services-section.x-sec { padding-top: 30px !important; }
+
+  /* gaps inside "How It Works" and around it */
+  .steps-section.x-sec {
+    padding-top: 20px !important;      /* CHANGED: was 40px */
+    padding-bottom: 30px !important;
+  }
+  .departments-section.x-sec {
+    padding-top: 30px !important;
+  }
+  .steps-section .row {
+    row-gap: 8px !important;
+  }
+  .steps-section .row > [class*="col"] {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .steps-section.x-sec .step-card {
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 14px 16px 10px !important;
+  }
+
+  /* number circles not cut off */
+  .steps-section.x-sec .step-card,
+  .steps-section .row > [class*="col"] {
+    overflow: visible !important;
+  }
+  .steps-section.x-sec .step-card::before {
+    margin-top: 8px !important;
+  }
+
+  .steps-section.x-sec .step-title,
+  .steps-section.x-sec .step-description {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  /* NEW: reduce gap between the last Services card and "How It Works" */
+  .services-section.x-sec {
+    padding-bottom: 20px !important;
+  }
+  .services-section .row > [class*="col"]:last-child {
+    margin-bottom: 0 !important;
+  }
+  .services-section .section-subtitle,
+  .steps-section .section-title {
+    margin-top: 0 !important;
+  }
+}
+</style>
+
 </body>
 <script>
   document.addEventListener("DOMContentLoaded", function () {

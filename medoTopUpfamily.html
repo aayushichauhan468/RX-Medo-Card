@@ -1400,6 +1400,77 @@
         }
     </style>
     <link rel="stylesheet" href="css/card-pages-theme.css" />
+    <style>
+/* phones only: Family Top-Up page - smaller gaps, compact boxes, call icon fix */
+@media (max-width: 768px) {
+
+  /* 1) gap: navbar -> "Premium Family Healthcare Card" */
+  .mega-hero { padding-top: 82px !important; }
+
+  /* 2) gap: badge -> main card */
+  .hero-top-badge { margin-bottom: 14px !important; }
+  .hero-main-grid { gap: 18px !important; }
+  .hero-card-section, .card-showcase, .card-stack, .card-wrapper { margin-top: 0 !important; padding-top: 0 !important; }
+  .card-label { display: none !important; }
+
+  /* 3) call icon: flip it the right way */
+  .btn-hero-secondary .fa-phone-alt,
+  .btn-cta-secondary .fa-phone-alt { display: inline-block; transform: scaleX(-1); }
+
+  /* 4) "Key Card Features": smaller rows instead of big boxes */
+  .hero-features-section { margin-top: 26px !important; padding-top: 20px !important; }
+  .hero-features-title { margin-bottom: 16px !important; font-size: 1.2rem !important; }
+  .hero-features-grid { gap: 10px !important; }
+  .hero-feature-card {
+    display: grid !important;
+    grid-template-columns: 44px 1fr !important;
+    column-gap: 12px !important;
+    align-items: center !important;
+    text-align: left !important;
+    padding: 12px 14px !important;
+  }
+  .hero-feature-icon { grid-row: 1 / span 2; width: 44px !important; height: 44px !important; margin: 0 !important; font-size: 1.1rem !important; border-radius: 12px !important; }
+  .hero-feature-title { font-size: .95rem !important; margin: 0 0 2px !important; }
+  .hero-feature-desc { font-size: .76rem !important; line-height: 1.4 !important; margin: 0 !important; }
+
+  /* 5) the big oval with the 5 discount boxes: compact 2-column grid */
+  .discount-strip { margin: 0 14px !important; padding: 14px 0 !important; border-radius: 26px !important; }
+  .discount-strip-inner { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; padding: 0 12px !important; }
+  .discount-item { width: auto !important; max-width: none !important; padding: 10px !important; gap: 9px !important; border-radius: 16px !important; }
+  .discount-item:last-child { grid-column: 1 / -1 !important; justify-self: center !important; width: calc(50% - 5px) !important; }
+  .discount-item-icon { width: 38px !important; height: 38px !important; font-size: 1rem !important; }
+  .discount-item-content { min-width: 0; }
+  .discount-item-percent { font-size: 1.05rem !important; }
+  .discount-item-label { font-size: .68rem !important; line-height: 1.2 !important; }
+
+  /* 6) gaps between sections */
+  .benefits-section   { padding-top: 36px !important; padding-bottom: 20px !important; }  /* last benefit card -> Massive Savings */
+  .discount-section   { padding-top: 20px !important; padding-bottom: 20px !important; }  /* last savings card -> How It Works */
+  .how-it-works-section { padding-top: 20px !important; padding-bottom: 20px !important; }
+  .cta-section        { padding-top: 20px !important; padding-bottom: 40px !important; }  /* Start Saving -> Ready to Protect */
+}
+</style>
+
+<style>
+.flow-steps{display:flex;align-items:stretch;justify-content:center;max-width:1100px;margin:50px auto 0;padding:0 20px}
+.flow-step{flex:1;max-width:300px;text-align:center;background:#fff;border-radius:20px;padding:28px 20px;box-shadow:0 10px 30px rgba(0,0,0,.08);border-top:4px solid #f5b72b}
+.flow-num{position:relative;width:72px;height:72px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,#0066ff,#00c6fb);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 8px 22px rgba(0,102,255,.3)}
+.flow-num span{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;background:#ff6b35;color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.flow-step h4{font-size:1.15rem;font-weight:700;color:#1b2b50;margin-bottom:8px}
+.flow-step p{font-size:.92rem;color:#4b5563;margin:0}
+.flow-arrow{display:flex;align-items:center;justify-content:center;width:64px;flex-shrink:0;color:#0066ff;font-size:1.5rem}
+.flow-arrow i{animation:flowNudgeX 1.4s ease-in-out infinite}
+@keyframes flowNudgeX{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+@keyframes flowNudgeY{0%,100%{transform:rotate(90deg) translateX(0)}50%{transform:rotate(90deg) translateX(7px)}}
+
+@media (max-width:768px){
+  .flow-steps{flex-direction:column;align-items:center;margin-top:28px}
+  .flow-step{width:100%;max-width:320px;padding:20px 16px}
+  .flow-arrow{width:auto;height:46px}
+  .flow-arrow i{transform:rotate(90deg);animation:flowNudgeY 1.4s ease-in-out infinite}
+}
+</style>
+
 </head>
 
 <body>
@@ -1775,7 +1846,7 @@
                     <div class="discount-icon">
                         <i class="fas fa-flask"></i>
                     </div>
-                    <div class="discount-percent">50%</div>
+                    <div class="discount-percent" data-count="50">50%</div>
                     <div class="discount-label">Diagnostics & Labs</div>
                 </div>
 
@@ -1783,7 +1854,7 @@
                     <div class="discount-icon">
                         <i class="fas fa-stethoscope"></i>
                     </div>
-                    <div class="discount-percent">50%</div>
+                    <div class="discount-percent" data-count="50">50%</div>
                     <div class="discount-label">OPD Consultations</div>
                 </div>
 
@@ -1791,7 +1862,7 @@
                     <div class="discount-icon">
                         <i class="fas fa-pills"></i>
                     </div>
-                    <div class="discount-percent">22%</div>
+                    <div class="discount-percent" data-count="22">22%</div>
                     <div class="discount-label">Pharmacy</div>
                 </div>
 
@@ -1799,7 +1870,7 @@
                     <div class="discount-icon">
                         <i class="fas fa-procedures"></i>
                     </div>
-                    <div class="discount-percent">20%</div>
+                    <div class="discount-percent" data-count="20">20%</div>
                     <div class="discount-label">Hospital Operations</div>
                 </div>
 
@@ -1807,7 +1878,7 @@
                     <div class="discount-icon">
                         <i class="fas fa-user-nurse"></i>
                     </div>
-                    <div class="discount-percent">20%</div>
+                    <div class="discount-percent" data-count="20">20%</div>
                     <div class="discount-label">Home Care Services</div>
                 </div>
             </div>
@@ -1832,25 +1903,29 @@
                 </p>
             </div>
 
-            <div class="steps-container">
-                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-number">1</div>
-                    <h4>Register Online</h4>
-                    <p>Fill out the simple registration form with your family details</p>
-                </div>
+<div class="flow-steps">
+    <div class="flow-step" data-aos="fade-up" data-aos-delay="100">
+        <div class="flow-num"><i class="fas fa-user-plus"></i><span>1</span></div>
+        <h4>Register Online</h4>
+        <p>Fill out the simple registration form with your family details</p>
+    </div>
 
-                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-number">2</div>
-                    <h4>Make Payment</h4>
-                    <p>Complete secure payment through multiple payment options</p>
-                </div>
+    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
 
-                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-number">3</div>
-                    <h4>Start Saving</h4>
-                    <p>Receive your card instantly and start enjoying benefits immediately</p>
-                </div>
-            </div>
+    <div class="flow-step" data-aos="fade-up" data-aos-delay="250">
+        <div class="flow-num"><i class="fas fa-credit-card"></i><span>2</span></div>
+        <h4>Make Payment</h4>
+        <p>Complete secure payment through multiple payment options</p>
+    </div>
+
+    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+
+    <div class="flow-step" data-aos="fade-up" data-aos-delay="400">
+        <div class="flow-num"><i class="fas fa-piggy-bank"></i><span>3</span></div>
+        <h4>Start Saving</h4>
+        <p>Receive your card instantly and start enjoying benefits immediately</p>
+    </div>
+</div>
         </div>
     </section>
 
@@ -1982,6 +2057,29 @@ els.forEach(function(e,i){e.classList.add('rx-pre');e.style.transitionDelay=(i%4
   window.addEventListener('load', function () { fix(); setTimeout(fix, 500); setTimeout(fix, 1500); });
 })();
 </script>
+<script>
+(function () {
+  var nums = document.querySelectorAll('.discount-percent[data-count]');
+  function run(el) {
+    var end = parseInt(el.getAttribute('data-count'), 10), dur = 1600, t0 = null;
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + '%';
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (x) {
+      if (x.isIntersecting) { run(x.target); io.unobserve(x.target); }
+    });
+  }, { threshold: 0.4 });
+  nums.forEach(function (n) { n.textContent = '0%'; io.observe(n); });
+})();
+</script>
+
 </body> 
 
 </html>
