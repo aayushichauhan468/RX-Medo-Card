@@ -252,3 +252,20 @@
     font-size: .88rem !important;
   }
 }
+/* ===== v6: smaller hero card on mobile + no doctor on mobile ===== */
+@media (max-width: 991px) {
+  #rxHero.rx-hero { --card-hang: 54px; }
+  #rxHero .rx-hero__side--left { width: min(210px, calc(100% - 28px)) !important; }
+  #rxHero .rx-hero__side--left .rx-card { font-size: 7.1px !important; }
+}
+
+@media (max-width: 768px) {
+  .service-bg-plans-section .doctor-board-video { display: none !important; }
+  .service-bg-plans-section .doctor-video-board-container {
+    padding: 0 0 0 8px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+}

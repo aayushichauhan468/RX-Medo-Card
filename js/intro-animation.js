@@ -177,6 +177,10 @@
     skipBtn.style.transform = 'translateY(0) scale(1)';
     skipBtn.style.boxShadow = '0 6px 20px rgba(20,38,79,0.14)';
   });
+    /* phones only: move Skip Intro down so the logo text is readable */
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    skipBtn.style.marginTop = '56px';
+  }
 
   topHeader.appendChild(skipBtn);
   overlay.appendChild(topHeader);
