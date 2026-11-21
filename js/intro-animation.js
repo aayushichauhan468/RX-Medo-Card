@@ -179,7 +179,7 @@
   });
     /* phones only: move Skip Intro down so the logo text is readable */
   if (window.matchMedia('(max-width: 768px)').matches) {
-    skipBtn.style.marginTop = '56px';
+    skipBtn.style.marginTop = '72px';
   }
 
   topHeader.appendChild(skipBtn);
